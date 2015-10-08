@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <h2><strong>SIGN UP</strong></h2>
+        <form method="post" action="/signup/">
+            {% csrf_token %}
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Username</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>First Name</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.first_name }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Surname</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Email</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Grading System ID</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.grading_system }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Password</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.password }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-6">
+                    <button class="col-md-12 btn btn-default">Sign Up!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container"><div class="alert-warning col-md-6">{{ message }}</div></div>
+</body>
+</html>

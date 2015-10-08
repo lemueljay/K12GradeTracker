@@ -1,0 +1,283 @@
+body {
+    font-family: "open sans", sans-serif;
+    background: url("../img/bg.jpg") no-repeat center center fixed; ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-weight: normal;
+    color: white;
+}
+
+.lighter {
+    font-weight: lighter;
+}
+
+.bolder {
+    font-weight: bold;
+}
+
+nav {
+    position: absolute;
+}
+
+.navbar-default {
+    background-color: #0172bc;
+    border-color: #0172bc;
+    height: 65px;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-default .navbar-brand {
+    padding-top: 20px;
+    color: white;
+    font-size: 25px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:focus {
+    color: white;
+    font-size: 25px;
+}
+
+.sidebar {
+    position: absolute;
+    padding: 0px;
+    padding-top: 75px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
+
+.sidebar-profile {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.sidebar-time {
+    margin-top: 50px;
+}
+
+#myDate {
+    font-size: 16px;
+}
+
+#myTime {
+    font-size: 15px;
+}
+
+.sidebar-info {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.sidebar-hr {
+    border-top: 1px solid #757575;
+    width: 95%;
+    margin: 10px;
+}
+
+.sidebar-button:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar-option {
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.sidebar-option:hover {
+    background-color: #101010;
+    cursor: pointer;
+}
+
+.sidebar-option-clicked {
+    background-color: black;
+    cursor: pointer;
+}
+
+.sidebar-copyright {
+    font-weight: normal;
+    color: #757575;
+    opacity: 50;
+}
+
+.button-logout {
+    font-weight: 900;
+    text-decoration: none;
+    color: white;
+}
+
+.button-logout:hover {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.fa-user {
+    color: #1b1b1b;
+}
+
+.info-welcome {
+    font-size: 18px;
+}
+
+.info-name {
+    font-size: 22px;
+}
+
+.li-selection {
+    padding: 8px;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+.li-selection:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.li-newselection {
+    padding: 10px;
+    font-weight: lighter;
+    font-size: 16px;
+    list-style: none;
+}
+
+.contentbar {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    padding-top: 75px;
+    position: absolute;
+    overflow: auto;
+    height: 100%;
+}
+
+.contentbar-header {
+    margin-top: 200px;
+    margin-bottom: 190px;
+    font-size: 50px;
+}
+
+.contentbar-button {
+    padding: 95px;
+    background: url("../img/contentbar_button.png") no-repeat center center;
+}
+
+.contentbar-button:hover {
+    cursor: pointer;
+    background: url("../img/contentbar_button_clicked.png") no-repeat center center;
+}
+
+.classesbar, .studentsbar, .assessmentsbar, .gradesbar {
+    background-color: rgba(255, 255, 255, 0.87);
+}
+
+.createform {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.contenttitle {
+    padding-top: 20px;
+    color: #1b1b1b;
+    font-weight: bold;
+}
+
+.contenttitle-hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px;
+    border-top: 1px solid black;
+}
+
+#classtable, #studenttable {
+    padding-top: 20px;
+}
+
+.button-edit, .button-remove, button-save {
+    color: #222222;
+}
+
+.button-remove:hover, .button-edit:hover, .button-save:hover, .button-view:hover {
+    color: #0172bc;
+    cursor: pointer;
+}
+
+.classmenutab {
+    padding-top: 20px;
+}
+
+hr {
+    border-color: rgba(89, 87, 90, 0.14);
+    margin-bottom: 0px;
+}
+
+
+table {
+    color: #1b1b1b;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+table thead {
+    font-weight: bold;
+}
+
+label {
+    color: #101010;
+}
+
+table a {
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+
+table a:hover {
+    color: #0172bc;
+    text-decoration: none;
+}
+
+.assessmentlabel {
+    font-size: 13px;
+    font-weight: lighter;
+    color: #555555;
+}
+
+.assessmentname {
+    font-size: 19px;
+    color: #000000;
+    font-weight: bolder;
+}
+
+table th:hover{
+    cursor: pointer;
+}
+
+h4 span i {
+    font-weight: lighter;
+}
+
+.pass {
+    color: blue;
+}
+
+.fail {
+    color: red;
+}
+
+.alert {
+    margin: 0px;
+}
+
+.alert-student-invalid, .alert-assessment-invalid {
+    margin-top: 20px;
+}
+
+.modal {
+    color: #000000;
+}

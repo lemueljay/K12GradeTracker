@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2><strong>LOGIN</strong></h2>
+        <form method="post" action="/login/">
+            {% csrf_token %}
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Username</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-2">
+                    <label>Password</label>
+                </div>
+                <div class="col-md-4">
+                    {{ form.password }}
+                </div>
+            </div>
+            <div class="col-md-12 form-group fieldWrapper">
+                <div class="col-md-6">
+                    <button class="col-md-12 btn btn-default">Login!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <h4>No account? <a href="/signup/">Sign up here!</a></h4>
+        </div>
+    </div>
+    <div class="container"><div class="alert-warning col-md-6">{{ message }}</div></div>
+</body>
+</html>

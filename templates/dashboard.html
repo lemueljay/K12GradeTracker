@@ -1,0 +1,156 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alertify.css' %}">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/alertify.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/paging.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/animate.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/formcontrol.js' %}"></script>
+    <title>K12GradeTracker</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 sidebar">
+            <div class="col-xs-4 sidebar-profile">
+                <span class="fa-stack fa-3x">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-user fa-stack-1x" ></i>
+                </span>
+                <div></div>
+            </div>
+            <div class="col-xs-8 sidebar-time">
+                <span id="myDate">October 14, 2016</span><br>
+                <span id="myTime" class="bolder"></span>
+            </div>
+            <div class="col-xs-12 sidebar-info">
+                <span class="info-welcome">Welcome, {{ system }} teacher</span><br>
+                <span id="info-name" class="info-name lighter animated">{{ fullname }}!</span>
+            </div>
+            <div class="clearfix"></div>
+            <hr class="sidebar-hr">
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-6 sidebar-button">
+                    <i class="fa fa-gear fa-fw"></i><a class="button-logout" type="button" data-toggle="modal" data-target="#modal-settings">SETTINGS</a>
+                </div>
+                <div class="col-xs-12 col-sm-6 sidebar-button">
+                    <i class="fa fa-sign-out fa-fw"></i><a href="/logout/" class="button-logout">LOGOUT</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr class="sidebar-hr">
+            <div id="button-home" class="col-xs-12 sidebar-option sidebar-option-clicked">
+                <i class="fa fa-home fa-fw fa-2x "></i>HOME
+            </div>
+            <div id="button-manage-classes" class="col-xs-12 sidebar-option">
+                <i class="fa fa-dashboard fa-fw fa-2x"></i>MANAGE CLASSES
+            </div>
+            <div id="button-manage-students" class="col-xs-12 sidebar-option">
+                <i class="fa fa-users fa-fw fa-2x"></i>MANAGE STUDENTS
+            </div>
+            <div id="button-manage-assessments" class="col-xs-12 sidebar-option">
+                <i class="fa fa-calculator fa-fw fa-2x"></i>MANAGE ASSESSMENTS
+            </div>
+            <div id="button-view-grades" class="col-xs-12 sidebar-option">
+                <i class="fa fa-book fa-fw fa-2x"></i>VIEW GRADES
+            </div>
+            <div class="col-xs-12 navbar-fixed-bottom">
+                <span class="sidebar-copyright">Developed by <strong><a target="_blank" href="https://www.facebook.com/lemueljay.vallinas">Lemmeister</a></strong>. © Copyright 2016</span>
+            </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 contentbar mainbar">
+            <div class="container-fluid text-center">
+                <h1 class="contentbar-header"><span class="bolder">Start</span><span class="lighter"> managing your classes </span><span class="bolder">now!</span></h1>
+                <span id="button-start-now" class="contentbar-button animated infinite"></span>
+            </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 contentbar classesbar hidden">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center"><h1 class="contenttitle">Manage Classess</h1><hr></div>
+                <div class="col-xs-offset-3 col-xs-6">
+                    <div class="alert alert-danger text-center animated hidden alert-class-invalid">
+                        <span>Please fill out all inputs.</span>
+                    </div>
+                </div>
+                    <div class="clearfix"><hr></div><hr>
+                    <div id="classtable" class="col-xs-12"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 contentbar studentsbar hidden">
+            <div class="container">
+                <div class="row studentrow">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 contentbar assessmentsbar hidden">
+            <div class="container">
+                <div class="row assessmentrow">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 contentbar gradesbar hidden">
+            <div class="container">
+                <div class="row gradesrow">
+
+                </div>
+            </div>
+        </div>
+    <nav class="col-xs-12 navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand animated" href="">
+                        <i class="fa fa-reorder fa-fw"></i><span class="bolder">K12</span><span class="lighter">Grade</span><span class="bolder">Tracker</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<!-- Extras -->
+<script type="text/javascript">
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+</script>
+
+<div id="modal-settings" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="fa fa-gear fa-fw"></i>Settings</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</body>
+</html>
