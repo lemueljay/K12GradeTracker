@@ -84,3 +84,31 @@ def dashboard(request):
     else:
         return HttpResponseRedirect('/login/')
 
+
+def searchclasses(request):
+    user_instance = request.user
+    result = Class.objects.filter(user=user_instance, hidden='0')
+    if len(result) == 0:
+        return HttpResponse('')
+    else:
+        system = UserSystem.objects.get(user=user_instance)
+        grading_system = GradingSystem.objects.get(id=system.grading_system.id)
+        subject_types = SubjectType.objects.filter(grading_system=grading_system)
+        return render(request, 'tables/class.html', {'classes': result, 'subject_types': subject_types})
+
+
+class AddClass(View):
+    def get(self, request):
+        class_name = request.GET['classname']
+        section = request.GET['section']
+        subject_type = request.GET['subject_type']
+        user_instance = request.user
+        this_subject_type = SubjectType.objects.get(id=subject_type)
+        query = Class(name=class_name, section=section, subject_type=this_subject_type, user=user_instance)
+        query.save()
+        result = Class.objects.filter(user=user_instance, hidden=0)
+
+        system = UserSystem.objects.get(user=user_instance)
+        grading_system = GradingSystem.objects.get(id=system.grading_system.id)
+        subject_types = SubjectType.objects.filter(grading_system=grading_system)
+        return render(request, 'tables/class.html', {'classes': result, 'subject_types': subject_types})

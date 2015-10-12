@@ -46,7 +46,7 @@ nav {
     position: absolute;
     padding: 0px;
     padding-top: 75px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: black;
     height: 100%;
 }
 
@@ -147,7 +147,7 @@ nav {
 }
 
 .contentbar {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: white;
     padding: 0px;
     padding-top: 75px;
     position: absolute;
@@ -159,6 +159,7 @@ nav {
     margin-top: 200px;
     margin-bottom: 190px;
     font-size: 50px;
+    color: black;
 }
 
 .contentbar-button {
@@ -172,7 +173,7 @@ nav {
 }
 
 .classesbar, .studentsbar, .assessmentsbar, .gradesbar {
-    background-color: rgba(255, 255, 255, 0.87);
+    background-color: white;
 }
 
 .createform {

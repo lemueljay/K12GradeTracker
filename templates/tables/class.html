@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+
+<table id="myClassTable" class="table table-responsive">
+    <thead>
+    <tr>
+        <th>VIEW CLASS</th>
+        <th>CLASS SECTION</th>
+        <th>CLASS NAME</th>
+        <th>SUBJECT TYPE</th>
+        <th>COMMAND</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for class in classes %}
+        <tr id="tr{{ class.id }}">
+            <td>
+                <i id="buttonviewclass{{ class.id }}" onclick="viewClass({{ class.id }});" class="button-view fa fa-eye fa-2x fa-fw"></i>
+            </td>
+            <td>
+                <span id="tdclasssection{{ class.id }}" class="tdclasssection">{{ class.section }}</span>
+                <span class="editclassform"><input id="inputclasssection{{ class.id }}" class="form-control hidden inputs"></span>
+            </td>
+            <td>
+                <span id="tdclassname{{ class.id }}" class="tdclassname">{{ class.name }}</span>
+                <span class="editclassform"><input id="inputclassname{{ class.id }}" class="form-control hidden inputs"></span>
+            </td>
+
+            <td>
+                <span id="tdsubject_type{{ class.id }}" class="tdsubject_type">{{ class.subject_type.name }}</span>
+                <span class="editclassform">
+                    <select class="form-control hidden trsubject_type" id="trsubject_type{{ class.id }}">
+                        <option disabled="disabled" selected="selected" value="0">Subject Type</option>
+                        {% for subject_type in subject_types %}
+                            <option value="{{ subject_type.id }}">
+                                {{ subject_type.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </span>
+            </td>
+            <td>
+                <i type="button" id="buttonsaveclass{{ class.id }}" onclick="saveClass({{ class.id }}, '{{ class.name }}', '{{ class.section }}', {{ class.subject_type.id }})" class="buttonsaveclass button-save fa fa-save fa-2x fa-fw hidden"></i>
+                <i id="buttoneditclass{{ class.id }}" onclick="editClass({{ class.id }}, '{{ class.name }}', '{{ class.section }}', {{ class.subject_type.id }})" class="button-edit fa fa-edit fa-2x fa-fw"></i>
+                <i id="buttonremoveclass{{ class.id }}" onclick="removeClass({{ class.id }}, '{{ class.name }}', '{{ class.section }}');" class="button-remove fa fa-close fa-2x fa-fw"></i>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -13,16 +13,23 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
+
 from django.conf.urls import include, url
 from classrecord.views import *
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
+
+    url(r'^admin/', include(admin.site.urls)),
 
     #signup, login, logout, dashboard
     url(r'^signup/$', SignUp.as_view()),
     url(r'^login/$', Login.as_view()),
     url(r'^dashboard/$', dashboard),
 
-   
+    #classes
+    url(r'^searchclasses/$', searchclasses),
+    url(r'^addclass/$', AddClass.as_view()),
 
 ]
