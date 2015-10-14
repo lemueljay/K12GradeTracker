@@ -46,7 +46,7 @@ nav {
     position: absolute;
     padding: 0px;
     padding-top: 75px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     height: 100%;
 }
 
@@ -147,7 +147,7 @@ nav {
 }
 
 .contentbar {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 0px;
     padding-top: 75px;
     position: absolute;
@@ -159,7 +159,6 @@ nav {
     margin-top: 200px;
     margin-bottom: 190px;
     font-size: 50px;
-    color: black;
 }
 
 .contentbar-button {
