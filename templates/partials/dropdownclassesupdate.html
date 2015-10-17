@@ -1,0 +1,8 @@
+<button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    SELECT A CLASS SUBJECT <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+    {% for class in classes %}
+        <li onclick="viewClass({{ class.id }})">{{ class.name }} | {{ class.section }}</li>
+    {% endfor %}
+</ul>
