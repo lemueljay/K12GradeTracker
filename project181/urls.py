@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from classrecord.views import *
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
+
+    url(r'^admin/', include(admin.site.urls)),
 
     #signup, login, logout, dashboard
     url(r'^signup/$', SignUp.as_view()),
@@ -38,7 +42,13 @@ urlpatterns = [
     url(r'^addstudent/$', AddStudent.as_view()),
     url(r'^removestudent/$', removestudent),
 
-
+    #assessments
+    url(r'^getassessments/$', getassessments),
+    url(r'^defaultassessmentsview/$', defaultassessmentsview),
+    url(r'^createAssessment/$', CreateAssessment.as_view()),
+    url(r'^deleteAssessment/$', DeleteAssessment.as_view()),
+    url(r'^saveAssessment/$', SaveAssessment.as_view()),
+    url(r'^viewSpecificAssessment', viewSpecificAssessment),
 
     #exras
     url(r'^dropdowncclassesupdate/$', dropdowncclassesupdate),

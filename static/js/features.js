@@ -209,9 +209,119 @@ function saveStudent(class_id, student_id) {
     }
 }
 
+function viewAssessment(class_id) {
+    $('.assessmentrow').html('');
+    $('.sidebar-option').removeClass('sidebar-option-clicked');
+    $('#button-manage-assessments').addClass('sidebar-option-clicked');
+    $('.contentbar').addClass('hidden');
+    $('.assessmentsbar').removeClass('hidden');
+
+    $.ajax({
+            type: 'GET',
+            url: '/getassessments/',
+            data: {class_id: class_id},
+            success: function(data) {
+                $('.assessmentrow').html(data);
+        }
+        });
+};
+
+function createAssessment(class_id) {
+    var assessmentname = $('input[name=assessment_name]').val();
+    var assessmenttotal = $('input[name=assessment_total]').val();
+    var assessmenttype = $('select[id="trassessmenttype"]').val();
+    if(assessmentname.trim(" ") == '' || assessmenttotal.trim(" ") == '' || assessmenttype == null) {
+        $('.alert-assessment-invalid span').text('Please fill out all inputs.');
+        $('.alert-assessment-invalid').removeClass('hidden shake');
+        $('.alert-assessment-invalid').addClass('shake');
+        $('.alert-assessment-invalid').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('.alert-assessment-invalid').removeClass('shake');
+        });
+    } else {
+      $.ajax({
+            type: 'GET',
+            url: '/createAssessment/',
+            data: {class_id: class_id, assessment_name: assessmentname, assessment_total: assessmenttotal, assessment_type: assessmenttype},
+            success: function(data) {
+                $('.assessmentrow').html(data);
+                alertify.success('Assessment ' + assessmentname.toUpperCase() + ' successfully created!');
+        }
+        });
+    }
+};
+
+function removeAssessment(class_id, assessment_id) {
+    var assessmentname = $('#tdassessmentname' + assessment_id).text();
+    alertify.confirm('WARNING: Once removed, it can\' already be retrieved!', 'Do you really want to remove ' + assessmentname.toUpperCase() + ' from the list?', function() {
+        var name = $('#tdclassname' + class_id).text();
+        $.ajax({
+            type: 'GET',
+            url: '/deleteAssessment/',
+            data: {assessment_id: assessment_id, class_id: class_id},
+            success: function(data) {
+                $('.assessmentrow').html(data);
+                alertify.error(assessmentname.toUpperCase() + ' successfully deleted!');
+        }
+    });
+    }, function() {
+
+    });
+};
+
+function editAssessment(assessment_id, assessment_name, assessment_total, assessment_type) {
+    $('.button-save').addClass('hidden');
+    $('.button-edit').removeClass('hidden');
+    $('.assessmentinputs').addClass('hidden');
+    $('.tdassessment').removeClass('hidden');
+    $('.trassessmenttype').addClass('hidden');
+    $('#buttoneditassessment' + assessment_id).addClass('hidden');
+    $('#buttonsaveassessment' + assessment_id).removeClass('hidden');
+    $('.tdassessmentname' + assessment_id).addClass('hidden');
+
+
+    $('#inputassessmentname' + assessment_id).removeClass('hidden').val(assessment_name);
+    $('#trassessmenttype' + assessment_id).removeClass('hidden').val(assessment_type);
+    $('#inputassessmenttotal' + assessment_id).removeClass('hidden').val(assessment_total);
+}
+
+function saveAssessment(class_id, assessment_id) {
+    var newname = $('#inputassessmentname' + assessment_id).val();
+    var newtype = $('#trassessmenttype' + assessment_id).val();
+    var newtotal = $('#inputassessmenttotal' + assessment_id).val();
+
+    if(newname.trim(" ") == '' || newtotal.trim(" ") == '' || newtype == null) {
+        alert('Invalid input!');
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: '/saveAssessment/',
+            data: {assessment_id: assessment_id, class_id: class_id, newname: newname, newtype: newtype, newtotal: newtotal},
+            success: function(data) {
+                $('.assessmentsinputs').addClass('hidden');
+                $('.tdassessment').removeClass('hidden');
+                $('.assessmentrow').html(data);
+                 alertify.success('Assessment ' + newname.toUpperCase() + ' successfully created!');
+        }
+        });
+    }
+};
+
+function viewSpecificAssessment(class_id, assessment_id) {
+    $.ajax({
+            type: 'GET',
+            url: '/viewSpecificAssessment/',
+            data: {class_id: class_id, assessment_id: assessment_id},
+            success: function(data) {
+                $('.assessmentrow').html(data);
+            }
+        });
+};
+
+
 $(document).ready(function() {
     $('.sidebar-option').click(function() {
         $('.studentrow').load('/defaultstudentview/');
+        $('.assessmentrow').load('/defaultassessmentsview/');
     });
 });
 

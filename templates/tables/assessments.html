@@ -1,0 +1,90 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/formcontrol.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+
+<div class="col-xs-12 text-center"><h1 class="contenttitle">Manage Assessments @ {{ class.name }} | {{ class.section }}</h1><hr></div>
+<div class="col-xs-12 classmenutab">
+    <span class="form-inline">
+        <span id="assessmentsform">
+            <div class="form-group">
+                <select class="form-control" id="trassessmenttype">
+                    <option disabled="disabled" selected="selected" value="0">Assessment Type</option>
+                    {% for assessmenttype in assessmenttypes %}
+                        <option value="{{ assessmenttype.id }}">
+                            {{ assessmenttype.type }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="assessment_name" placeholder="Assessment Name">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="assessment_total" placeholder="Total Score">
+            </div>
+        </span>
+        <div class="form-group">
+            <button id="createassessmentbutton" onclick="createAssessment({{ class.id }})" class="btn btn-danger">Create Assessment</button>
+        </div>
+        <span class="pull-right">
+            <div class="form-group">
+                <button onclick="viewClass({{ class.id }})" class="btn btn-primary">View Students</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" onclick="viewGrades({{ class.id }})">Students' Grades</button>
+            </div>
+        </span>
+    </span>
+    <div class="col-xs-offset-3 col-xs-6">
+                    <div class="alert alert-danger text-center animated hidden alert-assessment-invalid">
+                        <span>Please fill out all inputs.</span>
+                    </div>
+                </div>
+    <div class="col-xs-12 clearfix"><hr></div>
+</div>
+<div id="assessmentstable" class="col-xs-12">
+    <table id="myAssessmentsTable" class="table table-responsive">
+        <thead>
+        <tr>
+            <th>VIEW ASSESSMENT</th>
+            <th>ASSESSMENT NAME</th>
+            <th>ASSESSMENT TYPE</th>
+            <th>TOTAL</th>
+            <th>COMMAND</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for assessment in assessments %}
+            <tr>
+                <td>
+                    <i id="buttonviewclass{{ class.id }}" onclick="viewSpecificAssessment({{ class.id }}, {{ assessment.id }});" class="button-view fa fa-eye fa-2x fa-fw"></i>
+                </td>
+                <td>
+                    <span id="tdassessmentname{{ assessment.id }}" class="tdassessmentname{{ assessment.id }} tdassessment">{{ assessment.name }}</span>
+                    <input id="inputassessmentname{{ assessment.id }}" class="form-control hidden inputs assessmentinputs">
+                </td>
+                <td>
+                    <span id="tdassessmenttype{{ assessment.id }}" class="tdassessmentname{{ assessment.id }} tdassessment">{{ assessment.assessmenttype.type }}</span>
+                    <select class="form-control hidden trassessmenttype" id="trassessmenttype{{ assessment.id }}">
+                        <option disabled="disabled" selected="selected" value="0">Assessment Type</option>
+                        {% for assessmenttype in assessmenttypes %}
+                            <option value="{{ assessmenttype.id }}">
+                                {{ assessmenttype.type }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <span id="tdassessmenttotal{{ assessment.id }}" class="tdassessmentname{{ assessment.id }} tdassessment">{{ assessment.total }}</span>
+                    <input type="number" id="inputassessmenttotal{{ assessment.id }}" class="form-control hidden inputs assessmentinputs">
+                </td>
+                <td>
+                    <i id="buttonsaveassessment{{ assessment.id }}" onclick="saveAssessment({{ class.id }}, {{ assessment.id }});" class="button-save fa fa-save fa-2x fa-fw hidden"></i>
+                    <i id="buttoneditassessment{{ assessment.id }}" onclick="editAssessment({{ assessment.id }}, '{{ assessment.name }}', {{ assessment.total }}, {{ assessment.assessmenttype.id }});" class="button-edit fa fa-edit fa-2x fa-fw"></i>
+                    <i id="buttonremoveassessment{{ assessment.id }}" onclick="removeAssessment({{ class.id }}, {{ assessment.id }});" class="button-remove fa fa-close fa-2x fa-fw"></i>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

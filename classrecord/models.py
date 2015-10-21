@@ -54,6 +54,9 @@ class Student(models.Model):
 class AssessmentType(models.Model):
     type = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.type
+
 
 class Assessment(models.Model):
     name = models.CharField(max_length=200)
