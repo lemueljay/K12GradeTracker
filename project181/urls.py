@@ -50,6 +50,10 @@ urlpatterns = [
     url(r'^saveAssessment/$', SaveAssessment.as_view()),
     url(r'^viewSpecificAssessment', viewSpecificAssessment),
 
+    #record grades
+    url(r'^setGrade/$', SetGrade.as_view()),
+    url(r'^defaultgradesview/$', defaultgradesview),
+
     #exras
     url(r'^dropdowncclassesupdate/$', dropdowncclassesupdate),
 

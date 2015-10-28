@@ -317,6 +317,55 @@ function viewSpecificAssessment(class_id, assessment_id) {
         });
 };
 
+function recordGrade(class_id, student_id, total, assessment_id) {
+    var newscore = $('#inputgrade' + student_id).val();
+    if(newscore == '') {
+        $('.alert-assessment-invalid span').text('No score entered!');
+        $('.alert-assessment-invalid').removeClass('hidden shake');
+        $('.alert-assessment-invalid').addClass('shake');
+        $('.alert-assessment-invalid').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('.alert-assessment-invalid').removeClass('shake');
+        });
+    } else if(newscore > total) {
+        $('.alert-assessment-invalid span').text('Score is out of bounds!');
+        $('.alert-assessment-invalid').removeClass('hidden shake');
+        $('.alert-assessment-invalid').addClass('shake');
+        $('.alert-assessment-invalid').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('.alert-assessment-invalid').removeClass('shake');
+        });
+    } else if(newscore < 0) {
+        $('.alert-assessment-invalid span').text('No negative scores please!');
+        $('.alert-assessment-invalid').removeClass('hidden shake');
+        $('.alert-assessment-invalid').addClass('shake');
+        $('.alert-assessment-invalid').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('.alert-assessment-invalid').removeClass('shake');
+        });
+    }else {
+        $('#buttonedit' + student_id).removeClass('hidden')
+        $('#buttonrecord' + student_id).addClass('hidden');
+        $('#inputgrade' + student_id).addClass('hidden');
+        $('#grade' + student_id).text(newscore).removeClass('hidden');
+        $.ajax({
+            type: 'GET',
+            url: '/setGrade/',
+            data: {student_id: student_id, assessment_id: assessment_id, score: newscore, class_id: class_id},
+            success: function(data) {
+                alertify.success('Student\'s score is successfully updated!');
+            }
+        });
+    };
+
+
+};
+
+function editGrade(student_id) {
+    $('#buttonedit' + student_id).addClass('hidden');
+    $('#buttonrecord' + student_id).removeClass('hidden');
+    $('#inputgrade' + student_id).removeClass('hidden');
+    $('#grade' + student_id).addClass('hidden');
+};
+
+
 
 $(document).ready(function() {
     $('.sidebar-option').click(function() {

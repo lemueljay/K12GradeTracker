@@ -243,3 +243,28 @@ def viewSpecificAssessment(request):
     assessmenttypes = AssessmentType.objects.all()
     grades = StudentGrades.objects.filter(assessment=query, assessmenttype=query.assessmenttype)
     return render(request, 'tables/assessment.html', {'class': class_instance, 'assessment': query, 'assessmenttypes': assessmenttypes, 'students': students, 'grades': grades})
+
+
+class SetGrade(View):
+    def get(self, request):
+        assessment_id = request.GET['assessment_id']
+        student_id = request.GET['student_id']
+        score = request.GET['score']
+        assessment_instance = Assessment.objects.get(id=assessment_id)
+        student_instance = Student.objects.get(id=student_id)
+        grade = StudentGrades.objects.get(assessment=assessment_instance, student=student_instance, assessmenttype=assessment_instance.assessmenttype)
+        grade.score = score
+        grade.save()
+        class_id = request.GET['class_id']
+        class_instance = Class.objects.get(id=class_id)
+        assessmenttypes = AssessmentType.objects.all()
+        students = Student.objects.filter(classname=class_instance)
+        grades = StudentGrades.objects.filter(assessment=assessment_instance)
+        return render(request, 'tables/assessment.html', {'class': class_instance, 'assessment': assessment_instance, 'assessmenttypes': assessmenttypes, 'students': students, 'grades': grades})
+
+
+def defaultgradesview(request):
+    userid = request.user.id
+    user_instance = User.objects.get(id=userid)
+    classes = Class.objects.filter(user=user_instance, hidden=0)
+    return render(request, 'partials/defaultgradesview.html', {'classes': classes})
