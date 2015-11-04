@@ -54,6 +54,9 @@ urlpatterns = [
     url(r'^setGrade/$', SetGrade.as_view()),
     url(r'^defaultgradesview/$', defaultgradesview),
 
+    #student grades
+    url(r'^getstudentgrades/$', getstudentgrades),
+
     #exras
     url(r'^dropdowncclassesupdate/$', dropdowncclassesupdate),
 

@@ -1,0 +1,17 @@
+<div class="col-xs-12 text-center"><h1 class="contenttitle">View Grades</h1><hr></div>
+
+
+<div class="col-xs-12 text-center">
+    <h4 class="contenttitle">
+        <span class="col-xs-12"><i>Please select a class to view grades:</i> <div id="" class="btn-group eyey">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Subject | Class Section <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                  {% for class in classes %}
+                    <li class="li-selection" onclick="viewGrades({{ class.id }})">{{ class.name }} - {{ class.section }}</li>
+                    {% endfor %}
+              </ul>
+             </div><hr></span>
+    </h4>
+</div>

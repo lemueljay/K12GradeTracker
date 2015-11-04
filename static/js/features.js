@@ -366,11 +366,38 @@ function editGrade(student_id) {
 };
 
 
+function viewGrades(class_id) {
+    $('.gradesrow').html('');
+    $('.sidebar-option').removeClass('sidebar-option-clicked');
+    $('#button-view-grades').addClass('sidebar-option-clicked');
+    $('.contentbar').addClass('hidden');
+    $('.gradesbar').removeClass('hidden');
+
+    $.ajax({
+            type: 'GET',
+            url: '/getstudentgrades/',
+            data: {class_id: class_id},
+            success: function(data) {
+                $('.gradesrow').html(data);
+                $('.overall_grade').each(function() {
+                    var number = parseInt($(this).text());
+                    if(number < 75) {
+                        $(this).addClass('fail');
+                    } else {
+                        $(this).addClass('pass');
+                    }
+
+                });
+        }
+        });
+};
+
 
 $(document).ready(function() {
     $('.sidebar-option').click(function() {
         $('.studentrow').load('/defaultstudentview/');
         $('.assessmentrow').load('/defaultassessmentsview/');
+        $('.gradesrow').load('/defaultgradesview/');
     });
 });
 

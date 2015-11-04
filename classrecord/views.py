@@ -268,3 +268,110 @@ def defaultgradesview(request):
     user_instance = User.objects.get(id=userid)
     classes = Class.objects.filter(user=user_instance, hidden=0)
     return render(request, 'partials/defaultgradesview.html', {'classes': classes})
+
+
+def getstudentgrades(request):
+    classid = request.GET['class_id']
+    myClass = Class.objects.get(id=classid, hidden=0)
+    students = Student.objects.filter(classname=myClass)
+
+    written_works = AssessmentType.objects.get(id=1)
+    performance_tasks = AssessmentType.objects.get(id=2)
+    quarterly_assessments = AssessmentType.objects.get(id=3)
+    system = SubjectType.objects.get(name=myClass.subject_type.name)
+
+
+    #written works
+    assessments = Assessment.objects.filter(classname=myClass, assessmenttype=written_works)
+    if assessments.exists():
+        written_works_total = 0
+        for assessment in assessments:
+            written_works_total += assessment.total
+
+        if written_works_total == 0:
+            for student in students:
+                student.written_works_total = 0
+
+        for student in students:
+            works = StudentGrades.objects.filter(assessmenttype=written_works, student=student)
+            total = 0
+            for work in works:
+                if work.score < 0:
+                    total += 0
+                else:
+                    total += work.score
+            grade = ((float(total)/float(written_works_total))*100)
+            student.written_works_total = grade
+    else:
+        for student in students:
+            student.written_works_total = 0
+        written_works_total = 0
+
+    #performance tasks
+    assessments = Assessment.objects.filter(classname=myClass, assessmenttype=performance_tasks)
+    if assessments.exists():
+        performance_tasks_total = 0
+        for assessment in assessments:
+            performance_tasks_total += assessment.total
+
+        if performance_tasks_total == 0:
+            for student in students:
+                student.performance_tasks_total = 0
+
+        for student in students:
+            works = StudentGrades.objects.filter(assessmenttype=performance_tasks, student=student)
+            total = 0
+
+            for work in works:
+                if work.score < 0:
+                    total += 0
+                else:
+                    total += work.score
+            grade = ((float(total)/float(performance_tasks_total))*100)
+            student.performance_tasks_total = grade
+    else:
+        for student in students:
+            student.performance_tasks_total = 0
+        performance_tasks_total = 0
+
+
+    #quarterly assesments
+    assessments = Assessment.objects.filter(classname=myClass, assessmenttype=quarterly_assessments)
+    if assessments.exists():
+        quarterly_assessments_total = 0
+        for assessment in assessments:
+            quarterly_assessments_total += assessment.total
+
+        if quarterly_assessments_total == 0:
+            for student in students:
+                student.quarterly_assessments_total = 0
+
+        for student in students:
+            works = StudentGrades.objects.filter(assessmenttype=quarterly_assessments, student=student)
+            total = 0
+
+            for work in works:
+                if work.score < 0:
+                    total += 0
+                else:
+                    total += work.score
+            grade = ((float(total)/float(quarterly_assessments_total))*100)
+            student.quarterly_assessments_total = grade
+    else:
+        for student in students:
+            student.quarterly_assessments_total = 0
+        quarterly_assessments_total = 0
+
+    #overallgrade
+    for student in students:
+        student.ww = float(system.written_works)*float(student.written_works_total)/100
+        student.pt = float(system.performance_tasks)*float(student.performance_tasks_total)/100
+        student.qa = float(system.quarterly_assessments)*float(student.quarterly_assessments_total)/100
+        student.overall_grade = student.ww + student.pt + student.qa
+
+    system.written_works_total = written_works_total
+    system.written_works_total = written_works_total
+    system.performance_tasks_total = performance_tasks_total
+    system.quarterly_assessments_total = quarterly_assessments_total
+
+    return render(request, 'tables/studentgrades.html', {'class': myClass, 'students': students, 'system': system})

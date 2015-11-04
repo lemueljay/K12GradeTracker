@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+
+<div class="col-xs-12 text-center"><h1 class="contenttitle">View Grades @ {{ class.name }} | {{ class.section }}</h1><hr></div>
+<div class="col-xs-12 classmenutab">
+    <span class="form-inline">
+        <div class="form-group"></div>
+        <span class="pull-right">
+            <div class="form-group">
+                <button onclick="viewClass({{ class.id }})" class="btn btn-primary">View Students</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger" onclick="viewAssessment({{ class.id }})">Assessments</button>
+            </div>
+        </span>
+    </span>
+    <hr>
+</div>
+<div id="studentgradestable" class="col-xs-12">
+    <table id="myGradesTable" class="table table-responsive">
+        <thead>
+        <tr>
+            <th>STUDENT NAME</th>
+            <th  class="text-right">WRITTEN WORKS</th>
+            <th>({{ system.written_works }}%)</th>
+            <th  class="text-right">PERFORMANCE TASKS)</th>
+            <th>({{ system.performance_tasks }}%)</th>
+            <th  class="text-right">QUARTERLY ASSESSMENTS</th>
+            <th>({{ system.quarterly_assessments }}%)</th>
+            <th>OVERALL GRADE</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.last_name }}, {{ student.first_name }}</td>
+                <td class="text-right">{{ student.written_works_total }}</td>
+                <td>{{ student.ww }}</td>
+                <td class="text-right">{{ student.performance_tasks_total }}</td>
+                <td>{{ student.pt }}</td>
+                <td class="text-right">{{ student.quarterly_assessments_total }}</td>
+                <td>{{ student.qa}}</td>
+                <td class="text-center overall_grade">{{ student.overall_grade }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
