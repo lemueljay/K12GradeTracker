@@ -73,7 +73,8 @@ class Login(View):
 
 class Logout(View):
     def get(self, request):
-        return HttpResponse()
+        auth.logout(request)
+        return HttpResponseRedirect('/login/')
 
 
 def dashboard(request):
