@@ -122,12 +122,41 @@ class AddClass(View):
 
 class RemoveClass(View):
     def get(self, request):
-        return HttpResponse()
+        class_id = request.GET['class_id']
+        query = Class.objects.get(id=class_id)
+        query.hidden = '1'
+        query.save()
+        user_id = request.user.id
+        result = Class.objects.filter(user_id=user_id, hidden='0')
+
+        user_instance = request.user
+        result = Class.objects.filter(user=user_instance, hidden=0)
+        system = UserSystem.objects.get(user=user_instance)
+        grading_system = GradingSystem.objects.get(id=system.grading_system.id)
+        subject_types = SubjectType.objects.filter(grading_system=grading_system)
+        return render(request, 'tables/class.html', {'classes': result, 'subject_types': subject_types})
 
 
 class EditClass(View):
     def get(self, request):
-        return HttpResponse()
+        class_id = request.GET['class_id']
+        new_name = request.GET['new_name']
+        new_section = request.GET['new_section']
+        newsubjecttype = request.GET['newsubjecttype']
+        subjecttype_instance = SubjectType.objects.get(id=newsubjecttype)
+
+        query = Class.objects.get(id=class_id)
+        query.name = new_name
+        query.section = new_section
+        query.subject_type = subjecttype_instance
+        query.save()
+
+        user_instance = request.user
+        result = Class.objects.filter(user=user_instance, hidden=0)
+        system = UserSystem.objects.get(user=user_instance)
+        grading_system = GradingSystem.objects.get(id=system.grading_system.id)
+        subject_types = SubjectType.objects.filter(grading_system=grading_system)
+        return render(request, 'tables/class.html', {'classes': result, 'subject_types': subject_types})
 
 
 def getstudents(request):
