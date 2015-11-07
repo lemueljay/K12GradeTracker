@@ -210,12 +210,35 @@ def dropdowncclassesupdate(request):
 
 
 def removestudent(request):
-    return HttpResponse()
+    class_id = request.GET['class_id']
+    class_instance = Class.objects.get(id=class_id)
+    student_id = request.GET['student_id']
+    result = Student.objects.get(id=student_id, classname=class_instance)
+    result.delete()
+    userid = request.user.id
+    user_instance = User.objects.get(id=userid)
+    classes = Class.objects.filter(user=user_instance, hidden=0)
+    class_instance = Class.objects.get(id=class_id)
+    students = Student.objects.filter(classname=class_instance)
+    return render(request, 'tables/student.html', {'class': class_instance, 'students': students, 'classes': classes})
 
 
 class EditStudent(View):
     def get(self, request):
-        return HttpResponse()
+        student_id = request.GET['student_id']
+        newfirstname = request.GET['newfirstname']
+        newlastname = request.GET['newlastname']
+
+        query = Student.objects.get(id=student_id)
+        query.first_name = newfirstname
+        query.last_name = newlastname
+        query.save()
+
+
+        classid = request.GET['class_id']
+        class_instance = Class.objects.get(id=classid)
+        students = Student.objects.filter(classname=class_instance)
+        return render(request, 'tables/student.html', {'class': class_instance, 'students': students})
 
 
 def defaultassessmentsview(request):
