@@ -277,12 +277,39 @@ class CreateAssessment(View):
 
 class DeleteAssessment(View):
     def get(self, request):
-        return HttpResponse()
+        assessment_id = request.GET['assessment_id']
+        query = Assessment.objects.get(id=assessment_id)
+        query.delete()
+        class_id = request.GET['class_id']
+        class_instance = Class.objects.get(id=class_id)
+        assessments = Assessment.objects.filter(classname=class_instance)
+        assessmenttypes = AssessmentType.objects.all()
+        return render(request, 'tables/assessments.html', {'class': class_instance, 'assessments': assessments, 'assessmenttypes': assessmenttypes})
 
 
 class SaveAssessment(View):
     def get(self, request):
-        return HttpResponse()
+        assessment_id = request.GET['assessment_id']
+        newname = request.GET['newname']
+        newtype = request.GET['newtype']
+        assessment_type_instance = AssessmentType.objects.get(id=newtype)
+        newtotal = request.GET['newtotal']
+        query = Assessment.objects.get(id=assessment_id)
+        query2 = StudentGrades.objects.filter(assessment=query)
+        query.name = newname
+        for q in query2:
+            q.assessmenttype = assessment_type_instance
+            q.save()
+        query.assessmenttype = assessment_type_instance
+        query.total = newtotal
+        query.save()
+
+
+        class_id = request.GET['class_id']
+        class_instance = Class.objects.get(id=class_id)
+        assessments = Assessment.objects.filter(classname=class_instance)
+        assessmenttypes = AssessmentType.objects.all()
+        return render(request, 'tables/assessments.html', {'class': class_instance, 'assessments': assessments, 'assessmenttypes': assessmenttypes})
 
 
 def viewSpecificAssessment(request):
