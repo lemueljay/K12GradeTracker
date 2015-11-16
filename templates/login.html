@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/login_signup.css' %}">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/login_validator.js' %}"></script>
 
     <title></title>
 </head>
@@ -37,7 +38,7 @@
                     <input id="loginbutton" type="button" class="form-control btn btn-default hvr-grow-shadow hvr-radial-out" value="Sign In">
                 </div>
                 <div class="form-group pull-right">
-                    <a href="forgot_password.html" class="a-login hvr-hang">Forgot password?</a>
+                    <a href="/forgotpassword/" class="a-login hvr-hang">Forgot password?</a>
                 </div>
                 <div class="clearfix">
                 </div>
@@ -56,7 +57,7 @@
                     </div>
                 </div>
                 <div class="form-group pull-right signup">
-                    No account yet? <a href="signup.html" class="a-signup hvr-hang">  Sign Up</a> now!
+                    No account yet? <a href="/signup/" class="a-signup hvr-hang">  Sign Up</a> now!
                 </div>
             </form>
         </div>
