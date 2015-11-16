@@ -1,5 +1,4 @@
 function email_validate() {
-    console.log('**Email Validator**');
     var email = $('input[name=email]').val();
     var re = /\S+@\S+\.\S+/;
     if(email.trim(" ") == '' || !re.test(email)) {
@@ -18,7 +17,6 @@ function email_validate() {
 }
 
 function password_validate() {
-    console.log('**Password Validator**');
     var password = $('input[name=password]').val();
     if(password.trim(" ") == '' || password.length < 6) {
         if(password.trim(" ") == '') {
@@ -36,7 +34,6 @@ function password_validate() {
 }
 
 function login_validator() {
-    console.log('**Login Validator**');
     var flag1 = email_validate();
     var flag2 = password_validate();
     if(flag1 && flag2) {
@@ -48,7 +45,6 @@ function login_validator() {
 
 $(document).ready(function() {
     $('#loginbutton').click(function() {
-        console.log('Clicked!');
         login_validator();
     });
 });

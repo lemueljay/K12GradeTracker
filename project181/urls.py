@@ -26,11 +26,17 @@ urlpatterns = [
     url(r'^$', index),
 
     #login
-    url(r'^login/$', login),
+    url(r'^login/$', Login.as_view()),
 
     #forgot
     url(r'^forgot/$', forgot),
 
     #signup
-    url(r'^signup/$', signup)
+    url(r'^signup/$', signup),
+
+    #dashboard
+    url(r'^dashboard/$', dashboard),
+
+    #logout
+    url(r'^logout/$', logout),
 ]
