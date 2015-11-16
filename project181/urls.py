@@ -30,4 +30,7 @@ urlpatterns = [
 
     #forgot
     url(r'^forgot/$', forgot),
+
+    #signup
+    url(r'^signup/$', signup)
 ]
