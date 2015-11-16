@@ -1,71 +1,100 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'font-awesome-4.4.0/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_signup.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/signup.js' %}"></script>
+    <title></title>
 </head>
 <body>
-    <div class="container">
-        <h2><strong>SIGN UP</strong></h2>
-        <form method="post" action="/signup/">
-            {% csrf_token %}
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Username</label>
-                </div>
-                <div class="col-md-4">
-                    {{ form.username }}
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 text-center header">
+            <div>
+                <a><img class="header-logo hvr-bubble-float-bottom" src="img/logo.png"></a>
             </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>First Name</label>
+            <div class="header-title hidden-xs hvr-grow-rotate "><strong>K12</strong>Grade<strong>Tracker</strong></div>
+        </div>
+        <div id="formsignuppart1" class="formsignup col-lg-offset-3 col-lg-6">
+            <form id="signupform1"  class="form-horizontal">
+                <div class="form-group text-left">
+                    <span class="signup-header">Sign Up</span><br>
+                    <span>
+                        New to K12GradeTracker? You're in the right place! Choose your account type below to get started.
+                        Please note, the account type cannot be changed once created so it's important to pick the right
+                        one.
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    {{ form.first_name }}
+                <div class="trackeroption">
+                    <span class="trackerbox1 col-xs-6 text-center hvr-float-shadow">
+                        <i class="fa fa-2x">
+                            <i class="fa fa-bus fa-border fa-5x">
+                            </i>
+                        </i>
+                        <br><span class="trackertitle">Elementary Teacher</span>
+                    </span>
+                    <span class="trackerbox2 col-xs-6 text-center hvr-float-shadow">
+                        <i class="fa fa-2x">
+                            <i class="fa fa-rocket fa-border fa-5x"></i>
+                        </i>
+                        <br><span class="trackertitle">Senior HS Teacher</span>
+                    </span>
                 </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Surname</label>
+            </form>
+        </div>
+        <div id="formsignuppart2"  class="formsignup col-lg-offset-3 col-lg-6">
+            <form if="signupform2" class="form-horizontal formsignuppart2">
+                <div class="form-group text-left">
+                    <i class="fa fa-user fa-fw fa-3x"></i><span class="signup-header headstart"></span><br>
+                    <span>Enter your name, email and a secure password to get started.</span>
                 </div>
-                <div class="col-md-4">
-                    {{ form.last_name }}
+                <div class="form-group">
+                    <span class="col-xs-6">
+                        <input onkeyup="firstname_validate()" name="firstname" class="form-control" placeholder="First Name" required>
+                        <label id="firstnamelabel" class="animated">This field is required!</label>
+                    </span>
+                    <span class="col-xs-6">
+                        <input onkeyup="lastname_validate()" name="lastname" class="form-control" placeholder="Last Name" required>
+                        <label id="lastnamelabel" class="animated">This field is required!</label>
+                    </span>
                 </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Email</label>
+                <div class="form-group">
+                    <span class="col-xs-12">
+                        <input onkeyup="email_validate()" name="email" type="email" class="form-control" placeholder="Email" required>
+                        <label id="emaillabel" class="animated">This field is required!</label>
+                        <span class="tooltipper">We recommend you use the email provided by your school, college or university.</span>
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    {{ form.email }}
+                <div class="form-group">
+                    <span class="col-xs-12">
+                        <input onkeyup="password_validate()" name="password" type="password" class="form-control" placeholder="Password" required>
+                        <label id="passwordlabel" class="animated">This field is required!</label>
+                        <span class="tooltipper">At least 6 characters. We recommend 8 characters or more, with numbers + symbols.</span>
+                    </span>
                 </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Grading System ID</label>
+                <div class="form-group">
+                    <span class="col-xs-12">
+                        <input onkeyup="password_confirmation_validate()" name="passwordconfirmation" type="password" class="form-control" placeholder="Confirm password" required>
+                        <label id="passwordconfirmationlabel" class="animated">This field is required!</label>
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    {{ form.grading_system }}
+                <div class="form-group">
+                     <span class="col-xs-3 pull-right">
+                        <input id="confirmbutton" type="button" class="form-control btn btn-default hvr-grow-shadow " value="Confirm">
+                    </span>
+                    <span class="col-xs-3 pull-right">
+                        <input id="backbutton" type="button" class="form-control btn btn-default hvr-grow-shadow" value="Back">
+                    </span>
                 </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Password</label>
-                </div>
-                <div class="col-md-4">
-                    {{ form.password }}
-                </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-6">
-                    <button class="col-md-12 btn btn-default">Sign Up!</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-    <div class="container"><div class="alert-warning col-md-6">{{ message }}</div></div>
+</div>
 </body>
 </html>
