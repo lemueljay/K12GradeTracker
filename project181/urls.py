@@ -27,4 +27,7 @@ urlpatterns = [
 
     #login
     url(r'^login/$', login),
+
+    #forgot
+    url(r'^forgot/$', forgot),
 ]
