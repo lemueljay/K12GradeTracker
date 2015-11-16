@@ -11,3 +11,7 @@ def index(request):
 
 def login(request):
     return render(request, 'login.html')
+
+
+def forgot(request):
+    return render(request, 'forgot_password.html')
