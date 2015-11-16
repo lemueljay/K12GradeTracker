@@ -23,5 +23,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     #landing page/ index
-    url(r'^$', index)
+    url(r'^$', index),
+
+    #login
+    url(r'^login/$', login),
 ]

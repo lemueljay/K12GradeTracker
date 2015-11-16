@@ -1,0 +1,146 @@
+/* Defaults style */
+body {
+    background: url("../img/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font: 15px 'open sans';
+    color: white;
+    background-color: black;
+}
+
+.header {
+    margin-bottom: 20px;
+    background-color: rgba(0, 86, 143, 0.75);
+}
+
+.header-logo {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+.header-title {
+    font-size: 48px;
+    padding-bottom: 30px;
+}
+
+.header-image:hover, .header-title:hover {
+    cursor: pointer;
+}
+
+.btn {
+    color: white;
+    border: none;
+}
+
+.btn-default {
+    background-color: #00568f;
+}
+
+.btn-default:hover , .btn-default:active, .btn-default:active:focus, .btn-default:focus {
+    border: none;
+    background-color: #00568f;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #b20015;
+    color: white;
+}
+
+.alert-success {
+    color: white;
+    background-color: rgba(0, 153, 68, 1);
+}
+
+.fa-border {
+    border: solid 0.05em #eeeeee;
+    border-radius: 5em;
+}
+
+/* Login Style*/
+.loginformcontainer {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.a-login, .a-login:hover, .a-signup, .a-signup:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.a-signup {
+    padding: 0px 5px 0px 5px;
+}
+
+
+.socialgroup {
+    margin-top: 10px;
+}
+
+
+.socialgroup div i:hover {
+    cursor:pointer;
+}
+
+/* Sign Up Style */
+
+.signup {
+    margin-top: 10px;
+}
+
+.signup-header {
+    font-size: 28px;
+}
+
+#backbutton {
+    background-color: rgba(0, 0, 0, 0);
+    border:  1px solid white;
+}
+
+.tooltipper {
+    color: #c2c2c2;
+    font-size: 13px;
+}
+
+.formsignup {
+    padding-top: 75px;
+    padding-right: 120px;
+    padding-left: 120px;
+    padding-bottom: 30px;
+}
+
+.formsignup form div {
+    padding-bottom: 10px;
+}
+
+.hr {
+    width: 10%;
+    margin-top: 10px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    display: inline-block;
+}
+
+.trackeroption span i:hover {
+    cursor: pointer;
+}
+
+.trackeroption span span.trackertitle {
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: lighter;
+}
+
+label {
+    color: rgba(255, 0, 30, 0.78);
+}
+
+/* Forgot Password Style */

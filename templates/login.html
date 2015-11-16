@@ -1,44 +1,66 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'font-awesome-4.4.0/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_signup.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+
+    <title></title>
 </head>
 <body>
-    <div class="container">
-        <h2><strong>LOGIN</strong></h2>
-        <form method="post" action="/login/">
-            {% csrf_token %}
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Username</label>
-                </div>
-                <div class="col-md-4">
-                    {{ form.username }}
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 text-center header">
+            <div>
+                <a><img class="header-logo hvr-bubble-float-bottom" src="{% static 'img/logo.png' %}"></a>
             </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-2">
-                    <label>Password</label>
+            <div class="header-title hidden-xs hvr-grow-rotate "><strong>K12</strong>Grade<strong>Tracker</strong></div>
+        </div>
+        <div class="loginformcontainer col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-5 col-lg-2">
+            <form id="loginform" class="form-horizontal">
+                <div class="form-group">
+                    <input name="email" id="emailinput" type="email" class="form-control" placeholder="Email" required>
                 </div>
-                <div class="col-md-4">
-                    {{ form.password }}
+                <div class="form-group">
+                    <input name="password" id="passwordinput" type="password" class="form-control" placeholder="Password" required>
                 </div>
-            </div>
-            <div class="col-md-12 form-group fieldWrapper">
-                <div class="col-md-6">
-                    <button class="col-md-12 btn btn-default">Login!</button>
+                <div class="form-group">
+                    <div class="loginfail alert alert-danger animated infinite bounce text-center hidden">Username and password did not match!</div>
+                    <div class="loginpass alert alert-success animated infinite bounce text-center"><i class="fa fa-spinner fa-spin fa-fw hidden spinner"></i><strong>Welcome!</strong> Please login.</div>
                 </div>
-            </div>
-        </form>
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <h4>No account? <a href="/signup/">Sign up here!</a></h4>
+                <div class="form-group">
+                    <input id="loginbutton" type="button" class="form-control btn btn-default hvr-grow-shadow hvr-radial-out" value="Sign In">
+                </div>
+                <div class="form-group pull-right">
+                    <a href="forgot_password.html" class="a-login hvr-hang">Forgot password?</a>
+                </div>
+                <div class="clearfix">
+                </div>
+                <div class="text-center">
+                    <span class="hr pull-left"></span>OR PAY US A VISIT<span class="hr pull-right"></span>
+                </div>
+                <div class="socialgroup text-center">
+                    <div class="col-xs-12 col-sm-4 hvr-grow">
+                        <a target="_blank" href="https://www.twitter.com"><i class="fa fa-twitter-square  fa-5x"></i></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 hvr-grow">
+                        <a target="_blank" href="https://www.facebook.com"><i class="fa fa-facebook-official fa-5x"></i></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 hvr-grow">
+                        <a target="_blank" href="https://www.google.com"><i class="fa fa-google-plus-square fa-5x"></i></a>
+                    </div>
+                </div>
+                <div class="form-group pull-right signup">
+                    No account yet? <a href="signup.html" class="a-signup hvr-hang">  Sign Up</a> now!
+                </div>
+            </form>
         </div>
     </div>
-    <div class="container"><div class="alert-warning col-md-6">{{ message }}</div></div>
+</div>
 </body>
 </html>
