@@ -21,4 +21,7 @@ admin.autodiscover()
 urlpatterns = [
     #admin
     url(r'^admin/', include(admin.site.urls)),
+
+    #landing page/ index
+    url(r'^$', index)
 ]

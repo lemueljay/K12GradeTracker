@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{
+    background:url('pictures/Project181_design1.jpg') no-repeat left top;
+    -webkit-background-size: 100%;
+    -moz-background-size:100%;
+    background-size:100%;
+}
+
+a {
+    text-decoration: none
+}
+
+div.transbox {
+	width: auto;
+	height: 90px;
+    background-color: #ffffff;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+p.padding1 {
+	padding-top: 2.5%;	
+}
+p.padding2 {
+	padding-top:16%;
+	padding-left: 5%;
+	}
+p.small{
+	line-height:70%;
+	}
+div.margin {
+	margin-left:70%;
+	margin-top:2%;
+	}
+div.font{
+	font-family:Ebrima;
+	color:#FFFFFF;
+	}
+.font {
+	font-family:"Open Sans";	
+	}
+.fontstretch{
+	font-stretch:ultra-condensed;
+	}
+.ocra{
+	font-size:36px;
+	line-height:85%;
+	}
+.color {
+	color:#FFFFFF;
+	}
+.logo {
+	width:100px;
+	height:100px;
+	padding-top:5%;
+	}
+/* Wrapper */
+.animate-wrap {
+  position: relative;
+  -webkit-perspective: 1000;
+     -moz-perspective: 1000;
+          perspective: 1000;
+}
+ 
+/* Inputs */
+.animate-wrap input {
+  display: none;
+}
+.animate-wrap [type="radio"]:checked + .animate {
+  -webkit-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+ 
+/* Image-Wrapper */
+.animate {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 0.5s ease-out;
+     -moz-transition: all 0.5s ease-out;
+          transition: all 0.5s ease-out;
+}
+ 
+/* Labels */
+label {
+  position: absolute; top: 0; left: 0; z-index: 2;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+ 
+.back {
+  -webkit-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.front {
+  z-index: 1;
+}
+.top-part{
+	background: url(pictures/Project181_design1.jpg) no-repeat top center;
+	}
+#topmost{
+      background: #900;
+      opacity: 0.8;
+}
+#top-most{
+      height: 139px;
+}
+#topmenu{
+      background: #900;
+      opacity: 0.8;
+      height: 51px;
+      border-radius: 0 0 20px 20px;
+}
+.wrapper{
+      position: relative;
+      width: 943px;
+      margin: 0 auto;
+}
+#backgroundcolor {
+    background-color: #000;
+    z-index: 1;
+}
+.backgroundimage {
+    background: url(pictures/Project181_design1.jpg);
+}
