@@ -19,24 +19,24 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    #admin
+    # admin
     url(r'^admin/', include(admin.site.urls)),
 
-    #landing page/ index
+    # landing page/ index
     url(r'^$', index),
 
-    #login
+    # login
     url(r'^login/$', Login.as_view()),
 
-    #forgot
+    # forgot
     url(r'^forgot/$', forgot),
 
-    #signup
+    # signup
     url(r'^signup/$', signup),
 
-    #dashboard
+    # dashboard
     url(r'^dashboard/$', dashboard),
 
-    #logout
+    # logout
     url(r'^logout/$', logout),
 ]

@@ -13,7 +13,8 @@ def index(request):
 class Login(View):
     def get(self, request):
         form = LoginForm()
-        return render(request, 'login.html', {'form': form})
+        error = False
+        return render(request, 'login.html', {'form': form, 'error': error})
 
     def post(self, request):
         form = LoginForm(self.request.POST)
@@ -25,11 +26,13 @@ class Login(View):
                 auth.login(request, user)
                 return HttpResponseRedirect('/dashboard')
             else:
+                error = True
                 message = 'Invalid password/username!'
-                return HttpResponse(message)
+                return render(request, 'login.html', {'form': form, 'error': error, 'message': message})
         else:
+            error = True
             message = 'Please fill out all the required forms!'
-            return HttpResponse(message)
+            return render(request, 'login.html', {'form': form, 'error': error, 'message': message})
 
 
 def logout(request):
