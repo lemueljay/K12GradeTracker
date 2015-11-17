@@ -1,4 +1,5 @@
 function init_hide() {
+    $('#usernamelabel').hide();
     $('#firstnamelabel').hide();
     $('#lastnamelabel').hide();
     $('#emaillabel').hide();
@@ -16,6 +17,8 @@ $(document).ready(function() {
        $('#formsignuppart1').fadeOut('fast', function() {
            $('#formsignuppart2').fadeIn('slow');
            $('.headstart').text('Sign up - Elementary teacher');
+           $('#usertrackerid').removeClass('fa-user fa-rocket').addClass('fa-bus');
+           $('input[name=usertrackerid]').val('1');
        });
    });
 
@@ -23,6 +26,8 @@ $(document).ready(function() {
         $('#formsignuppart1').fadeOut('fast', function() {
             $('#formsignuppart2').fadeIn('slow');
             $('.headstart').text('Sign up - Senior HS teacher');
+            $('#usertrackerid').removeClass('fa-user fa-bus').addClass('fa-rocket');
+            $('input[name=usertrackerid]').val('2');
         });
     });
 

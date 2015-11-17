@@ -45,7 +45,8 @@ def forgot(request):
 
 
 def signup(request):
-    return render(request, 'signup.html')
+    form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
 
 
 def dashboard(request):

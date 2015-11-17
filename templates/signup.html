@@ -12,7 +12,7 @@
     <script type="text/javascript" src="{% static 'js/signup.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/signup_validator.js' %}"></script>
 
-    <title></title>
+    <title>Signup K12GradeTracker</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -51,14 +51,32 @@
             </form>
         </div>
         <div id="formsignuppart2"  class="formsignup col-lg-offset-3 col-lg-6">
-            <form if="signupform2" class="form-horizontal formsignuppart2">
+            <form if="signupform2" class="form-horizontal formsignuppart2" action="/signup/" method="post">
+                {% csrf_token %}
                 <div class="form-group text-left">
-                    <i class="fa fa-user fa-fw fa-3x"></i><span class="signup-header headstart"></span><br>
-                    <span>Enter your name, email and a secure password to get started.</span>
+                    <i id="usertrackerid" class="fa fa-user fa-fw fa-3x"></i><span class="signup-header headstart"></span><br>
+                    <span>Enter your username, name, email and a secure password to get started.</span>
+                </div>
+                <div class="form-group hidden">
+                    <span class="col-xs-12">
+                        {{ form.user_tracker_id }}
+                    </span>
+                </div>
+                <div class="form-group">
+                    {% if not error %}
+                        <div class="loginfail alert alert-danger animated infinite bounce text-center">{{ message }}HI</div>
+                        <div class="loginpass alert alert-success animated infinite bounce text-center hidden"><i class="fa fa-spinner fa-spin fa-fw hidden spinner"></i><strong>Welcome!</strong> Please login.</div>
+                    {% endif%}
+                </div>
+                <div class="form-group">
+                    <span class="col-xs-12">
+                        {{ form.username }}
+                        <label id="usernamelabel" class="animated">This field is required!</label>
+                    </span>
                 </div>
                 <div class="form-group">
                     <span class="col-xs-6">
-                        <input onkeyup="firstname_validate()" name="firstname" class="form-control" placeholder="First Name" required>
+                        {{ form.first_name }}
                         <label id="firstnamelabel" class="animated">This field is required!</label>
                     </span>
                     <span class="col-xs-6">
@@ -68,27 +86,27 @@
                 </div>
                 <div class="form-group">
                     <span class="col-xs-12">
-                        <input onkeyup="email_validate()" name="email" type="email" class="form-control" placeholder="Email" required>
+                        {{ form.last_name }}
                         <label id="emaillabel" class="animated">This field is required!</label>
                         <span class="tooltipper">We recommend you use the email provided by your school, college or university.</span>
                     </span>
                 </div>
                 <div class="form-group">
                     <span class="col-xs-12">
-                        <input onkeyup="password_validate()" name="password" type="password" class="form-control" placeholder="Password" required>
+                        {{ form.password }}
                         <label id="passwordlabel" class="animated">This field is required!</label>
                         <span class="tooltipper">At least 6 characters. We recommend 8 characters or more, with numbers + symbols.</span>
                     </span>
                 </div>
                 <div class="form-group">
                     <span class="col-xs-12">
-                        <input onkeyup="password_confirmation_validate()" name="passwordconfirmation" type="password" class="form-control" placeholder="Confirm password" required>
+                        {{ form.passwordconf }}
                         <label id="passwordconfirmationlabel" class="animated">This field is required!</label>
                     </span>
                 </div>
                 <div class="form-group">
                      <span class="col-xs-3 pull-right">
-                        <input id="confirmbutton" type="button" class="form-control btn btn-default hvr-grow-shadow " value="Confirm">
+                        <input id="confirmbutton" type="submit" class="form-control btn btn-default hvr-grow-shadow " value="Confirm">
                     </span>
                     <span class="col-xs-3 pull-right">
                         <input id="backbutton" type="button" class="form-control btn btn-default hvr-grow-shadow" value="Back">

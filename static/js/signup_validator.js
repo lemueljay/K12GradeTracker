@@ -1,3 +1,20 @@
+function username_validate() {
+    var username = $('input[name=username]').val();
+    if(username.trim(" ") == '') {
+        if(username.trim(" ") == '') {
+            $('#usernamelabel').text('This field is required!').show().fadeIn().addClass('bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $('#usernamelabel').removeClass('bounceIn');
+            });;
+        }
+        return false;
+    } else {
+        $('#firstnamelabel').addClass('bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('#firstnamelabel').removeClass('bounceOut').hide();
+        });
+        return true;
+    }
+}
+
 function firstname_validate() {
     var firstname = $('input[name=firstname]').val();
     if(firstname.trim(" ") == '') {
