@@ -1,4 +1,5 @@
 function username_validate() {
+
     var username = $('input[name=username]').val();
     if(username.trim(" ") == '') {
         if(username.trim(" ") == '') {
@@ -8,8 +9,8 @@ function username_validate() {
         }
         return false;
     } else {
-        $('#firstnamelabel').addClass('bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $('#firstnamelabel').removeClass('bounceOut').hide();
+        $('#usernamelabel').addClass('bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $('#usernamelabel').removeClass('bounceOut').hide();
         });
         return true;
     }
@@ -75,12 +76,8 @@ function email_validate() {
 
 function password_validate() {
     var password = $('input[name=password]').val();
-    if(password.trim(" ") == '' || password.length < 6) {
-        if(password.trim(" ") == '') {
-            $('#passwordlabel').text('This field is required!').show().fadeIn().addClass('bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $('#passwordlabel').removeClass('bounceIn');
-            });;
-        } else if(password.length < 6) {
+    if(password.length < 6) {
+       if(password.length < 6) {
             $('#passwordlabel').text('Atleast 6 characters!').show().fadeIn().addClass('bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                 $('#passwordlabel').removeClass('bounceIn');
             });;
@@ -95,19 +92,16 @@ function password_validate() {
 }
 
 function password_confirmation_validate() {
-    var passwordconfirmation = $('input[name=passwordconfirmation]').val();
+    var passwordconf = $('input[name=passwordconf]').val();
     var password = $('input[name=password]').val();
-    if(passwordconfirmation.trim(" ") == '' || password != passwordconfirmation) {
-        if(passwordconfirmation.trim(" ") == '') {
-            $('#passwordconfirmationlabel').text('This field is required!').show().fadeIn().addClass('bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $('#passwordconfirmationlabel').removeClass('bounceIn');
-            });;
-        } else if(password != passwordconfirmation) {
+    if(password != passwordconf) {
+        if(password != passwordconf) {
             $('#passwordconfirmationlabel').text('Password did not match!').show().fadeIn().addClass('bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                 $('#passwordconfirmationlabel').removeClass('bounceIn');
+                return false;
             });;
         }
-        return false;
+
     } else {
         $('#passwordconfirmationlabel').addClass('bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             $('#passwordconfirmationlabel').removeClass('bounceOut').hide();
@@ -117,18 +111,32 @@ function password_confirmation_validate() {
 }
 
 function input_validator() {
+    var flag = username_validate();
     var flag1 = firstname_validate();
     var flag2 = lastname_validate();
     var flag3 = email_validate();
     var flag4 = password_validate();
     var flag5 = password_confirmation_validate();
-    if(flag1 && flag2 && flag3 && flag4 && flag5) {
-        //do something usefule
+
+    if(flag && flag1 && flag2 && flag3 && flag4 && flag5) {
+        return true;
     }
 }
 
 $(document).ready(function() {
-    $('#confirmbutton').click(function() {
-        input_validator();
+
+    $("#confirmbutton").click(function(event) {
+        event.preventDefault();
+        var validated = input_validator();
+        if(validated) {
+            $('#signupform2').submit();
+        }
     });
+
+    $("#signupform2").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('#confirmbutton').click();
+        }
+    });
+
 });

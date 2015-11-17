@@ -88,7 +88,6 @@ function updateTime() {
 
 $(document).ready(function() {
 
-    $('#classtable').load('/searchclasses/');
 
     $('.sidebar-option').click(function() {
         $('.sidebar-option').removeClass('sidebar-option-clicked');

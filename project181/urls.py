@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^forgot/$', forgot),
 
     # signup
-    url(r'^signup/$', signup),
+    url(r'^signup/$', Signup.as_view()),
 
     # dashboard
     url(r'^dashboard/$', dashboard),

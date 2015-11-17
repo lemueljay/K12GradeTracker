@@ -113,8 +113,12 @@ body {
     padding-bottom: 25px;
 }
 
-.formsignup form div {
+.formsignup form div.form-group {
     padding-bottom: 5px;
+}
+
+.form-group div.alert {
+    margin-bottom: 0px;
 }
 
 .hr {
@@ -142,5 +146,6 @@ body {
 label {
     color: rgba(255, 0, 30, 0.78);
 }
+
 
 /* Forgot Password Style */

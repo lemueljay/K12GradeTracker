@@ -51,7 +51,7 @@
             </form>
         </div>
         <div id="formsignuppart2"  class="formsignup col-lg-offset-3 col-lg-6">
-            <form if="signupform2" class="form-horizontal formsignuppart2" action="/signup/" method="post">
+            <form id="signupform2" class="form-horizontal formsignuppart2" method="post" action="/signup/">
                 {% csrf_token %}
                 <div class="form-group text-left">
                     <i id="usertrackerid" class="fa fa-user fa-fw fa-3x"></i><span class="signup-header headstart"></span><br>
@@ -59,14 +59,8 @@
                 </div>
                 <div class="form-group hidden">
                     <span class="col-xs-12">
-                        {{ form.user_tracker_id }}
+                        {{ form.usertrackerid }}
                     </span>
-                </div>
-                <div class="form-group">
-                    {% if not error %}
-                        <div class="loginfail alert alert-danger animated infinite bounce text-center">{{ message }}HI</div>
-                        <div class="loginpass alert alert-success animated infinite bounce text-center hidden"><i class="fa fa-spinner fa-spin fa-fw hidden spinner"></i><strong>Welcome!</strong> Please login.</div>
-                    {% endif%}
                 </div>
                 <div class="form-group">
                     <span class="col-xs-12">
@@ -76,17 +70,17 @@
                 </div>
                 <div class="form-group">
                     <span class="col-xs-6">
-                        {{ form.first_name }}
+                        {{ form.firstname }}
                         <label id="firstnamelabel" class="animated">This field is required!</label>
                     </span>
                     <span class="col-xs-6">
-                        <input onkeyup="lastname_validate()" name="lastname" class="form-control" placeholder="Last Name" required>
+                        {{ form.lastname }}
                         <label id="lastnamelabel" class="animated">This field is required!</label>
                     </span>
                 </div>
                 <div class="form-group">
                     <span class="col-xs-12">
-                        {{ form.last_name }}
+                        {{ form.email }}
                         <label id="emaillabel" class="animated">This field is required!</label>
                         <span class="tooltipper">We recommend you use the email provided by your school, college or university.</span>
                     </span>
@@ -104,9 +98,15 @@
                         <label id="passwordconfirmationlabel" class="animated">This field is required!</label>
                     </span>
                 </div>
+                {% if error %}
+                    <div class="form-group">
+                        <div class="signupfail alert alert-danger animated infinite bounce text-center">{{ message }}</div>
+                        <div class="signuppass alert alert-success animated infinite bounce text-center hidden"><i class="fa fa-spinner fa-spin fa-fw hidden spinner"></i><strong>Welcome!</strong> Please login.</div>
+                    </div>
+                {% endif%}
                 <div class="form-group">
                      <span class="col-xs-3 pull-right">
-                        <input id="confirmbutton" type="submit" class="form-control btn btn-default hvr-grow-shadow " value="Confirm">
+                        <input id="confirmbutton" type="button" class="form-control btn btn-default hvr-grow-shadow " value="Confirm">
                     </span>
                     <span class="col-xs-3 pull-right">
                         <input id="backbutton" type="button" class="form-control btn btn-default hvr-grow-shadow" value="Back">
