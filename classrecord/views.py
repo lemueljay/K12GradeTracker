@@ -95,7 +95,7 @@ def dashboard(request):
         system = UserSystem.objects.get(user=user_instance)
         grading_system = GradingSystem.objects.get(id=system.grading_system.id)
         subject_types = SubjectType.objects.filter(grading_system=grading_system)
-        return render(request, 'dashboard.html', {'fullname': fullname, 'classes': classes, 'system': system.
+        return render(request, 'testdashboard.html', {'fullname': fullname, 'classes': classes, 'system': system.
                       grading_system.name, 'subject_types': subject_types})
     else:
         return HttpResponseRedirect('/login/')

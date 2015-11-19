@@ -72,6 +72,11 @@ body {
     text-decoration: none;
 }
 
+.a-signup:focus, .a-login:focus {
+    color: white;
+    text-decoration: none;
+}
+
 .a-signup {
     padding: 0px 5px 0px 5px;
 }
