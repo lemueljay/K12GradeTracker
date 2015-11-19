@@ -60,7 +60,7 @@ class AssessmentType(models.Model):
 
 class Assessment(models.Model):
     name = models.CharField(max_length=200)
-    total = models.IntegerField(max_length=200, default=100)
+    total = models.IntegerField(default=100)
     assessmenttype = models.ForeignKey(AssessmentType, default=0)
     classname = models.ForeignKey(Class)
 
@@ -69,4 +69,4 @@ class StudentGrades(models.Model):
     student = models.ForeignKey(Student)
     assessment = models.ForeignKey(Assessment)
     assessmenttype = models.ForeignKey(AssessmentType, default=0)
-    score = models.IntegerField(max_length=200, default=None)
+    score = models.IntegerField(default=None)
