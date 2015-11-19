@@ -1,17 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+<<<<<<< HEAD
+=======
 
-html{
-    background:url('pictures/Project181_design1.jpg') no-repeat left top;
-    -webkit-background-size: 100%;
-    -moz-background-size:100%;
-    background-size:100%;
-}
-
-a {
-    text-decoration: none
-}
-
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 div.transbox {
 	width: auto;
 	height: 90px;
@@ -20,7 +12,7 @@ div.transbox {
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 p.padding1 {
-	padding-top: 2.5%;	
+	padding-top: 2.5%;
 }
 p.padding2 {
 	padding-top:16%;
@@ -38,7 +30,7 @@ div.font{
 	color:#FFFFFF;
 	}
 .font {
-	font-family:"Open Sans";	
+	font-family:"Open Sans";
 	}
 .fontstretch{
 	font-stretch:ultra-condensed;
@@ -62,7 +54,7 @@ div.font{
      -moz-perspective: 1000;
           perspective: 1000;
 }
- 
+
 /* Inputs */
 .animate-wrap input {
   display: none;
@@ -72,7 +64,7 @@ div.font{
      -moz-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
- 
+
 /* Image-Wrapper */
 .animate {
   -webkit-transform-style: preserve-3d;
@@ -82,7 +74,7 @@ div.font{
      -moz-transition: all 0.5s ease-out;
           transition: all 0.5s ease-out;
 }
- 
+
 /* Labels */
 label {
   position: absolute; top: 0; left: 0; z-index: 2;
@@ -90,7 +82,7 @@ label {
      -moz-backface-visibility: hidden;
           backface-visibility: hidden;
 }
- 
+
 .back {
   -webkit-transform: rotateY(180deg);
      -moz-transform: rotateY(180deg);
@@ -100,7 +92,7 @@ label {
   z-index: 1;
 }
 .top-part{
-	background: url(pictures/Project181_design1.jpg) no-repeat top center;
+	background: url('/static/img/Project181_design1.jpg') no-repeat top center;
 	}
 #topmost{
       background: #900;
@@ -125,5 +117,137 @@ label {
     z-index: 1;
 }
 .backgroundimage {
+<<<<<<< HEAD
+    background: url('/static/img/Project181_design1.jpg');
+=======
     background: url(pictures/Project181_design1.jpg);
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 }
+.margin1 {
+	margin-right: 200px;
+    margin-left: 200px;
+	}
+._5lus {
+    float: left;
+    margin-left: -8px;
+    margin-top: 2px;
+    padding-right: 1px;
+    position: absolute;
+    z-index: 5;
+}
+
+<<<<<<< HEAD
+@charset "utf-8";
+/* CSS Document */
+=======
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
+.default-font {
+	font-family:"Open Sans";
+	}
+.font-color-top {
+	color:#FFFFFF;
+	}
+.font-hacs{
+	font-size:13px;
+	}
+.margin-Top {
+	margin-top:20px;
+	}
+.title-size {
+	font-size:45px;
+	}
+.title-size1 {
+	font-size:55px;
+	}
+.margins {
+	margin-top:250px;
+	margin-left:50px;
+	}
+.font-lobster {
+	font-family:"Lobster 1.4";
+	font-size:26px;
+	}
+.font-size-ocra {
+	font-size:36px;
+	line-height:85%;
+	}
+.background1 {
+<<<<<<< HEAD
+	background:url('/static/img/Project181_design1.jpg') no-repeat;
+	background-size:cover;
+	}
+.background2 {
+	background:url('/static/img/cover1.jpg') no-repeat;
+	background-size:cover;
+}
+.background3 {
+	background:url('/static/img/cover2.jpg') no-repeat;
+	background-size:cover;
+}
+.sbackground3 {
+	background:url('/static/img/image.jpg') no-repeat;
+=======
+	background:url(pictures/Project181_design1.jpg) no-repeat;
+	background-size:cover;
+	}
+.background2 {
+	background:url(pictures/cover1.jpg) no-repeat;
+	background-size:cover;
+}
+.background3 {
+	background:url(pictures/cover2.jpg) no-repeat;
+	background-size:cover;
+}
+.sbackground3 {
+	background:url(pictures/image.jpg) no-repeat;
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
+	background-size:cover;
+}
+
+.icon1-size {
+	width:50px;
+	height:50px;
+	}
+.icon2-size {
+	width:340px;
+	height:380px;
+	}
+.font-title-center {
+	font-size:30px;
+	}
+.margin-center-top{
+	margin-top:75px;
+	}
+.margin-center {
+	margin-top:50px;
+	margin-left:50px;
+	margin-right:50px;
+	}
+.text-center-left {
+	text-align:right;
+	}
+.paddig-center {
+	padding-left:200px;
+	padding-right:200px;
+	}
+.margin-mission {
+	margin-left:100px;
+	}
+.margin-3 {
+	margin-top:100px;
+	}
+.margin31 {
+	margin-top:150px;
+	}
+.border-1 {
+	border-style:groove;
+	}
+.background-color3 {
+	background-color:#D7D7D7;
+	}
+.blue {
+	
+	background-color:#185278;
+	width:1920px;
+	height:200px;
+	}
