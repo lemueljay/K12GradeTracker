@@ -3,6 +3,9 @@
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
+=======
 >>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 div.transbox {
 	width: auto;
@@ -121,6 +124,9 @@ label {
     background: url('/static/img/Project181_design1.jpg');
 =======
     background: url(pictures/Project181_design1.jpg);
+<<<<<<< HEAD
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
+=======
 >>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 }
 .margin1 {
@@ -137,8 +143,11 @@ label {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @charset "utf-8";
 /* CSS Document */
+=======
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 =======
 >>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 .default-font {
@@ -173,6 +182,7 @@ label {
 	}
 .background1 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	background:url('/static/img/Project181_design1.jpg') no-repeat;
 	background-size:cover;
 	}
@@ -187,6 +197,8 @@ label {
 .sbackground3 {
 	background:url('/static/img/image.jpg') no-repeat;
 =======
+=======
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 	background:url(pictures/Project181_design1.jpg) no-repeat;
 	background-size:cover;
 	}
@@ -200,6 +212,9 @@ label {
 }
 .sbackground3 {
 	background:url(pictures/image.jpg) no-repeat;
+<<<<<<< HEAD
+>>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
+=======
 >>>>>>> 0ae0f09a91a19688298349a5b376cd31e16cae9b
 	background-size:cover;
 }
