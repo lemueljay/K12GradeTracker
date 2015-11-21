@@ -1,285 +1,285 @@
-body {
-    font-family: "open sans", sans-serif;
-   /* background: url("../img/bg.jpg") no-repeat center center fixed; ; */
+body, #sb-site {
+    background: url('../img/bg.jpg') no-repeat center center fixed; ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-weight: normal;
-    color: black;
-    background-color: white;
-}
-
-.lighter {
-    font-weight: lighter;
-}
-
-.bolder {
-    font-weight: bold;
-}
-
-nav {
-    position: absolute;
-}
-
-.navbar-default {
-    background-color: #4285f4;
-    border-color: #0172bc;
-    height: 65px;
-
+    font-family: "open sans", sans-serif;
+    font-size: 14px;
+    color: white;
+    background-color: #edecec;
 }
 
 .navbar {
     border-radius: 0px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0px;
+    height: 65px;
+}
+
+.navbar-default {
+    background-color: #4285f4;
+    border-color: #4285f4;
 }
 
 .navbar-default .navbar-brand {
-    padding-top: 20px;
     color: white;
-    font-size: 25px;
+    font-size: 15pt;
+    padding-top: 23px;
 }
 
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:focus {
+.fa-reorder {
+    -webkit-transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+}
+
+.navbar-brand:hover {
+    cursor: pointer;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: white;
-    font-size: 25px;
+    font-size: 15pt;
 }
 
-.sidebar {
-    position: absolute;
-    padding: 0px;
-    padding-top: 75px;
-    height: 100%;
-}
-
-.sidebar-profile {
-    padding-top: 15px;
-    padding-bottom: 10px;
-}
-
-.sidebar-time {
-    margin-top: 50px;
-}
-
-#myDate {
-    font-size: 16px;
-}
-
-#myTime {
-    font-size: 15px;
-}
-
-.sidebar-info {
-    padding-top: 15px;
-    padding-bottom: 10px;
-}
-
-.sidebar-hr {
-    border-top: 1px solid #757575;
-    width: 95%;
-    margin: 10px;
-}
-
-.sidebar-button:hover {
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.sidebar-option {
-    padding: 10px;
-    padding-left: 20px;
-}
-
-.sidebar-option:hover {
-    background-color: #101010;
-    cursor: pointer;
-}
-
-.sidebar-option-clicked {
-    background-color: black;
-    cursor: pointer;
-}
-
-.sidebar-copyright {
-    font-weight: normal;
-    color: #757575;
-    opacity: 50;
-}
-
-.button-logout {
-    font-weight: 900;
-    text-decoration: none;
-    color: black;
-}
-
-.button-logout:hover {
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-}
-
-.fa-user {
-    color: white;
-}
-
-.info-welcome {
-    font-size: 18px;
-}
-
-.info-name {
-    font-size: 22px;
-}
-
-.li-selection {
-    padding: 8px;
-    font-weight: lighter;
-    font-size: 16px;
-}
-
-.li-selection:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.li-newselection {
-    padding: 10px;
-    font-weight: lighter;
-    font-size: 16px;
-    list-style: none;
-}
-
-.contentbar {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 0px;
-    padding-top: 75px;
-    position: absolute;
-    overflow: auto;
-    height: 100%;
-}
-
-.contentbar-header {
-    margin-top: 200px;
-    margin-bottom: 190px;
-    font-size: 50px;
-}
-
-.contentbar-button {
-    padding: 95px;
-    background: url("../img/contentbar_button.png") no-repeat center center;
-}
-
-.contentbar-button:hover {
-    cursor: pointer;
-    background: url("../img/contentbar_button_clicked.png") no-repeat center center;
-}
-
-.classesbar, .studentsbar, .assessmentsbar, .gradesbar {
-    background-color: rgba(255, 255, 255, 0.87);
-}
-
-.createform {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.contenttitle {
-    padding-top: 20px;
-    color: #1b1b1b;
-    font-weight: bold;
-}
-
-.contenttitle-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 1px;
-    border-top: 1px solid black;
-}
-
-#classtable, #studenttable {
-    padding-top: 20px;
-}
-
-.button-edit, .button-remove, button-save {
-    color: #222222;
-}
-
-.button-remove:hover, .button-edit:hover, .button-save:hover, .button-view:hover {
-    color: #0172bc;
-    cursor: pointer;
-}
-
-.classmenutab {
-    padding-top: 20px;
-}
-
-hr {
-    border-color: rgba(89, 87, 90, 0.14);
-    margin-bottom: 0px;
-}
-
-
-table {
-    color: #1b1b1b;
-}
-
-table tbody tr:nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-table thead {
-    font-weight: bold;
-}
-
-label {
-    color: #101010;
-}
-
-table a {
-    font-weight: 600;
-    color: black;
-    cursor: pointer;
-}
-
-table a:hover {
-    color: #0172bc;
-    text-decoration: none;
-}
-
-.assessmentlabel {
-    font-size: 13px;
-    font-weight: lighter;
-    color: #555555;
-}
-
-.assessmentname {
-    font-size: 19px;
-    color: #000000;
+.bold {
     font-weight: bolder;
 }
 
-table th:hover{
-    cursor: pointer;
-}
-
-h4 span i {
+.light {
     font-weight: lighter;
 }
 
-.pass {
-    color: blue;
+
+/* Content Bar */
+
+.dashboard {
+    color: #777;
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 22px;
+    margin-bottom: 20px;
 }
 
-.fail {
+.contentbar {
+    margin-top: 0px;
+    color: black;
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+}
+
+.contentbar-header {
+    background-color: rgba(0, 0, 0, 1);
+    height: 50px;
+    color: white;
+    padding: 15px 0px 0px 15px;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.contentbar-body {
+    padding : 25px 50px 0px 50px;
+    background-color: white;
+}
+
+.contentbar-title, .contentbar-firstname {
+    font-size: 14pt;
+}
+
+.contentbar-subtitle {
+    color: #777;
+    font-size: 10pt;
+}
+
+.contentbarevents {
+    background-color: white;
+    padding-top: 40px;
+    padding-left: 90px;
+    padding-bottom: 30px;
+}
+
+.fa-birthday-cake {
     color: red;
 }
 
-.alert {
-    margin: 0px;
+.fa-warning {
+    color: darkred;
 }
 
-.alert-student-invalid, .alert-assessment-invalid {
-    margin-top: 20px;
+.event i {
+    padding-right: 20px;
 }
 
-.modal {
-    color: #000000;
+.event {
+    padding-top: 15px;
 }
+
+@media only screen and (max-width: 500px) {
+    .contentbar-body {
+        height: 100%;
+    }
+}
+
+/* Home Buttons Bar */
+.buttongroup {
+}
+
+.buttongroup > div {
+    padding: 20px;
+    border-top: 5px solid white;
+    border-bottom: 5px solid #000000;
+}
+
+.buttongroup > div:nth-child(1) {
+    border-left: none;
+    background-color: #00bcd4;
+}
+
+
+.buttongroup > div:nth-child(2) {
+    border-left: none;
+    background-color: #8bc34a;
+}
+
+.buttongroup > div:nth-child(3) {
+    border-left: none;
+    background-color: #ff9800 ;
+}
+
+.buttongroup > div:nth-child(4) {
+    border-right: none;
+    background-color: #607d8b;
+}
+
+.buttongroupicon {
+    padding: 10px;
+}
+
+.buttonitself {
+    padding-left: 20px;
+}
+
+.buttongroup div:hover {
+    cursor: pointer;
+}
+
+/** Clock **/
+
+.clockbar {
+    margin-top: 10px;
+    color: white;
+    padding-right: 0px;
+}
+
+.clock:hover {
+    cursor: pointer;
+}
+
+.clock-header {
+    height: 55px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.clock {
+    padding: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    height: 140px;
+    width: 120px;
+    background-color: #009688;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.datebig {
+    font-size: 40pt;
+    font-weight: bolder;
+
+}
+
+.datesmall {
+    font-size: 12pt;
+    font-weight: lighter;
+}
+
+.timebig {
+    font-size: 60pt;
+    font-weight: 900;
+}
+
+#monthword {
+    -webkit-transform: translate(0px, -15px);
+
+}
+
+#dateword {
+    -webkit-transform: translate(0px, -15px);
+}
+
+#hour {
+    -webkit-transform: translate(0px, -20px);
+}
+
+#minute {
+    font-size: 35pt;
+    -webkit-transform: translate(-20px, 10px);
+}
+
+#seconds {
+    -webkit-transform: translate(35px, -80px);
+}
+
+#ampm {
+    -webkit-transform: translate(35px, -60px);
+}
+
+/** Sidebar **/
+.sidebar.left {
+    margin-top: 65px;
+    color: white;
+}
+
+img {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.profile-footer {
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: black;
+    font-weight: 500;
+    padding-top: 8px;
+    padding-left: 20px;
+    font-size: 12pt;
+}
+
+
+.options {
+    margin-top: 25px;
+}
+
+.options i {
+    padding-left: 30px;
+    padding-right: 13px;
+}
+
+.options > a > div {
+    color: white;
+    font-weight: 500;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.options a > div:hover {
+    background-color: #F4F4F4;
+    color: #262626;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.options a:hover {
+    text-decoration: none;
+}
+
+/** Test **/

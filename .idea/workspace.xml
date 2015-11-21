@@ -2,44 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56ce5335-0cc9-4331-847b-55ced6df57f0" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\HELP-US-OUT.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\animated.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\bordered-pulled.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\core.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\fixed-width.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\font-awesome.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\icons.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\larger.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\list.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\path.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\rotated-flipped.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\stacked.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\less\variables.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_animated.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_bordered-pulled.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_core.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_fixed-width.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_icons.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_larger.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_list.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_path.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_rotated-flipped.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_stacked.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\font-awesome-4.4.0\scss\font-awesome.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\img\cover2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\img\logo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\img\logo1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\img\logo2.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery-1.11.3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/plugin/jquery.sidebar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/js/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/plugin/sidebar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/sidebar.css" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\css\font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\fonts\fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\js\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\templates\testdashboard.html" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\css\alertify.css" afterPath="$PROJECT_DIR$/static/css/plugin/alertify.css" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\css\animate.css" afterPath="$PROJECT_DIR$/static/css/plugin/animate.css" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\css\bootstrap.css" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/css/bootstrap.css" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\css\hover.css" afterPath="$PROJECT_DIR$/static/css/plugin/hover.css" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\js\alertify.js" afterPath="$PROJECT_DIR$/static/js/plugin/alertify.js" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\js\animate.js" afterPath="$PROJECT_DIR$/static/js/plugin/animate.js" />
+      <change type="MOVED" beforePath="C:\Users\Lemmeister\Desktop\K12GradeTracker\static\js\bootstrap.js" afterPath="$PROJECT_DIR$/static/bootstrap-3.3.5/js/bootstrap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/img/profile.png" afterPath="$PROJECT_DIR$/static/img/profile.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/dashboard.css" afterPath="$PROJECT_DIR$/static/css/dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard.html" afterPath="$PROJECT_DIR$/templates/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/dashboard.js" afterPath="$PROJECT_DIR$/static/js/dashboard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/forgot_password.html" afterPath="$PROJECT_DIR$/templates/forgot_password.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/index.css" afterPath="$PROJECT_DIR$/static/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/login_signup.css" afterPath="$PROJECT_DIR$/static/css/login_signup.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signup.html" afterPath="$PROJECT_DIR$/templates/signup.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/views.py" afterPath="$PROJECT_DIR$/classrecord/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -79,21 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0" vertical-offset="731" max-vertical-offset="3094">
-              <caret line="69" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="176" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testdashboard.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/testdashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15789473" vertical-offset="391" max-vertical-offset="1700">
-              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.3623639" vertical-offset="1110" max-vertical-offset="2686">
+              <caret line="79" column="64" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -102,8 +93,18 @@
       <file leaf-file-name="dashboard.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/dashboard.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4930">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2563" max-vertical-offset="4947">
+              <caret line="168" column="17" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/signup.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2125">
+              <caret line="5" column="77" selection-start-line="5" selection-start-column="77" selection-end-line="5" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -112,8 +113,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classrecord/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1117" max-vertical-offset="1802">
-              <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="1802">
+              <caret line="97" column="110" selection-start-line="97" selection-start-column="110" selection-end-line="97" selection-end-column="110" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -164,19 +165,21 @@
         <option value="$PROJECT_DIR$/classrecord/forms.py" />
         <option value="$PROJECT_DIR$/static/js/signup.js" />
         <option value="$PROJECT_DIR$/project181/urls.py" />
-        <option value="$PROJECT_DIR$/static/js/dashboard.js" />
         <option value="$PROJECT_DIR$/static/js/signup_validator.js" />
         <option value="$PROJECT_DIR$/project181/settings.py" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/templates/signup.html" />
-        <option value="$PROJECT_DIR$/templates/forgot_password.html" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/css/login_signup.css" />
-        <option value="$PROJECT_DIR$/templates/dashboard.html" />
-        <option value="$PROJECT_DIR$/classrecord/views.py" />
-        <option value="$PROJECT_DIR$/static/css/dashboard.css" />
         <option value="$PROJECT_DIR$/templates/testdashboard.html" />
+        <option value="$PROJECT_DIR$/static/extras/css/hover.css" />
+        <option value="$PROJECT_DIR$/static/js/dashboard.js" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/templates/forgot_password.html" />
+        <option value="$PROJECT_DIR$/static/css/plugin/hover.css" />
+        <option value="$PROJECT_DIR$/static/css/dashboard.css" />
+        <option value="$PROJECT_DIR$/templates/signup.html" />
+        <option value="$PROJECT_DIR$/classrecord/views.py" />
+        <option value="$PROJECT_DIR$/templates/dashboard.html" />
       </list>
     </option>
   </component>
@@ -186,7 +189,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="width" value="1548" />
-    <option name="height" value="842" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -211,7 +214,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -272,7 +274,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,6 +295,10 @@
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -310,6 +316,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -637,11 +644,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1548" height="842" extended-state="1" />
+    <frame x="-8" y="0" width="1548" height="826" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959327" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21370968" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21639785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1477612" sideWeight="0.5026697" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -686,6 +693,16 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1117" max-vertical-offset="1802">
+          <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project181/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -728,38 +745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/jquery.tablesorter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/alertify.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1167883" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/default.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80145985" vertical-offset="0" max-vertical-offset="0">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/animate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -903,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17586207" vertical-offset="1326" max-vertical-offset="2261">
-          <caret line="84" column="75" selection-start-line="84" selection-start-column="73" selection-end-line="84" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/signup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.18774703" vertical-offset="503" max-vertical-offset="1054">
@@ -946,31 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.051593322" vertical-offset="0" max-vertical-offset="833">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/forgot_password.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5159332" vertical-offset="0" max-vertical-offset="918">
-          <caret line="20" column="90" selection-start-line="20" selection-start-column="90" selection-end-line="20" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42105263" vertical-offset="85" max-vertical-offset="2125">
-          <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34520122" vertical-offset="117" max-vertical-offset="1309">
-          <caret line="20" column="90" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,60 +949,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34210527" vertical-offset="255" max-vertical-offset="3383">
+          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8221226" vertical-offset="1388" max-vertical-offset="2057">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/login_signup.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1416059" vertical-offset="2040" max-vertical-offset="2737">
+        <state vertical-scroll-proportion="-1.1689088" vertical-offset="2040" max-vertical-offset="2737">
           <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34210527" vertical-offset="255" max-vertical-offset="3383">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.26984128" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
+    <entry file="file://$PROJECT_DIR$/templates/forgot_password.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0" vertical-offset="731" max-vertical-offset="3094">
-          <caret line="69" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="176" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.2643857" vertical-offset="0" max-vertical-offset="918">
+          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
+    <entry file="file://$PROJECT_DIR$/static/css/default.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1117" max-vertical-offset="1802">
-          <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.80269057" vertical-offset="585" max-vertical-offset="1275">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/bootstrap.css">
+    <entry file="file://$PROJECT_DIR$/static/css/plugin/hover.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3592535" vertical-offset="26119" max-vertical-offset="115685">
-          <caret line="1550" column="56" selection-start-line="1550" selection-start-column="10" selection-end-line="1550" selection-end-column="56" />
+        <state vertical-scroll-proportion="1.4771341" vertical-offset="24174" max-vertical-offset="83062">
+          <caret line="1479" column="28" selection-start-line="1479" selection-start-column="28" selection-end-line="1479" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2125">
+          <caret line="5" column="77" selection-start-line="5" selection-start-column="77" selection-end-line="5" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4930">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2563" max-vertical-offset="4947">
+          <caret line="168" column="17" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/testdashboard.html">
+    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15789473" vertical-offset="391" max-vertical-offset="1700">
-          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="1802">
+          <caret line="97" column="110" selection-start-line="97" selection-start-column="110" selection-end-line="97" selection-end-column="110" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3623639" vertical-offset="1110" max-vertical-offset="2686">
+          <caret line="79" column="64" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
           <folding />
         </state>
       </provider>

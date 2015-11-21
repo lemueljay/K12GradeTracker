@@ -10,7 +10,7 @@ function updateTime() {
     if(mm<10) {
         mm='0'+mm
     }
-    today = mm+'/'+dd+'/'+yyyy;
+
     today = '';
     switch(mm) {
         case 1:
@@ -52,6 +52,9 @@ function updateTime() {
         default:
             today += '??';
     }
+
+    $('#monthnumber').text(mm);
+    $('#monthword').text(today);
     myDay = '';
     switch(day) {
         case 0:
@@ -77,52 +80,37 @@ function updateTime() {
             break;
     }
 
-    today += ' ' + dd + ', ' + yyyy;
-    document.getElementById("myDate").innerHTML = today;
+    $('#datenumber').text(dd);
+    $('#dateword').text(myDay);
+
     var myVar=setInterval(function(){myTimer()},1000);
     function myTimer() {
         var d = new Date();
-        document.getElementById("myTime").innerHTML = myDay + ' ' +  d.toLocaleTimeString();
+        var time = d.toLocaleTimeString();
+        if(time.charAt(1) == ':') {
+            var hour = time.charAt(0);
+            $('#hour').text(hour);
+            var minute = time.slice(2, 4);
+            $('#minute').text(minute);
+            var seconds = time.slice(5, 7);
+            $('#seconds').text(seconds);
+            var m = time.slice(8, 10);
+            $('#ampm').text(m);
+        } else {
+            var hour = time.charAt(0) + time.charAt(1);
+            $('#hour').text(hour);
+            var minute = time.slice(3, 5);
+            $('#minute').text(minute);
+            var seconds = time.slice(6, 8);
+            $('#seconds').text(seconds);
+            var m = time.slice(9, 11);
+            console.log(m);
+            $('#ampm').text(m);
+        }
     }
 }
 
 $(document).ready(function() {
-
-
-    $('.sidebar-option').click(function() {
-        $('.sidebar-option').removeClass('sidebar-option-clicked');
-        $(this).addClass('sidebar-option-clicked');
-        $('.contentbar').addClass('hidden');
-    });
-
-    $('#button-start-now').click(function() {
-        $('.sidebar-option').removeClass('sidebar-option-clicked');
-        $('#button-manage-classes').addClass('sidebar-option-clicked');
-        $('.contentbar').addClass('hidden');
-        $('.classesbar').removeClass('hidden');
-    });
-
-    $('#button-home').click(function() {
-        $('.mainbar').removeClass('hidden');
-    });
-
-    $('#button-manage-classes').click(function() {
-        $('.classesbar').removeClass('hidden');
-    });
-
-    $('#button-manage-students').click(function() {
-        $('.studentsbar').removeClass('hidden');
-    });
-
-    $('#button-manage-assessments').click(function() {
-        $('.assessmentsbar').removeClass('hidden');
-    });
-
-    $('#button-view-grades').click(function() {
-        $('.gradesbar').removeClass('hidden');
-    });
-
-    alertify.warning('Welcome ' + $('#info-name').text());
-
     updateTime();
-});
+
+})
