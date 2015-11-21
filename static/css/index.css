@@ -1,6 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-
 div.transbox {
 	width: auto;
 	height: 90px;
@@ -9,7 +8,7 @@ div.transbox {
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 p.padding1 {
-	padding-top: 2.5%;
+	padding-top: 2.5%;	
 }
 p.padding2 {
 	padding-top:16%;
@@ -27,7 +26,7 @@ div.font{
 	color:#FFFFFF;
 	}
 .font {
-	font-family:"Open Sans";
+	font-family:"Open Sans";	
 	}
 .fontstretch{
 	font-stretch:ultra-condensed;
@@ -51,7 +50,7 @@ div.font{
      -moz-perspective: 1000;
           perspective: 1000;
 }
-
+ 
 /* Inputs */
 .animate-wrap input {
   display: none;
@@ -61,7 +60,7 @@ div.font{
      -moz-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
-
+ 
 /* Image-Wrapper */
 .animate {
   -webkit-transform-style: preserve-3d;
@@ -71,7 +70,7 @@ div.font{
      -moz-transition: all 0.5s ease-out;
           transition: all 0.5s ease-out;
 }
-
+ 
 /* Labels */
 label {
   position: absolute; top: 0; left: 0; z-index: 2;
@@ -79,7 +78,7 @@ label {
      -moz-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-
+ 
 .back {
   -webkit-transform: rotateY(180deg);
      -moz-transform: rotateY(180deg);
@@ -89,7 +88,7 @@ label {
   z-index: 1;
 }
 .top-part{
-	background: url('../img/Project181_design1.jpg') no-repeat top center;
+	background: url('../img/index_background.jpg') no-repeat top center;
 	}
 #topmost{
       background: #900;
@@ -114,7 +113,7 @@ label {
     z-index: 1;
 }
 .backgroundimage {
-    background: url('../img/Project181_design1.jpg');
+    background: url('../img/index_background.jpg');
 }
 .margin1 {
 	margin-right: 200px;
@@ -129,6 +128,8 @@ label {
     z-index: 5;
 }
 
+@charset "utf-8";
+/* CSS Document */
 .default-font {
 	font-family:"Open Sans";
 	}
@@ -160,19 +161,7 @@ label {
 	line-height:85%;
 	}
 .background1 {
-	background:url('../img/Project181_design1.jpg') no-repeat;
-	background-size:cover;
-	}
-.background2 {
-	background:url('../img/cover1.jpg') no-repeat;
-	background-size:cover;
-}
-.background3 {
-	background:url('../img/cover2.jpg') no-repeat;
-	background-size:cover;
-}
-.sbackground3 {
-	background:url('../img/image.jpg') no-repeat;
+	background:url('../img/index_background.jpg') no-repeat;
 	background-size:cover;
 	}
 .background2 {
@@ -180,11 +169,11 @@ label {
 	background-size:cover;
 }
 .background3 {
-	background:url(pictures/cover2.jpg) no-repeat;
+	background:url('../img/index_background3.jpg') no-repeat;
 	background-size:cover;
 }
 .sbackground3 {
-	background:url(pictures/image.jpg) no-repeat;
+	background:url('../img/index_background2.jpg') no-repeat;
 	background-size:cover;
 }
 
@@ -230,7 +219,7 @@ label {
 	background-color:#D7D7D7;
 	}
 .blue {
-	
+
 	background-color:#185278;
 	width:1920px;
 	height:200px;

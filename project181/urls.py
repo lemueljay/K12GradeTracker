@@ -39,4 +39,7 @@ urlpatterns = [
 
     # logout
     url(r'^logout/$', logout),
+
+    # grade view
+    url(r'^defaultgradesview/$', defaultgradesview),
 ]
