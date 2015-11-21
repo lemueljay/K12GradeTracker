@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
     <!-- Import hover.css -->
     <link rel="stylesheet" href="{% static 'css/plugin/hover.css' %}">
+    <!-- Import animate.css -->
+    <link rel="stylesheet" href="{% static 'css/plugin/animate.css' %}">
     <!-- Import Sidebars -->
     <link rel="stylesheet" href="{% static 'css/plugin/sidebar.css' %}">
     <script type="text/javascript" src="{% static 'js/plugin/jquery.sidebar.min.js' %}"></script>
@@ -26,11 +28,11 @@
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-brand">
+            <div class="navbar-brand animated tada">
                 <i class="fa fa-reorder sb-toggle-left"></i>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand sb-toggle-left" href="#">
+                <a class="navbar-brand sb-toggle-left animated tada" href="#">
                     <span class="bold">K12</span>
                     <span class="light">Grade</span>
                     <span class="bold">Tracker</span>
@@ -41,7 +43,7 @@
 
 
     <!-- Clock -->
-    <div class="container clockbar">
+    <div class="container clockbar animated bounceInUp">
         <div class="pull-right">
             <div class="col-xs-1 text-center clock hvr-bob">
                 <div class="clock-header"></div>
@@ -73,7 +75,7 @@
 
 
     <!--Content Bar -->
-    <div class="container contentbar">
+    <div id="mainbar" class="container contentbar">
         <div class="contentbar-header">HOME</div>
         <div class="contentbar-body">
             <span class="contentbar-title">Good day,</span>
@@ -82,37 +84,54 @@
             <span class="contentbar-subtitle light">Today is a great day to try. Step out! Your life is waiting! Have fun teaching!</span>
         </div>
         <div class="col-xs-12 contentbarevents">
-            <div class="col-xs-12 event">
-                <i class="fa fa-birthday-cake fa-2x"></i> Today is Juan Pedro's birthday.
-            </div>
-            <div class="col-xs-12 event">
-                <i class="fa fa-warning fa-2x"></i>WARNING: You still have unrecorded assessments.
-            </div>
+
         </div>
     </div>
+
+    <!--Subjects Bar -->
+    <div id="subjectsbar" class="container contentbar">
+        <div class="contentbar-header">SUBJECTS</div>
+    </div>
+
+    <!--Sections Bar -->
+    <div id="sectionsbar" class="container contentbar">
+        <div class="contentbar-header">SECTIONS</div>
+    </div>
+
+    <!--View Grades Bar -->
+    <div id="viewgradesbar" class="container contentbar">
+        <div class="contentbar-header">VIEW GRADES</div>
+    </div>
+
+    <!--Record Grades Bar -->
+    <div id="recgradbar" class="container contentbar">
+        <div class="contentbar-header">RECORD GRADES</div>
+    </div>
+
+
 
     <!--Homebutton Bar -->
     <div class="container">
         <div class="row buttongroup text-center">
-            <div class="col-xs-12 col-md-3 hvr-sweep-to-right ">
+            <div id="mansub" class="col-xs-12 col-md-3 hvr-sweep-to-right ">
                 <span class="">
                 <span class="buttongroupicon"><i class="fa fa-book fa-2x"></i></span>
                 <span class="buttonitself"><span class="bold">Manage</span> Subject</span>
                 </span>
             </div>
-            <div class="col-md-3 col-xs-12 hvr-sweep-to-right">
+            <div id="mansec" class="col-md-3 col-xs-12 hvr-sweep-to-right">
                 <span class="">
                 <span class=""><i class="fa fa-commenting fa-2x"></i></span>
                 <spa class="buttonitself"n><span class="bold">Manage</span> Sections</span>
                 </span>
             </div>
-            <div class="col-md-3 col-xs-12 hvr-sweep-to-right">
+            <div id="viewgrad" class="col-md-3 col-xs-12 hvr-sweep-to-right">
                 <span class="">
                 <span class=""><i class="fa fa-calculator fa-2x"></i></span>
                 <span class="buttonitself"><span class="bold">View</span> Grades</span>
                 </span>
             </div>
-            <div class="col-md-3 col-xs-12 hvr-sweep-to-right">
+            <div id="recgrad" class="col-md-3 col-xs-12 hvr-sweep-to-right">
                 <span class="">
                 <span class=""><i class="fa fa-check-square-o fa-2x"></i></span>
                 <span class="buttonitself"><span class="bold">Record</span> Grades</span>
@@ -130,7 +149,7 @@
                 <div class="profile-footer">{{ fullname }}</div>
             </div>
             <div class="col-xs-12 options">
-                <a href="#"><div><i class="fa fa-desktop"></i>Home</div></a>
+                <a id="ophome"><div><i class="fa fa-desktop"></i>Home</div></a>
                 <a href="#"><div><i class="fa fa-gear"></i>Settings</div></a>
                 <a href="/logout/"><div><i class="fa fa-power-off"></i>Logout</div></a>
             </div>

@@ -99,7 +99,7 @@ body, #sb-site {
 }
 
 .fa-birthday-cake {
-    color: red;
+    color: #0172bc;
 }
 
 .fa-warning {
@@ -126,13 +126,18 @@ body, #sb-site {
 
 .buttongroup > div {
     padding: 20px;
-    border-top: 5px solid white;
     border-bottom: 5px solid #000000;
 }
 
 .buttongroup > div:nth-child(1) {
     border-left: none;
     background-color: #00bcd4;
+}
+
+.addthis {
+    padding: 20px;
+    border-top: 5px solid black;
+    border-bottom: 5px solid #000000;
 }
 
 

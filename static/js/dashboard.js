@@ -110,7 +110,32 @@ function updateTime() {
     }
 }
 
+function initBars() {
+    $('.contentbar').hide();
+    $('#mainbar').show();
+}
+
 $(document).ready(function() {
     updateTime();
-
+    initBars();
+    $()
+    $('#ophome').click(function() {
+        initBars();
+    });
+    $('#mansub').click(function() {
+         $('.contentbar').hide();
+         $('#subjectsbar').show();
+    });
+    $('#mansec').click(function() {
+        $('.contentbar').hide();
+        $('#sectionsbar').show();
+    });
+    $('#viewgrad').click(function() {
+        $('.contentbar').hide();
+        $('#viewgradesbar').show();
+    });
+    $('#recgrad').click(function() {
+        $('.contentbar').hide();
+        $('#recgradbar').show();
+    });
 })
