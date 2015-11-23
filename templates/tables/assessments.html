@@ -22,6 +22,8 @@
             <div class="form-group">
                 <input type="number" class="form-control" name="assessment_total" placeholder="Total Score">
             </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="assessment_gradingperiod" placeholder="Grading Period">
         </span>
         <div class="form-group">
             <button id="createassessmentbutton" onclick="createAssessment({{ class.id }})" class="btn btn-danger">Create Assessment</button>
@@ -49,8 +51,10 @@
             <th>VIEW ASSESSMENT</th>
             <th>ASSESSMENT NAME</th>
             <th>ASSESSMENT TYPE</th>
+            <th>GRADING PERIOD</th>
             <th>TOTAL</th>
-            <th>COMMAND</th>
+            
+            
         </tr>
         </thead>
         <tbody>
@@ -73,6 +77,10 @@
                             </option>
                         {% endfor %}
                     </select>
+                </td>
+                <td>
+                    <span id="tdassessmentgradingperiod{{ assessment.id }}" class="tdassessmentgradingperiod{{ assessment.id }} tdassessment">{{ assessment.gradingperiod }}</span>
+                     <input id="inputassessmentgradingperiod{{ assessment.id }}" class="form-control hidden inputs assessmentinputs">
                 </td>
                 <td>
                     <span id="tdassessmenttotal{{ assessment.id }}" class="tdassessmentname{{ assessment.id }} tdassessment">{{ assessment.total }}</span>
