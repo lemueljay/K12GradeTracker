@@ -99,3 +99,9 @@ def dashboard(request):
                       grading_system.name, 'subject_types': subject_types})
     else:
         return HttpResponseRedirect('/login/')
+
+def defaultgradesview(request):
+    user_id = request.user.id
+    user_instance = User.objects.get(id=user_id)
+    classes = Class.objects.filter(user=user_instance, hidden=0)
+    return render(request, 'partials/defaultgradesview.html', {'classes': classes})
