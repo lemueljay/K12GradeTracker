@@ -104,7 +104,6 @@ function updateTime() {
             var seconds = time.slice(6, 8);
             $('#seconds').text(seconds);
             var m = time.slice(9, 11);
-            console.log(m);
             $('#ampm').text(m);
         }
     }
@@ -118,7 +117,7 @@ function initBars() {
 $(document).ready(function() {
     updateTime();
     initBars();
-    $()
+    alertify.warning('Welcome '+ $('.contentbar-firstname').text() + ' !');
     $('#ophome').click(function() {
         initBars();
     });
@@ -138,4 +137,57 @@ $(document).ready(function() {
         $('.contentbar').hide();
         $('#recgradbar').show();
     });
+
+    $(".sidebar.left").sidebar().trigger("sidebar:toggle");
+    $('.navbar-brand').click(function() {
+        $(".sidebar.left").trigger("sidebar:toggle");
+
+    });
+
+    //MODALS
+    $('.modal-left > div').click(function() {
+        $('.modal-left > div').each(function() {
+            $(this).removeClass('modal-selected-option');
+        });
+        $(this).addClass('modal-selected-option');
+    });
+
+    $('.opgen').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-gen').removeClass('hidden');
+    });
+
+    $('.opprof').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-prof').removeClass('hidden');
+    });
+    $('.opem').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-em').removeClass('hidden');
+    });
+
+    $('.oppass').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-pass').removeClass('hidden');
+    });
+
+    $('.oplin').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-lin').removeClass('hidden');
+    });
+
+    $('.opsch').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-sch').removeClass('hidden');
+    });
+     $('.oploc').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-loc').removeClass('hidden');
+    });
+     $('.opab').click(function() {
+        $('.modal-right').addClass('hidden');
+        $('#op-ab').removeClass('hidden');
+    });
+
+
 })

@@ -1,5 +1,5 @@
 body, #sb-site {
-    background: url('../img/bg.jpg') no-repeat center center fixed; ;
+    /* background: url('../img/bg.jpg') no-repeat center center fixed; ; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -66,6 +66,7 @@ body, #sb-site {
     color: black;
     padding: 0px 0px 0px 0px;
     background-color: white;
+    min-height: 300px;
 }
 
 .contentbar-header {
@@ -195,6 +196,20 @@ body, #sb-site {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.grading {
+     padding: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    height: 140px;
+    width: 120px;
+    background-color: #ea003d;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.grading:hover {
+    cursor: pointer;
+}
+
 .datebig {
     font-size: 40pt;
     font-weight: bolder;
@@ -237,6 +252,10 @@ body, #sb-site {
     -webkit-transform: translate(35px, -60px);
 }
 
+#gradingword {
+    -webkit-transform: translate(0px, -15px);
+}
+
 /** Sidebar **/
 .sidebar.left {
     margin-top: 65px;
@@ -251,7 +270,7 @@ img {
 
 .profile-footer {
     height: 35px;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(0, 0, 0, 0.1);
     color: black;
     font-weight: 500;
     padding-top: 8px;
@@ -270,13 +289,13 @@ img {
 }
 
 .options > a > div {
-    color: white;
+    color: #777;
     font-weight: 500;
     padding-top: 14px;
     padding-bottom: 14px;
 }
 
-.options a > div:hover {
+.options a > div:hover, .options a:focus, .options a:active {
     background-color: #F4F4F4;
     color: #262626;
     cursor: pointer;
@@ -287,4 +306,90 @@ img {
     text-decoration: none;
 }
 
-/** Test **/
+/** Forms **/
+.form-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+/** Modal **/
+.modal-body {
+    color: #000000;
+    background-color: white;
+    padding: 0px;
+}
+
+.modal-left {
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal-right-header {
+    padding-top: 20px;
+    font-size: 15pt;
+    font-weight: lighter;
+}
+
+.modal-title {
+    color: black;
+}
+
+.modal-left > div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.modal-left > div:hover {
+    cursor: pointer;
+    background-color: #4285f4;
+    color: white;
+    font-weight: bolder;
+}
+
+.modal-selected-option {
+     background-color: #4285f4;
+     color: white;
+     font-weight: bolder;
+}
+
+#changeGradingForm {
+    margin-bottom: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.btn:focus, .btn:active:focus, .btn:active {
+    outline: none;
+    outline-offset: 0px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus {
+    background-color: #00bcd4;
+    border: 1px solid #00bcd4;
+}
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus, .btn-success:active:focus {
+    background-color: #8bc34a;
+    border: 1px solid #8bc34a;
+}
+
+.btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:focus, .btn-warning:active:focus {
+    background-color: #607d8b;
+    border: 1px solid #607d8b;
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:focus, .btn-danger:active:focus {
+    background-color: #ea003d;
+    border: 1px solid #ea003d;
+}
+
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:focus, .btn-info:active:focus {
+    background-color: #4285f4;
+    border: 1px solid #4285f4;
+}

@@ -848,7 +848,9 @@
   background: rgba(217, 92, 92, 0.95);
 }
 .alertify-notifier .ajs-message.ajs-warning {
-  background: rgba(252, 248, 215, 0.95);
+    border: 1px solid white;
+    background: rgba(0, 0, 0, 1);
+    text-align: center;
 }
 .alertify-notifier.ajs-top {
   top: 10px;

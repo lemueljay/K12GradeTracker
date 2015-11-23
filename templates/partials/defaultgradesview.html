@@ -1,33 +1,19 @@
-{%  load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>
-        Default view grades
-    </title>
-</head>
-<body>
-    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.css' %}">
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <div class="col-xs-12 text-center"><h1 class="contenttitle">View Grades</h1><hr></div>
-<div class="col-xs-12 text-center">
-    <h3 class="contenttitle">
-        <span class="col-xs-9">
-            <i>select the grading</i> <div id="" class="btn-group eyey">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Grading Period <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li class="li-selection" onclick="">1st grading</li>
-                <li class="li-selection" onclick="">2nd grading</li>
-                <li class="li-selection" onclick="">3rd grading</li>
-                <li class="li-selection" onclick="">4th grading</li>
-            </ul>
-        </div><hr></span>
 
+
+<div class="col-xs-12 text-center">
+
+    <h3 class="contenttitle">
+            <span class="col-xs-9"> <div id="">
+            {% for class in classes %}
+               <li class="li-selection" onclick="viewGrades({{ class.id }})">{{ class.name }} - {{ class.section }}</li>
+            {% endfor %}
+            <hr></span>
+
+        </div>
     </h3>
 
 </div>
-</body>
-</div>
-</html>
