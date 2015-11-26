@@ -33,17 +33,6 @@ class SubjectType(models.Model):
                                         self.quarterly_assessments, self.grading_system)
 
 
-# Subject Model
-class Subject(models.Model):
-    name = models.CharField(max_length=200)
-    section = models.CharField(max_length=200)
-    subject_type = models.ForeignKey(SubjectType, default=0)
-    user = models.ForeignKey(User, default=0)
-
-    def __unicode__(self):
-        return u'%s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user)
-
-
 # Section Model
 class Section(models.Model):
     name = models.CharField(max_length=200)
@@ -52,6 +41,17 @@ class Section(models.Model):
 
     def __unicode__(self):
         return u'%s %s %s %s' % (self.id, self.name, self.gradelevel, self.user)
+
+
+# Subject Model
+class Subject(models.Model):
+    name = models.CharField(max_length=200)
+    section = models.ForeignKey(Section, default=0)
+    subject_type = models.ForeignKey(SubjectType, default=0)
+    user = models.ForeignKey(User, default=0)
+
+    def __unicode__(self):
+        return u'%s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user)
 
 
 class Class(models.Model):

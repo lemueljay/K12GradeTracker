@@ -58,15 +58,14 @@ body, #sb-site {
     font-size: 15px;
     font-weight: normal;
     padding-left: 22px;
-    margin-bottom: 20px;
 }
 
 .contentbar {
-    margin-top: 0px;
     color: black;
     padding: 0px 0px 0px 0px;
     background-color: white;
     min-height: 300px;
+    margin-top: 50px;
 }
 
 .contentbar-header {
@@ -122,7 +121,16 @@ body, #sb-site {
 }
 
 /* Home Buttons Bar */
+
+.homebuttonbar-header {
+    background-color: black;
+    padding: 13px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
 .buttongroup {
+    margin-bottom: 100px;
 }
 
 .buttongroup > div {
@@ -167,6 +175,44 @@ body, #sb-site {
 
 .buttongroup div:hover {
     cursor: pointer;
+}
+
+/** Form **/
+.contentbar-error {
+    padding-left: 13px;
+    color: #ea003d;
+    font-size: 17px;
+}
+
+/** Tables **/
+
+#tableclassesview {
+    font-family: "Roboto";
+}
+
+#tableclassesview table thead:hover {
+    cursor: pointer;
+}
+
+#tableclassesview table tbody tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+#tableclassesview table thead tr td {
+    font-weight: bold;
+}
+
+#tableclassesview table tbody tr td i {
+    padding-left: 10px;
+}
+
+#tableclassesview table tbody tr td i.fa-remove:hover {
+    color: red;
+}
+
+#tableclassesview table tbody tr td i.fa-edit:hover {
+    color: #00bcd4;
 }
 
 /** Clock **/
@@ -259,7 +305,28 @@ body, #sb-site {
 /** Sidebar **/
 .sidebar.left {
     margin-top: 65px;
-    color: white;
+    color: #777;
+}
+
+.sidebarbutts {
+    margin-top: 20px;
+}
+
+.sidebarbutts div {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.sidebarbutts div i {
+    padding-right: 15px;
+}
+
+.sidebarbutts div:hover {
+    background-color: #F4F4F4;
+    cursor: pointer;
+    color: black;
 }
 
 img {
@@ -462,8 +529,8 @@ body {
 /* ---- isotope ---- */
 
 .isotope-classes {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 120px;
+    margin-bottom: 150px;
 }
 
 /* clear fix */
@@ -476,14 +543,14 @@ body {
 /* ---- .element-item ---- */
 
 .element-item {
-  position: relative;
-  float: left;
-  width: 170px;
-  height: 150px;
-  margin: 5px;
-  background: #f5f5f5;
-  color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    float: left;
+    width: 170px;
+    height: 150px;
+    margin: 8px;
+    background: white;
+    color: #777;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
 }
 
 .element-item:hover {
@@ -493,13 +560,20 @@ body {
 .element-item-header {
     width: 170px;
     height: 24px;
-    background-color: #00bcd4;
+    background-color: rgba(0, 188, 212, 0.64);
 }
 
 .element-item-header .fa-remove {
-    color: white;
+    color: black;
     padding-top: 3px;
     padding-right: 6px;
+}
+
+.element-item-header .fa-remove:hover {
+    color: black;
+    padding-top: 3px;
+    padding-right: 6px;
+    -webkit-transform: scale(1.5);
 }
 
 .element-item > * {
@@ -513,8 +587,9 @@ body {
   top: 60px;
   text-transform: none;
   letter-spacing: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
+
 }
 
 .element-item .name {
@@ -522,15 +597,17 @@ body {
     padding-right: 10px;
   left: 10px;
   padding-top: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+     color: #00464F;
+
 }
 
 .element-item .type {
     padding-left: 10px;
   left: 10px;
   padding-top: 5px;
-  font-size: 12px;
+  font-size: 14px;
     font-style: italic;
   font-weight: normal;
 }
@@ -559,3 +636,22 @@ body {
 .element-item.diatomic        { background: #00F; background: hsl( 252, 100%, 50%); }
 .element-item.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
 .element-item.noble-gas       { background: #F08; background: hsl( 324, 100%, 50%); }
+
+#paddingonvalid {
+    margin-bottom: 20px;
+}
+
+.alert {
+    margin-bottom: 0px;
+}
+
+.alert-danger {
+    background-color: #ea003d;
+    color: white;
+}
+
+
+#sortisotopeclasses:hover {
+    cursor: pointer;
+}
+

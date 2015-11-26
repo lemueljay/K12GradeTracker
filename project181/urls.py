@@ -49,6 +49,10 @@ urlpatterns = [
     # get subject type drop down
     url(r'^get_subject_type_drop_down/$', get_subject_type_drop_down),
 
+    # create subject
+    url(r'^create_subject/$', CreateSubject.as_view()),
+
+
     # grade view
     url(r'^defaultgradesview/$', defaultgradesview),
 

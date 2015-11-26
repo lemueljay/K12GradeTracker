@@ -5,4 +5,5 @@ $(document).ready(function() {
     $('#myAssessmentsTable').tablesorter();
     $('#myAssessmentTable').tablesorter();
     $('#myGradesTable').tablesorter();
+    $('#tableclassesview table').tablesorter();
 });

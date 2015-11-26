@@ -110,104 +110,25 @@ function updateTime() {
 
 }
 
-function initBars() {
+function initContentBars() {
     $('.contentbar').hide();
     $('#mainbar').show();
 }
 
-function updateManageSubjects(subject_name, section_value, subject_type_value) {
-    // Load subjects
-    $('#subjectscontainer').load('/get_subjects/', function() {
-        $('input[name=subject-name]').val(subject_name);
-    });
-    // Load section drop down
-    $('#section-drop-down').load('/get_sections_drop_down/', function() {
-        if(section_value != null) {
-            $("#section-drop-down option").each(function() {
-                $(this).removeAttr('selected');
-            });
-            $("#section-drop-down option[value=" + section_value + "]").attr("selected","selected");
-        }
-    })
-    // Load subject type drop down
-    $('#subject-type-drop-down').load('/get_subject_type_drop_down/', function() {
-        if(subject_type_value != null) {
-            $("#subject-type-drop-down option").each(function() {
-                $(this).removeAttr('selected');
-            });
-            $("#subject-type-drop-down option[value=" + subject_type_value + "]").attr("selected","selected");
-        }
-    })
-}
-
-function initFeatures() {
-    updateManageSubjects();
-}
-
-
-
-
 $(document).ready(function() {
 
-  // init Isotope
-  var $container = $('.isotope-classes').isotope({
-    itemSelector: '.element-item',
-    layoutMode: 'fitRows',
-    getSortData: {
-      name: '.name',
-        section: '.section',
-        type: '.type'
-    }
-  });
-
-  // filter functions
-  var filterFns = {
-    // show if number is greater than 50
-    numberGreaterThan50: function() {
-      var number = $(this).find('.number').text();
-      return parseInt( number, 10 ) > 50;
-    },
-    // show if name ends with -ium
-    ium: function() {
-      var name = $(this).find('.name').text();
-      return name.match( /ium$/ );
-    }
-  };
-
-  // bind filter button click
-  $('#filters').on( 'click', 'button', function() {
-    var filterValue = $( this ).attr('data-filter');
-    // use filterFn if matches value
-    filterValue = filterFns[ filterValue ] || filterValue;
-    $container.isotope({ filter: filterValue });
-  });
-
-  // bind sort button click
-  $('#sorts').on( 'click', 'button', function() {
-    var sortByValue = $(this).attr('data-sort-by');
-    $container.isotope({ sortBy: sortByValue });
-  });
-
-  // change is-checked class on buttons
-  $('.button-group').each( function( i, buttonGroup ) {
-    var $buttonGroup = $( buttonGroup );
-    $buttonGroup.on( 'click', 'button', function() {
-      $buttonGroup.find('.is-checked').removeClass('is-checked');
-      $( this ).addClass('is-checked');
-    });
-  });
-
     updateTime();
-    initBars();
-    initFeatures();
-
+    initContentBars();
+    // Dashboard behaviors
     alertify.warning('Welcome '+ $('.contentbar-firstname').text() + ' !');
+
     $('#ophome').click(function() {
-        initBars();
+        initContentBars();
     });
     $('#mansub').click(function() {
          $('.contentbar').hide();
          $('#subjectsbar').show();
+
     });
     $('#mansec').click(function() {
         $('.contentbar').hide();
@@ -272,14 +193,4 @@ $(document).ready(function() {
         $('.modal-right').addClass('hidden');
         $('#op-ab').removeClass('hidden');
     });
-
-
-    $('#mansub').click(function() {
-         var subject_name =  $('input[name=subject-name]').val();
-        var section_value = $('#section-drop-down').val();
-        var subject_type_value = $('#subject-type-drop-down').val();
-        updateManageSubjects(subject_name, section_value, subject_type_value);
-    });
-
-
 })

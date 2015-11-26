@@ -138,6 +138,22 @@ def defaultgradesview(request):
     return render(request, 'partials/defaultgradesview.html', {'classes': classes})
 
 
+class CreateSubject(View):
+    def get(self, request):
+        return HttpResponse()
+
+    def post(self, request):
+        subject_name = request.POST['subject_name']
+        section_value = request.POST['section_value']
+        subject_type_value = request.POST['subject_type_value']
+        user_instance = request.user
+        section_instance = Section.objects.get(id=section_value)
+        subject_type_instance = SubjectType.objects.get(id=subject_type_value)
+        query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance)
+        query.save()
+        return HttpResponse()
+
+
 class CreateAssessment(View):
     def get(self, request):
         class_id = request.GET['class_id']

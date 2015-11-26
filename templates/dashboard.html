@@ -25,6 +25,7 @@
     <!-- Import my own stylesheets and scripts. -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/features/manageclasses.js' %}"></script>
     <title>KGT Dashboard</title>
 </head>
 <body>
@@ -75,10 +76,9 @@
             </div>
         </div>
     </div>
-    <!-- Dashboard Header -->
-    <div class="container">
-        <div class="dashboard">DASHBOARD</div>
-    </div>
+
+
+
     <!--Content Bar -->
     <div id="mainbar" class="container contentbar">
         <div class="contentbar-header">HOME</div>
@@ -94,23 +94,23 @@
     </div>
     <!--Subjects Bar -->
     <div id="subjectsbar" class="container contentbar">
-        <div class="contentbar-header">MANAGE SUBJECTS</div>
+        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">SUBJECTS</span> <span class="hidden contentbar-error animated infinite tada">Error! Please fill out forms!</span></div>
         <div id="classes_field" class="col-xs-12">
             <div class="col-xs-12">
-                <form class="form-group">
+                <form id="createSubjectForm" class="form-group">
+                    {% csrf_token %}
                     <div class="col-xs-12 col-sm-3">
-                        <input name="subject-name" type="text" class="form-control" placeholder="Subject Name">
+                        <input name="subjectname" type="text" class="form-control" placeholder="Subject Name">
                     </div>
                     <div class="col-xs-12 col-sm-3">
                         <select id="section-drop-down" class="form-control">
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <select id="subject-type-drop-down" class="form-control">
-                        </select>
+                        <select id="subject-type-drop-down" class="form-control"></select>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <input type="submit" class="form-control btn btn-primary hvr-float-shadow" value="Create Subject">
+                        <input name="createSubjectButton" type="button" class="form-control btn btn-primary" value="Create Subject">
                     </div>
                 </form>
             </div>
@@ -121,7 +121,7 @@
     </div>
     <!--Sections Bar -->
     <div id="sectionsbar" class="container contentbar">
-        <div class="contentbar-header">MANAGE SECTIONS</div>
+        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">SECTIONS</span></div>
         <div id="sections_field" class="col-xs-12">
             <div class="col-xs-12">
                 <form class="form-group">
@@ -137,7 +137,7 @@
     </div>
     <!--View Grades Bar -->
     <div id="viewgradesbar" class="container contentbar">
-        <div class="contentbar-header">VIEW GRADES</div>
+        <div class="contentbar-header"><span class="bold">VIEW</span> <span class="light">GRADES</span></div>
         <div id="view_grades" class="col-xs-12">
             <form class="form-group">
 
@@ -146,7 +146,7 @@
     </div>
     <!--Record Grades Bar -->
     <div id="recgradbar" class="container contentbar">
-        <div class="contentbar-header">RECORD GRADES</div>
+        <div class="contentbar-header"><span class="bold">RECORD</span> <span class="light">GRADES</span></div>
         <div id="record_grades_field" class="col-xs-12">
             <div class="col-xs-12">
                 <form class="form-group">
@@ -171,35 +171,7 @@
             </div>
         </div>
     </div>
-    <!-- Homebutton Bar -->
-    <div class="container">
-        <div class="row buttongroup text-center">
-            <div id="mansub" class="col-xs-12 col-md-3 hvr-sweep-to-right ">
-                <span class="">
-                <span class="buttongroupicon"><i class="fa fa-book fa-2x"></i></span>
-                <span class="buttonitself"><span class="bold">Manage</span> Subject</span>
-                </span>
-            </div>
-            <div id="mansec" class="col-md-3 col-xs-12 hvr-sweep-to-right">
-                <span class="">
-                <span class=""><i class="fa fa-commenting fa-2x"></i></span>
-                <span class="buttonitself"n><span class="bold">Manage</span> Sections</span>
-                </span>
-            </div>
-            <div id="viewgrad" class="col-md-3 col-xs-12 hvr-sweep-to-right">
-             <span class="">
-                <span class=""><i class="fa fa-calculator fa-2x"></i></span>
-                <span class="buttonitself"><span class="bold">View</span> Grades</span>
-                </span>
-            </div>
-            <div id="recgrad" class="col-md-3 col-xs-12 hvr-sweep-to-right">
-                <span class="">
-                <span class=""><i class="fa fa-check-square-o fa-2x"></i></span>
-                <span class="buttonitself"><span class="bold">Record</span> Grades</span>
-                </span>
-            </div>
-        </div>
-    </div>
+
     <!-- Sidebar Bar -->
     <div class="sidebar left">
             <div class="row">
@@ -211,6 +183,12 @@
                     <a id="ophome"><div><i class="fa fa-desktop"></i>Home</div></a>
                     <a data-toggle="modal" data-target="#settingsModal"><div><i class="fa fa-gear"></i>Settings</div></a>
                     <a href="/logout/"><div><i class="fa fa-power-off"></i>Logout</div></a>
+                </div>
+                <div class="col-xs-12 sidebarbutts">
+                    <div id="mansub" class=""><span class="bold">Manage</span><span class="light"> Subjects</span></div>
+                    <div id="mansec" class=""><span class="bold">Manage</span> Sections</div>
+                    <div id="recgrad" class=""><span class="bold">Record</span> Grades</div>
+                    <div id="viewgrad" class=""><span class="bold">View</span> Grades</div>
                 </div>
             </div>
         </div>

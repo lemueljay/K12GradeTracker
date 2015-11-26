@@ -2,11 +2,9 @@ from django import forms
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'name': "username", 'id': "usernameinput", 'type': "text",
-                                                             'class': "form-control", 'placeholder': "Username"}),
+    username = forms.CharField(widget=forms.TextInput(attrs={'id': "usernameinput", 'class': "form-control", 'placeholder': "Username"}),
                                max_length=200)
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'name': "password", 'id': "passwordinput",
-                                                                 'type': "password", 'class': "form-control",
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'id': "passwordinput", 'class': "form-control",
                                                                  'placeholder': "Password"}), max_length=200)
 
 
@@ -28,3 +26,4 @@ class SignupForm(forms.Form):
                                                                      'type': "password", 'class': "form-control",
                                                                      'placeholder': "Confirm password"}),
                                    max_length=200)
+

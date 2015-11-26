@@ -1,8 +1,83 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/isotope.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/features/classes.js' %}"></script>
+
+<hr>
 {% if subjects == None %}
-    No subjects
+    <div class="col-xs-12 text-center">
+        <i>No subjects yet. Please create one.</i>
+    </div>
 {% elif subjects != None %}
-    {% for subject in subjects %}
-        {{ subject.name }}
-    {% endfor %}
+    <div class="col-xs-12">
+        <h4>Hoy user! Pili lang unsa nga view imoa.
+            <input name="tableviewbutt" class="btn btn-primary" type="button" value="Table View">
+            <input name="isotopeviewbutt" class="btn btn-primary" type="button" value="Isotope View">
+        </h4>
+    </div>
+
+    <span id="tableclassesview" class="classesview">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>SUBJECT NAME</th>
+                    <th>SECTION NAME</th>
+                    <th>SUBJECT TYPE</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in subjects %}
+                    <tr>
+                        <td>
+                            {{ subject.name }}
+                        </td>
+                        <td>
+                            {{ subject.section.name }}
+                        </td>
+                        <td>
+                            {{ subject.subject_type.name }}
+                        </td>
+                        <td>
+                            <i class="fa fa-edit fa-2x"></i>
+                            <i class="fa fa-remove fa-2x"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </span>
+
+    <span id="isotopeclassesview" class="classesview">
+        <div id="sortisotopeclasses" class="dropdown col-xs-1">
+            <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="glyphicon glyphicon-th fa-2x" aria-hidden="true"></span>
+            </div>
+            <ul id="sorts" class="dropdown-menu button-group" aria-labelledby="dropdownMenu1">
+                <li data-sort-by="original-order"><a href="#"><i class="fa"></i>Original Order</a></li>
+                <li data-sort-by="name"><a href="#"><i class="fa"></i>Subject Name</a></li>
+                <li data-sort-by="section"><a href="#"><i class="fa"></i>Section</a></li>
+                <li data-sort-by="type"><a href="#"><i class="fa"></i>Subject Type</a></li>
+            </ul>
+        </div>
+        <div class="isotope-classes container">
+            {% for subject in subjects %}
+                <div class="element-item">
+                    <div class="element-item-header">
+                        <i class="fa fa-remove pull-right"></i>
+                    </div>
+                    <p class="name">{{ subject.name }}</p>
+                    <p class="section">{{ subject.section.name }}</p>
+                    <p class="type">{{ subject.subject_type.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </span>
+
+
 {% endif %}
+
+
+
 
