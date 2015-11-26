@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.contrib import auth
 from classrecord.models import *
 from classrecord.forms import *
-
+import json
 
 def index(request):
     return render(request, 'index.html')
@@ -100,7 +100,7 @@ def dashboard(request):
 def get_subjects(request):
     user_instance = request.user
     try:
-        subjects = Subject.objects.filter(user=user_instance)
+        subjects = Subject.objects.filter(user=user_instance).order_by('name')
         if len(subjects) == 0:
             subjects = None
     except subjects.DoesNotExist:
@@ -143,14 +143,38 @@ class CreateSubject(View):
         return HttpResponse()
 
     def post(self, request):
+        # Get the data.
         subject_name = request.POST['subject_name']
         section_value = request.POST['section_value']
         subject_type_value = request.POST['subject_type_value']
+        # Get instances of models.
         user_instance = request.user
         section_instance = Section.objects.get(id=section_value)
         subject_type_instance = SubjectType.objects.get(id=subject_type_value)
-        query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance)
-        query.save()
+        # Check for redundancy.
+        redundant = Subject.objects.filter(name=subject_name, section=section_instance)
+        if len(redundant) == 0:
+            # Prepare and save the query.
+            query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance)
+            query.save()
+            data = dict()
+            data['error'] = False
+            data['subject_id'] = query.id
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+class DeleteSubject(View):
+    def get(self, request):
+        subject_id = request.GET['subject_id']
+        query = Subject.objects.filter(id=subject_id)
+        query.delete()
+        return HttpResponse()
+
+    def post(self, request):
         return HttpResponse()
 
 

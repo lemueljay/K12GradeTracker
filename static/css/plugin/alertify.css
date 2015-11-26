@@ -842,11 +842,12 @@
   margin-top: 10px;
 }
 .alertify-notifier .ajs-message.ajs-success {
-   background: #18ac11;
+    background: #329500;
     text-align: center;
 }
 .alertify-notifier .ajs-message.ajs-error {
-  background: rgba(217, 92, 92, 0.95);
+     background: #C60000;
+    text-align: center;
 }
 .alertify-notifier .ajs-message.ajs-warning {
     border: 1px solid white;

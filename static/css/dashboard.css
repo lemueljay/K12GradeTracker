@@ -64,8 +64,9 @@ body, #sb-site {
     color: black;
     padding: 0px 0px 0px 0px;
     background-color: white;
-    min-height: 300px;
+    min-height: 500px;
     margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .contentbar-header {
@@ -184,6 +185,12 @@ body, #sb-site {
     font-size: 17px;
 }
 
+.contentbar-error-redundant {
+    padding-left: 13px;
+    color: #ea003d;
+    font-size: 17px;
+}
+
 /** Tables **/
 
 #tableclassesview {
@@ -195,8 +202,9 @@ body, #sb-site {
 }
 
 #tableclassesview table tbody tr:hover {
-    background-color: #eee;
+    background-color: rgb(0, 188, 212);
     cursor: pointer;
+    color: white;
 }
 
 #tableclassesview table thead tr td {
@@ -208,11 +216,11 @@ body, #sb-site {
 }
 
 #tableclassesview table tbody tr td i.fa-remove:hover {
-    color: red;
+
 }
 
 #tableclassesview table tbody tr td i.fa-edit:hover {
-    color: #00bcd4;
+
 }
 
 /** Clock **/

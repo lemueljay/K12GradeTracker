@@ -2,15 +2,9 @@
 <script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/isotope.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/features/classes.js' %}"></script>
 
 <hr>
-{% if subjects == None %}
-    <div class="col-xs-12 text-center">
-        <i>No subjects yet. Please create one.</i>
-    </div>
-{% elif subjects != None %}
-    <div class="col-xs-12">
+    <div class="col-xs-12 hidden">
         <h4>Hoy user! Pili lang unsa nga view imoa.
             <input name="tableviewbutt" class="btn btn-primary" type="button" value="Table View">
             <input name="isotopeviewbutt" class="btn btn-primary" type="button" value="Isotope View">
@@ -29,7 +23,7 @@
             </thead>
             <tbody>
                 {% for subject in subjects %}
-                    <tr>
+                    <tr id="tr{{ subject.id }}">
                         <td>
                             {{ subject.name }}
                         </td>
@@ -40,8 +34,8 @@
                             {{ subject.subject_type.name }}
                         </td>
                         <td>
-                            <i class="fa fa-edit fa-2x"></i>
-                            <i class="fa fa-remove fa-2x"></i>
+                            <i class="fa fa-edit fa-2x" onclick="editSubject({{ subject.id }})"></i>
+                            <i class="fa fa-remove fa-2x" onclick="removeSubject({{ subject.id }});"></i>
                         </td>
                     </tr>
                 {% endfor %}
@@ -49,7 +43,7 @@
         </table>
     </span>
 
-    <span id="isotopeclassesview" class="classesview">
+    <span id="isotopeclassesview" class="classesview hidden">
         <div id="sortisotopeclasses" class="dropdown col-xs-1">
             <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="glyphicon glyphicon-th fa-2x" aria-hidden="true"></span>
@@ -74,9 +68,6 @@
             {% endfor %}
         </div>
     </span>
-
-
-{% endif %}
 
 
 
