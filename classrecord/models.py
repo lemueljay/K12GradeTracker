@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+# Grading System Model
 class GradingSystem(models.Model):
     name = models.CharField(max_length=200)
 
@@ -10,6 +11,7 @@ class GradingSystem(models.Model):
         return u'%s %s' % (self.id, self.name)
 
 
+# User System Model
 class UserSystem(models.Model):
     user = models.ForeignKey(User)
     grading_system = models.ForeignKey(GradingSystem)
@@ -18,6 +20,7 @@ class UserSystem(models.Model):
         return u'%s %s %s' % (self.id, self.user, self.grading_system)
 
 
+# Subject Type Model
 class SubjectType(models.Model):
     name = models.CharField(max_length=200)
     written_works = models.CharField(max_length=200)
@@ -28,6 +31,27 @@ class SubjectType(models.Model):
     def __unicode__(self):
             return u'%s %s %s %s %s %s' % (self.id, self.name, self.written_works, self.performance_tasks,
                                         self.quarterly_assessments, self.grading_system)
+
+
+# Subject Model
+class Subject(models.Model):
+    name = models.CharField(max_length=200)
+    section = models.CharField(max_length=200)
+    subject_type = models.ForeignKey(SubjectType, default=0)
+    user = models.ForeignKey(User, default=0)
+
+    def __unicode__(self):
+        return u'%s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user)
+
+
+# Section Model
+class Section(models.Model):
+    name = models.CharField(max_length=200)
+    gradelevel = models.CharField(max_length=200, default=0)
+    user = models.ForeignKey(User, default=0)
+
+    def __unicode__(self):
+        return u'%s %s %s %s' % (self.id, self.name, self.gradelevel, self.user)
 
 
 class Class(models.Model):

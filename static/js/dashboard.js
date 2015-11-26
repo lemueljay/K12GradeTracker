@@ -115,13 +115,39 @@ function initBars() {
     $('#mainbar').show();
 }
 
+function updateManageSubjects(subject_name, section_value, subject_type_value) {
+    // Load subjects
+    $('#subjectscontainer').load('/get_subjects/', function() {
+        $('input[name=subject-name]').val(subject_name);
+    });
+    // Load section drop down
+    $('#section-drop-down').load('/get_sections_drop_down/', function() {
+        if(section_value != null) {
+            $("#section-drop-down option").each(function() {
+                $(this).removeAttr('selected');
+            });
+            $("#section-drop-down option[value=" + section_value + "]").attr("selected","selected");
+        }
+    })
+    // Load subject type drop down
+    $('#subject-type-drop-down').load('/get_subject_type_drop_down/', function() {
+        if(subject_type_value != null) {
+            $("#subject-type-drop-down option").each(function() {
+                $(this).removeAttr('selected');
+            });
+            $("#subject-type-drop-down option[value=" + subject_type_value + "]").attr("selected","selected");
+        }
+    })
+}
+
+function initFeatures() {
+    updateManageSubjects();
+}
+
 
 
 
 $(document).ready(function() {
-
-    // external js: isotope.pkgd.js
-
 
   // init Isotope
   var $container = $('.isotope-classes').isotope({
@@ -171,11 +197,10 @@ $(document).ready(function() {
     });
   });
 
-
-
-
     updateTime();
     initBars();
+    initFeatures();
+
     alertify.warning('Welcome '+ $('.contentbar-firstname').text() + ' !');
     $('#ophome').click(function() {
         initBars();
@@ -246,6 +271,14 @@ $(document).ready(function() {
      $('.opab').click(function() {
         $('.modal-right').addClass('hidden');
         $('#op-ab').removeClass('hidden');
+    });
+
+
+    $('#mansub').click(function() {
+         var subject_name =  $('input[name=subject-name]').val();
+        var section_value = $('#section-drop-down').val();
+        var subject_type_value = $('#subject-type-drop-down').val();
+        updateManageSubjects(subject_name, section_value, subject_type_value);
     });
 
 

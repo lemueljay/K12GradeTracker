@@ -91,14 +91,45 @@ def dashboard(request):
     if request.user.is_authenticated():
         fullname = request.user.get_full_name()
         user_instance = request.user
-        classes = Class.objects.filter(user=user_instance, hidden=0)
         system = UserSystem.objects.get(user=user_instance)
-        grading_system = GradingSystem.objects.get(id=system.grading_system.id)
-        subject_types = SubjectType.objects.filter(grading_system=grading_system)
-        return render(request, 'dashboard.html', {'fullname': fullname, 'firstname': user_instance.first_name, 'classes': classes, 'system': system.
-                      grading_system.name, 'subject_types': subject_types})
+        return render(request, 'dashboard.html', {'fullname': fullname, 'firstname': user_instance.first_name, 'system': system.grading_system.name})
     else:
         return HttpResponseRedirect('/login/')
+
+
+def get_subjects(request):
+    user_instance = request.user
+    try:
+        subjects = Subject.objects.filter(user=user_instance)
+        if len(subjects) == 0:
+            subjects = None
+    except subjects.DoesNotExist:
+        subjects = None
+    return render(request, 'tables/subjects.html', {'subjects': subjects})
+
+
+def get_sections_drop_down(request):
+    user_instance = request.user
+    try:
+        sections = Section.objects.filter(user=user_instance).order_by('name')
+        if len(sections) == 0:
+            sections = None
+    except sections.DoesNotExist:
+        sections = None
+    return render(request, 'partials/section_drop_down.html', {'sections': sections})
+
+
+def get_subject_type_drop_down(request):
+    user_instance = request.user
+    user_system_instance = UserSystem.objects.get(user=user_instance)
+    try:
+        subject_types = SubjectType.objects.filter(grading_system=user_system_instance.grading_system).order_by('name')
+        if len(subject_types) == 0:
+            subject_types = None
+    except subject_types.DoesNotExist:
+        subject_types = None
+    return render(request, 'partials/subject_type_drop_down.html', {'subject_types': subject_types})
+
 
 def defaultgradesview(request):
     user_id = request.user.id

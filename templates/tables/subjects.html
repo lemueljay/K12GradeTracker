@@ -1,0 +1,8 @@
+{% if subjects == None %}
+    No subjects
+{% elif subjects != None %}
+    {% for subject in subjects %}
+        {{ subject.name }}
+    {% endfor %}
+{% endif %}
+

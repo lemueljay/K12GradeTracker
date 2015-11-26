@@ -1,0 +1,8 @@
+{% if sections == None %}
+    <option disabled="disabled" selected="selected">No available sections.</option>
+{% elif sections != None %}
+    <option disabled="disabled" selected="selected">Choose a section.</option>
+    {% for section in sections %}
+        <option value="{{ section.id }}">{{ section.name }}</option>
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,8 @@
+{% if subject_types == None %}
+    <option disabled="disabled" selected="selected">No available subject types.</option>
+{% elif subject_types != None %}
+    <option disabled="disabled" selected="selected">Choose a subject type</option>
+    {% for subject_type in subject_types %}
+        <option value="{{ subject_type.id }}">{{ subject_type.name }}</option>
+    {% endfor %}
+{% endif %}

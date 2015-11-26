@@ -99,14 +99,16 @@
             <div class="col-xs-12">
                 <form class="form-group">
                     <div class="col-xs-12 col-sm-3">
-                        <input name="subject-name" type="text" class="form-control" placeholder="Subject Name">
+                        <input type="text" class="form-control" placeholder="Subject Name">
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <select id="section-drop-down" class="form-control">
+                        <select class="form-control">
+                            <option disabled="disabled" selected="selected">Section</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <select id="subject-type-drop-down" class="form-control">
+                        <select class="form-control">
+                            <option disabled="disabled" selected="selected">Subject Type</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-3">
@@ -114,7 +116,57 @@
                     </div>
                 </form>
             </div>
-            <div id="subjectscontainer" class="col-xs-12 container">
+            <div class="col-xs-12 container">
+
+            <div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+          <button class="button" data-sort-by="name">name</button>
+          <button class="button" data-sort-by="section">section</button>
+                                <button class="button" data-sort-by="type">type</button>
+
+        </div>
+
+        <div class="isotope-classes container">
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Basic Algebra</p>
+                <p class="section">1st Year Rizal</p>
+                <p class="type">Languages/AP/EsP</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Mathematics</p>
+                <p class="section">2nd Year Daffodil</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Biology</p>
+                <p class="section">2nd Year Dalia</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Elementary Algebra</p>
+                <p class="section">1st Year Einstein</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">General Physics</p>
+                <p class="section">4th Year Marijuana</p>
+                <p class="type">Science/Math</p>
+            </div>
+        </div>
 
             </div>
         </div>

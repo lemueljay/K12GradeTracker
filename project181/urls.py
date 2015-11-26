@@ -40,6 +40,17 @@ urlpatterns = [
     # logout
     url(r'^logout/$', logout),
 
+    # get subjects
+    url(r'^get_subjects/$', get_subjects),
+
+    # get subjects drop down
+    url(r'^get_sections_drop_down/$', get_sections_drop_down),
+
+    # get subject type drop down
+    url(r'^get_subject_type_drop_down/$', get_subject_type_drop_down),
+
     # grade view
     url(r'^defaultgradesview/$', defaultgradesview),
+
+
 ]
