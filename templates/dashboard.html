@@ -20,6 +20,8 @@
     <!-- Import Alertify -->
     <link rel="stylesheet" href="{% static 'css/plugin/alertify.css' %}">
     <script type="text/javascript" src="{% static 'js/plugin/alertify.js' %}"></script>
+     <!-- Import Isotope -->
+    <script type="text/javascript" src="{% static 'js/plugin/isotope.pkgd.min.js' %}"></script>
     <!-- Import my own stylesheets and scripts. -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
@@ -88,7 +90,7 @@
         </div>
         <div class="col-xs-12 contentbarevents">
 
-        </div>
+                </div>
     </div>
     <!--Subjects Bar -->
     <div id="subjectsbar" class="container contentbar">
@@ -113,6 +115,59 @@
                         <input type="submit" class="form-control btn btn-primary hvr-float-shadow" value="Create Subject">
                     </div>
                 </form>
+            </div>
+            <div class="col-xs-12 container">
+
+            <div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+          <button class="button" data-sort-by="name">name</button>
+          <button class="button" data-sort-by="section">section</button>
+                                <button class="button" data-sort-by="type">type</button>
+
+        </div>
+
+        <div class="isotope-classes container">
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Basic Algebra</p>
+                <p class="section">1st Year Rizal</p>
+                <p class="type">Languages/AP/EsP</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Mathematics</p>
+                <p class="section">2nd Year Daffodil</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Biology</p>
+                <p class="section">2nd Year Dalia</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">Elementary Algebra</p>
+                <p class="section">1st Year Einstein</p>
+                <p class="type">Science/Math</p>
+            </div>
+            <div class="element-item ">
+                <div class="element-item-header">
+                    <i class="fa fa-remove pull-right"></i>
+                </div>
+                <p class="name">General Physics</p>
+                <p class="section">4th Year Marijuana</p>
+                <p class="type">Science/Math</p>
+            </div>
+        </div>
+
             </div>
         </div>
     </div>
