@@ -1,11 +1,11 @@
 /**
  * alertifyjs 1.5.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com)
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
 ( function ( window ) {
     'use strict';
-    
+
     /**
      * Keys enum
      * @type {Object}
@@ -19,7 +19,7 @@
         RIGHT: 39
     };
     /**
-     * Default options 
+     * Default options
      * @type {Object}
      */
     var defaults = {
@@ -57,11 +57,11 @@
         },
         theme:{
             input:'ajs-input',
-            ok:'ajs-ok',
-            cancel:'ajs-cancel',
+            ok:'btn btn-primary',
+            cancel:'btn btn-default',
         }
     };
-    
+
     //holds open dialogs instances
     var openDialogs = [];
 
@@ -70,19 +70,19 @@
      *
      * @element {node}      The element
      * @className {string}  One or more space-separated classes to be added to the class attribute of the element.
-     * 
+     *
      * @return {undefined}
      */
     function addClass(element,classNames){
         element.className += ' ' + classNames;
     }
-    
+
     /**
      * [Helper]  Removes the specified class(es) from the element.
      *
      * @element {node}      The element
      * @className {string}  One or more space-separated classes to be removed from the class attribute of the element.
-     * 
+     *
      * @return {undefined}
      */
     function removeClass(element,classNames){
@@ -138,19 +138,19 @@
     function copy(src) {
         if(null === src)
           return src;
-        
+
         if(Array.isArray(src)){
-          var cpy = [];  
+          var cpy = [];
           for(var x=0;x<src.length;x+=1){
             cpy.push(copy(src[x]));
           }
-          return cpy;          
+          return cpy;
         }
-      
+
         if(src instanceof Date){
           return new Date(src.getTime());
         }
-      
+
         if(src instanceof RegExp){
           var cpy = new RegExp(src.source);
           cpy.global = src.global;
@@ -159,7 +159,7 @@
           cpy.lastIndex = src.lastIndex;
           return cpy;
         }
-        
+
         if(typeof src === 'object'){
           var cpy = {};
           // copy dialog pototype over definition.
@@ -170,8 +170,8 @@
           }
           return cpy;
         }
-      
-        return src;        
+
+        return src;
     }
     /**
       * Helper: destruct the dialog
@@ -186,7 +186,7 @@
       instance.settings = copy(instance.__settings);
       //re-reference init function.
       instance.__init = initialize;
-      //delete __internal variable to allow re-initialization. 
+      //delete __internal variable to allow re-initialization.
       delete instance.__internal;
     }
 
@@ -279,7 +279,7 @@
 
     /**
     * Creates event handler delegate that sends the instance as last argument.
-    * 
+    *
     * @return {Function}    a function wrapper which sends the instance as last argument.
     */
     function delegate(context, method) {
@@ -297,7 +297,7 @@
     }
     /**
     * Helper for creating a dialog close event.
-    * 
+    *
     * @return {object}
     */
     function createCloseEvent(index, button) {
@@ -364,31 +364,31 @@
                 basic:'ajs-basic',
                 frameless:'ajs-frameless'
             };
-			
+
         /**
          * Helper: initializes the dialog instance
-         * 
+         *
          * @return	{Number}	The total count of currently open modals.
          */
         function initialize(instance){
-            
+
             if(!instance.__internal){
-				
+
                 //no need to expose init after this.
                 delete instance.__init;
-              
+
                 //keep a copy of initial dialog settings
                 if(!this.__settings)
                   this.__settings = copy(this.settings);
-				
+
                 //in case the script was included before body.
-                //after first dialog gets initialized, it won't be null anymore!				
+                //after first dialog gets initialized, it won't be null anymore!
                 if(null === reflow){
                     // set tabindex attribute on body element this allows script to give it
                     // focus after the dialog is closed
                     document.body.setAttribute( 'tabindex', '0' );
                 }
-				
+
                 //get dialog buttons/focus setup
                 var setup;
                 if(typeof instance.setup === 'function'){
@@ -406,7 +406,7 @@
                         }
                     };
                 }
-                
+
                 //initialize hooks object.
                 if(typeof instance.hooks !== 'object'){
                     instance.hooks = {};
@@ -430,7 +430,7 @@
                 var internal = instance.__internal = {
                     /**
                      * Flag holding the open state of the dialog
-                     * 
+                     *
                      * @type {Boolean}
                      */
                     isOpen:false,
@@ -478,19 +478,19 @@
                     transitionOutHandler:undefined,
                     destroy:undefined
                 };
-				
-                                
+
+
                 var elements = {};
                 //root node
                 elements.root = document.createElement('div');
-                
+
                 elements.root.className = classes.base + ' ' + classes.hidden + ' ';
-				
+
                 elements.root.innerHTML = templates.dimmer + templates.modal;
-                
+
                 //dimmer
                 elements.dimmer = elements.root.firstChild;
-				
+
                 //dialog
                 elements.modal = elements.root.lastChild;
                 elements.modal.innerHTML = templates.dialog;
@@ -501,14 +501,14 @@
                 elements.reset = [];
                 elements.reset.push(elements.dialog.firstChild);
                 elements.reset.push(elements.dialog.lastChild);
-                
+
                 //commands
                 elements.commands = {};
                 elements.commands.container = elements.reset[0].nextSibling;
                 elements.commands.pin = elements.commands.container.firstChild;
                 elements.commands.maximize = elements.commands.pin.nextSibling;
                 elements.commands.close = elements.commands.maximize.nextSibling;
-                
+
                 //header
                 elements.header = elements.commands.container.nextSibling;
 
@@ -520,7 +520,7 @@
                 //footer
                 elements.footer = elements.body.nextSibling;
                 elements.footer.innerHTML = templates.buttons.auxiliary + templates.buttons.primary;
-                
+
                 //resize handle
                 elements.resizeHandle = elements.footer.nextSibling;
 
@@ -532,10 +532,10 @@
                 elements.buttonTemplate = elements.buttons.primary.firstChild;
                 //remove button template
                 elements.buttons.primary.removeChild(elements.buttonTemplate);
-                               
+
                 for(var x=0; x < instance.__internal.buttons.length; x+=1) {
                     var button = instance.__internal.buttons[x];
-                    
+
                     // add to the list of used keys.
                     if(usedKeys.indexOf(button.key) < 0){
                         usedKeys.push(button.key);
@@ -559,7 +559,7 @@
                 }
                 //make elements pubic
                 instance.elements = elements;
-                
+
                 //save event handlers delegates
                 internal.resetHandler = delegate(instance, onReset);
                 internal.beginMoveHandler = delegate(instance, beginMove);
@@ -571,38 +571,38 @@
                 internal.transitionInHandler = delegate(instance, handleTransitionInEvent);
                 internal.transitionOutHandler = delegate(instance, handleTransitionOutEvent);
 
-                
+
                 //settings
                 instance.set('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
-				
+
                 instance.set('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
                 instance.set('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
                 instance.set('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
-							
+
                 instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
                 instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
-				
+
                 instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
                 instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);
                 instance.set('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
                 instance.set('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
-				
+
                 instance.set('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
                 instance.set('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
-				
+
                 instance.set('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
 
                 instance.set('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
                 instance.set('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
-				
+
 
                 // allow dom customization
                 if(typeof instance.build === 'function'){
                     instance.build();
                 }
             }
-            
+
             //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
         }
@@ -640,10 +640,10 @@
                 addClass(document.body, classes.noOverflow);
             }
         }
-		
+
         /**
          * Sets the name of the transition used to show/hide the dialog
-         * 
+         *
          * @param {Object} instance The dilog instance.
          *
          */
@@ -654,7 +654,7 @@
             addClass(instance.elements.root, classes.prefix + value);
             reflow = instance.elements.root.offsetWidth;
         }
-		
+
         /**
          * Toggles the dialog display mode
          *
@@ -667,34 +667,34 @@
 
                 //make modal
                 removeClass(instance.elements.root, classes.modeless);
-				
+
                 //only if open
                 if(instance.isOpen()){
                     unbindModelessEvents(instance);
-					
+
                     //in case a pinned modless dialog was made modal while open.
                     updateAbsPositionFix(instance);
-					
+
                     ensureNoOverflow();
                 }
             }else{
                 //make modelss
                 addClass(instance.elements.root, classes.modeless);
-								
+
                 //only if open
                 if(instance.isOpen()){
                     bindModelessEvents(instance);
-					
+
                     //in case pin/unpin was called while a modal is open
                     updateAbsPositionFix(instance);
-										
+
                     ensureNoOverflow();
                 }
             }
         }
 
         /**
-         * Toggles the dialog basic view mode 
+         * Toggles the dialog basic view mode
          *
          * @param {Object} instance The dilog instance.
          *
@@ -711,7 +711,7 @@
         }
 
         /**
-         * Toggles the dialog frameless view mode 
+         * Toggles the dialog frameless view mode
          *
          * @param {Object} instance The dilog instance.
          *
@@ -726,7 +726,7 @@
                 removeClass(instance.elements.root, classes.frameless);
             }
         }
-		
+
         /**
          * Helper: Brings the modeless dialog to front, attached to modeless dialogs.
          *
@@ -736,7 +736,7 @@
          * @return {undefined}
          */
         function bringToFront(event, instance){
-            
+
             // Do not bring to front if preceeded by an open modal
             var index = openDialogs.indexOf(instance);
             for(var x=index+1;x<openDialogs.length;x+=1){
@@ -744,7 +744,7 @@
                     return;
                 }
             }
-			
+
             // Bring to front by making it the last child.
             if(document.body.lastChild !== instance.elements.root){
                 document.body.appendChild(instance.elements.root);
@@ -753,17 +753,17 @@
                 openDialogs.push(instance);
                 setFocus(instance);
             }
-			
+
             return false;
         }
-		
+
         /**
          * Helper: reflects dialogs options updates
          *
          * @param {Object} instance The dilog instance.
          * @param {String} option The updated option name.
          *
-         * @return	{undefined}	
+         * @return	{undefined}
          */
         function optionUpdated(instance, option, oldValue, newValue){
             switch(option){
@@ -824,7 +824,7 @@
                 instance.hooks.onupdate.call(instance, option, oldValue, newValue);
             }
         }
-		
+
         /**
          * Helper: reflects dialogs options updates
          *
@@ -835,9 +835,9 @@
          * @param {Object} value Optional, the value associated with the key (in case it was a string).
          * @param {String} option The updated option name.
          *
-         * @return	{Object} result object 
+         * @return	{Object} result object
          *	The result objects has an 'op' property, indicating of this is a SET or GET operation.
-         *		GET: 
+         *		GET:
          *		- found: a flag indicating if the key was found or not.
          *		- value: the property value.
          *		SET:
@@ -889,7 +889,7 @@
                             callback.call(instance,key, old, value);
                         }
                         result.items.push({'key': key, 'value': value , 'found':true});
-						
+
                     }else{
                         result.items.push({'key': key, 'value': value , 'found':false});
                     }
@@ -900,13 +900,13 @@
             }
             return result;
         }
-		
+
 
         /**
          * Triggers a close event.
          *
          * @param {Object} instance	The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function triggerClose(instance) {
@@ -926,7 +926,7 @@
          *
          * @param {Event} event	DOM event object.
          * @param {Object} instance	The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function commandsClickHandler(event, instance) {
@@ -957,7 +957,7 @@
          * Helper: pins the modeless dialog.
          *
          * @param {Object} instance	The dialog instance.
-         * 
+         *
          * @return {undefined}
          */
         function pin(instance) {
@@ -969,11 +969,11 @@
          * Helper: unpins the modeless dialog.
          *
          * @param {Object} instance	The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function unpin(instance) {
-            //unpin the dialog 
+            //unpin the dialog
             instance.set('pinned', false);
         }
 
@@ -982,11 +982,11 @@
          * Helper: enlarges the dialog to fill the entire screen.
          *
          * @param {Object} instance	The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function maximize(instance) {
-            //maximize the dialog 
+            //maximize the dialog
             addClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
@@ -997,11 +997,11 @@
          * Helper: returns the dialog to its former size.
          *
          * @param {Object} instance	The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function restore(instance) {
-            //maximize the dialog 
+            //maximize the dialog
             removeClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
@@ -1166,7 +1166,7 @@
 
         // flag to cancel keyup event if already handled by click event (pressing Enter on a focusted button).
         var cancelKeyup = false;
-        /** 
+        /**
          * Helper: triggers a button callback
          *
          * @param {Object}		The dilog instance.
@@ -1196,7 +1196,7 @@
          *
          * @param {Event}		DOM event object.
          * @param {Object}		The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function buttonsClickHandler(event, instance) {
@@ -1212,7 +1212,7 @@
          *
          * @param {Event}		DOM event object.
          * @param {Object}		The dilog instance.
-         * 
+         *
          * @return {undefined}
          */
         function keyupHandler(event) {
@@ -1239,7 +1239,7 @@
         *
         * @param {Event}		DOM event object.
         * @param {Object}		The dilog instance.
-        * 
+        *
         * @return {undefined}
         */
         function keydownHandler(event) {
@@ -1309,7 +1309,7 @@
                     element = focus.element.call(instance);
                     break;
                 }
-                
+
                 // if no focus element, default to first reset element.
                 if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
                     element = instance.elements.reset[0];
@@ -1336,7 +1336,7 @@
          */
         function onReset(event, instance) {
 
-            // should work on last modal if triggered from document.body 
+            // should work on last modal if triggered from document.body
             if (!instance) {
                 for (var x = openDialogs.length - 1; x > -1; x -= 1) {
                     if (openDialogs[x].isModal()) {
@@ -1382,7 +1382,7 @@
             }
         }
         /**
-         * Transition in transitionend event handler. 
+         * Transition in transitionend event handler.
          *
          * @param {Event}		TransitionEnd event object.
          * @param {Object}		The dilog instance.
@@ -1414,7 +1414,7 @@
         }
 
         /**
-         * Transition out transitionend event handler. 
+         * Transition out transitionend event handler.
          *
          * @param {Event}		TransitionEnd event object.
          * @param {Object}		The dilog instance.
@@ -1442,7 +1442,7 @@
                 instance.__internal.activeElement.focus();
                 instance.__internal.activeElement = null;
             }
-            
+
             //destory the instance
             if (typeof instance.__internal.destroy === 'function') {
               instance.__internal.destroy.apply(instance);
@@ -1464,7 +1464,7 @@
          *
          * @param {Event} event	DOM event object.
          * @param {Node} element The element being moved.
-         * 
+         *
          * @return {undefined}
          */
         function moveElement(event, element) {
@@ -1478,7 +1478,7 @@
          *
          * @param {Event} event	DOM event object.
          * @param {Object} instance The dilog instance.
-         * 
+         *
          * @return {Boolean} false
          */
         function beginMove(event, instance) {
@@ -1521,7 +1521,7 @@
          * The actual move handler,  attached to document.body mousemove event.
          *
          * @param {Event} event	DOM event object.
-         * 
+         *
          * @return {undefined}
          */
         function move(event) {
@@ -1595,7 +1595,7 @@
         }
 
         /* Controls moving a dialog around */
-        //holde the current instance being resized		
+        //holde the current instance being resized
         var resizable = null,
             //holds the staring left offset when resize starts.
             startingLeft = Number.Nan,
@@ -1613,7 +1613,7 @@
          * @param {Event} event	DOM mousemove event object.
          * @param {Node} element The element being moved.
          * @param {Boolean} pinned A flag indicating if the element being resized is pinned to the screen.
-         * 
+         *
          * @return {undefined}
          */
         function resizeElement(event, element, pageRelative) {
@@ -1639,7 +1639,7 @@
             // rtl handling
             var isRTL = isRightToLeft();
             if (isRTL) {
-                // reverse X 
+                // reverse X
                 X = document.body.offsetWidth - X;
                 // if has a starting left, calculate offsetRight
                 if (!isNaN(startingLeft)) {
@@ -1677,7 +1677,7 @@
          *
          * @param {Event} event	DOM event object.
          * @param {Object} instance The dilog instance.
-         * 
+         *
          * @return {Boolean} false
          */
         function beginResize(event, instance) {
@@ -1713,7 +1713,7 @@
          * The actual resize handler,  attached to document.body mousemove event.
          *
          * @param {Event} event	DOM event object.
-         * 
+         *
          * @return {undefined}
          */
         function resize(event) {
@@ -2066,7 +2066,7 @@
                         current = element,
                         offsetLeft = 0,
                         offsetTop = 0;
-                    
+
                     //subtract existing left,top
                     if (element.style.left) {
                         offsetLeft -= parseInt(element.style.left, 10);
@@ -2134,7 +2134,7 @@
                 return this;
             },
             /**
-             * Gets or Sets dialog settings/options 
+             * Gets or Sets dialog settings/options
              *
              * @param {String|Object} key A string specifying a propery name or a collection of key/value pairs.
              * @param {Object} value Optional, the value associated with the key (in case it was a string).
@@ -2166,14 +2166,14 @@
                 }
             },
             /**
-             * [Alias] Sets dialog settings/options 
+             * [Alias] Sets dialog settings/options
              */
             set:function(key, value){
                 this.setting(key,value);
                 return this;
             },
             /**
-             * [Alias] Gets dialog settings/options 
+             * [Alias] Gets dialog settings/options
              */
             get:function(key){
                 return this.setting(key);
@@ -2224,12 +2224,12 @@
              * @return {Object} the dialog instance.
              */
             show: function (modal, className) {
-                
+
                 // ensure initialization
                 initialize(this);
-								
+
                 if ( !this.__internal.isOpen ) {
-					
+
                     // add to open dialogs
                     this.__internal.isOpen = true;
                     openDialogs.push(this);
@@ -2249,12 +2249,12 @@
                     if(modal !== undefined){
                         this.set('modal', modal);
                     }
-					
+
                     //save scroll to prevent document jump
                     saveScrollPosition();
 
                     ensureNoOverflow();
-					
+
                     // allow custom dialog class on show
                     if(typeof className === 'string' && className !== ''){
                         this.__internal.className = className;
@@ -2267,7 +2267,7 @@
                     }else if(this.isMaximized()){
                         restore(this);
                     }
-					
+
                     updateAbsPositionFix(this);
 
                     removeClass(this.elements.root, classes.animationOut);
@@ -2286,7 +2286,7 @@
 
                     //reflow
                     reflow = this.elements.root.offsetWidth;
-                  
+
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
@@ -2321,9 +2321,9 @@
              */
             close: function () {
                 if (this.__internal.isOpen ) {
-					
+
                     unbindEvents(this);
-					
+
                     removeClass(this.elements.root, classes.animationIn);
                     addClass(this.elements.root, classes.animationOut);
 
@@ -2349,13 +2349,13 @@
                     if ( typeof this.get('onclose') === 'function' ) {
                         this.get('onclose').call(this);
                     }
-					
-                    //remove from open dialogs               
+
+                    //remove from open dialogs
                     openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
-					
+
                     ensureNoOverflow();
-					
+
                 }
                 return this;
             },
@@ -2404,7 +2404,7 @@
             };
         /**
          * Helper: initializes the notifier instance
-         * 
+         *
          */
         function initialize(instance) {
 
@@ -2424,7 +2424,7 @@
                 document.body.appendChild(element);
             }
         }
-        
+
         function pushInstance(instance) {
             instance.__internal.pushed = true;
             openInstances.push(instance);
@@ -2435,7 +2435,7 @@
         }
         /**
          * Helper: update the notifier instance position
-         * 
+         *
          */
         function updatePosition(instance) {
             element.className = classes.base;
@@ -2502,10 +2502,10 @@
                 /* notification DOM element*/
                 element: div,
                 /*
-                 * Pushes a notification message 
+                 * Pushes a notification message
                  * @param {string or DOMElement} content The notification message content
                  * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
-                 * 
+                 *
                  */
                 push: function (_content, _wait) {
                     if (!this.__internal.pushed) {
@@ -2552,18 +2552,18 @@
                 /*
                  * {Function} callback function to be invoked before dismissing the notification message.
                  * Remarks: A return value === 'false' will cancel the dismissal
-                 * 
+                 *
                  */
                 ondismiss: function () { },
                 /*
                  * {Function} callback function to be invoked when the message is dismissed.
-                 * 
+                 *
                  */
                 callback: callback,
                 /*
-                 * Dismisses the notification message 
+                 * Dismisses the notification message
                  * @param {Boolean} clicked A flag indicating if the dismissal was caused by a click.
-                 * 
+                 *
                  */
                 dismiss: function (clicked) {
                     if (this.__internal.pushed) {
@@ -2590,7 +2590,7 @@
                 /*
                  * Delays the notification message dismissal
                  * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
-                 * 
+                 *
                  */
                 delay: function (wait) {
                     clearTimers(this);
@@ -2604,7 +2604,7 @@
                 /*
                  * Sets the notification message contents
                  * @param {string or DOMElement} content The notification message content
-                 * 
+                 *
                  */
                 setContent: function (content) {
                     if (typeof content === 'string') {
@@ -2618,7 +2618,7 @@
                 },
                 /*
                  * Dismisses all open notifications except this.
-                 * 
+                 *
                  */
                 dismissOthers: function () {
                     notifier.dismissAll(this);
@@ -2630,7 +2630,7 @@
         //notifier api
         return {
             /**
-             * Gets or Sets notifier settings. 
+             * Gets or Sets notifier settings.
              *
              * @param {string} key The setting name
              * @param {Variant} value The setting value.
@@ -2659,14 +2659,14 @@
                 return this;
             },
             /**
-             * [Alias] Sets dialog settings/options 
+             * [Alias] Sets dialog settings/options
              */
             set:function(key,value){
                 this.setting(key,value);
                 return this;
             },
             /**
-             * [Alias] Gets dialog settings/options 
+             * [Alias] Gets dialog settings/options
              */
             get:function(key){
                 return this.setting(key);
@@ -2785,12 +2785,12 @@
         return {
             /**
              * Alertify defaults
-             * 
+             *
              * @type {Object}
              */
             defaults: defaults,
             /**
-             * Dialogs factory 
+             * Dialogs factory
              *
              * @param {string}      Dialog name.
              * @param {Function}    A Dialog factory function.
@@ -2883,13 +2883,13 @@
                 }
             },
             /**
-             * [Alias] Sets dialog settings/options 
+             * [Alias] Sets dialog settings/options
              */
             set: function(name,key,value){
                 return this.setting(name, key,value);
             },
             /**
-             * [Alias] Gets dialog settings/options 
+             * [Alias] Gets dialog settings/options
              */
             get: function(name, key){
                 return this.setting(name, key);

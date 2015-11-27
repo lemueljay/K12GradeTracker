@@ -1,74 +1,43 @@
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/isotope.js' %}"></script>
-
 <hr>
-    <div class="col-xs-12 hidden">
-        <h4>Hoy user! Pili lang unsa nga view imoa.
-            <input name="tableviewbutt" class="btn btn-primary" type="button" value="Table View">
-            <input name="isotopeviewbutt" class="btn btn-primary" type="button" value="Isotope View">
-        </h4>
-    </div>
-
-    <span id="tableclassesview" class="classesview">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>SUBJECT NAME</th>
-                    <th>SECTION NAME</th>
-                    <th>SUBJECT TYPE</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for subject in subjects %}
-                    <tr id="tr{{ subject.id }}">
-                        <td>
-                            {{ subject.name }}
-                        </td>
-                        <td>
-                            {{ subject.section.name }}
-                        </td>
-                        <td>
-                            {{ subject.subject_type.name }}
-                        </td>
-                        <td>
-                            <i class="fa fa-edit fa-2x" onclick="editSubject({{ subject.id }})"></i>
-                            <i class="fa fa-remove fa-2x" onclick="removeSubject({{ subject.id }});"></i>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </span>
-
-    <span id="isotopeclassesview" class="classesview hidden">
-        <div id="sortisotopeclasses" class="dropdown col-xs-1">
-            <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <span class="glyphicon glyphicon-th fa-2x" aria-hidden="true"></span>
-            </div>
-            <ul id="sorts" class="dropdown-menu button-group" aria-labelledby="dropdownMenu1">
-                <li data-sort-by="original-order"><a href="#"><i class="fa"></i>Original Order</a></li>
-                <li data-sort-by="name"><a href="#"><i class="fa"></i>Subject Name</a></li>
-                <li data-sort-by="section"><a href="#"><i class="fa"></i>Section</a></li>
-                <li data-sort-by="type"><a href="#"><i class="fa"></i>Subject Type</a></li>
-            </ul>
-        </div>
-        <div class="isotope-classes container">
-            {% for subject in subjects %}
-                <div class="element-item">
-                    <div class="element-item-header">
-                        <i class="fa fa-remove pull-right"></i>
-                    </div>
-                    <p class="name">{{ subject.name }}</p>
-                    <p class="section">{{ subject.section.name }}</p>
-                    <p class="type">{{ subject.subject_type.name }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    </span>
-
-
+<span id="tableclassesview" class="classesview">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>SUBJECT NAME</th>
+            <th>SECTION NAME</th>
+            <th>SUBJECT TYPE</th>
+            <th>ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subject in subjects %}
+            <tr id="tr{{ subject.id }}">
+                <td>
+                    <input class="hidden form-control tdinput" value="{{ subject.name }}">
+                    <span class="tdtext">{{ subject.name }}</span>
+                </td>
+                <td>
+                    <select class="hidden form-control section-drop-down tdselect"></select>
+                    <span id="td{{ subject.id }}sectionid" class="hidden sectionid">{{ subject.section.id }}</span>
+                    <span class="tdtext sectionname">{{ subject.section.name }}</span>
+                </td>
+                <td>
+                    <select class="hidden form-control subject-type-drop-down tdselect"></select>
+                    <span id="td{{ subject.id }}subjecttypeid" class="hidden subjecttypeid">{{ subject.subject_type.id }}</span>
+                    <span class="tdtext subjecttypename">{{ subject.subject_type.name }}</span>
+                </td>
+                <td><i id="savebutton{{ subject.id }}" class="fa fa-save fa-2x hidden savebutton" onclick="saveSubject({{ subject.id }});"></i>
+                    <i id="editbutton{{ subject.id }}" class="fa fa-edit fa-2x editbutton" onclick="editSubject({{ subject.id }});"></i>
+                    <i class="fa fa-remove fa-2x" onclick="removeSubject({{ subject.id }});"></i>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div id="spinner" class="col-xs-12 text-center hidden"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+</span>
 
 

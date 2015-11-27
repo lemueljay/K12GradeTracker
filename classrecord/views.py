@@ -169,13 +169,58 @@ class CreateSubject(View):
 
 class DeleteSubject(View):
     def get(self, request):
-        subject_id = request.GET['subject_id']
-        query = Subject.objects.filter(id=subject_id)
-        query.delete()
         return HttpResponse()
 
     def post(self, request):
+        subject_id = request.POST['subject_id']
+        query = Subject.objects.get(id=subject_id)
+        query.delete()
         return HttpResponse()
+
+
+class SaveSubject(View):
+    def get(self, request):
+        return HttpResponse()
+
+    def post(self, request):
+        # Get the data.
+        updateOnly = request.POST['updateOnly']
+        subject_id = request.POST['subject_id']
+        new_subject_name = request.POST['new_subject_name']
+        new_section_value = request.POST['new_section_value']
+        new_subject_type_id = request.POST['new_subject_type_id']
+        # Get instances of data.
+        user_instance = request.user
+        section_instance = Section.objects.get(id=new_section_value)
+        subject_type_instance = SubjectType.objects.get(id=new_subject_type_id)
+        if updateOnly == 'true':
+            # Query the data.
+            query = Subject.objects.get(id=subject_id)
+            query.name = new_subject_name
+            query.section = section_instance
+            query.subject_type = subject_type_instance
+            query.save()
+            data = dict()
+            data['error'] = False
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            # Check for redundancy.
+            redundant = Subject.objects.filter(name=new_subject_name, section=section_instance, user=user_instance)
+            if len(redundant) == 0:
+                # Query the data.
+                query = Subject.objects.get(id=subject_id)
+                query.name = new_subject_name
+                query.section = section_instance
+                query.subject_type = subject_type_instance
+                query.save()
+                data = dict()
+                data['error'] = False
+                data['rots'] = 'kani'
+                return HttpResponse(json.dumps(data), content_type="application/json")
+            else:
+                data = dict()
+                data['error'] = True
+                return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 class CreateAssessment(View):

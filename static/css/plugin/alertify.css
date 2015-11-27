@@ -33,6 +33,7 @@
   padding: 24px 24px 0 24px;
   outline: 0;
   background-color: #fff;
+    color: black;
 }
 .alertify .ajs-dialog.ajs-capture:before {
   content: '';

@@ -4,41 +4,44 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    # admin
+    # Admin
     url(r'^admin/', include(admin.site.urls)),
 
-    # landing page/ index
+    # Landing page/ Index
     url(r'^$', index),
 
-    # login
+    # Login
     url(r'^login/$', Login.as_view()),
 
-    # forgot
+    # Forgot Password
     url(r'^forgot/$', forgot),
 
-    # signup
+    # Signup
     url(r'^signup/$', Signup.as_view()),
 
-    # dashboard
+    # Dashboard
     url(r'^dashboard/$', dashboard),
 
-    # logout
+    # Logout
     url(r'^logout/$', logout),
 
-    # get subjects
+    # Get subjects
     url(r'^get_subjects/$', get_subjects),
 
-    # get subjects drop down
+    # Get subjects drop down
     url(r'^get_sections_drop_down/$', get_sections_drop_down),
 
-    # get subject type drop down
+    # Get subject type drop down
     url(r'^get_subject_type_drop_down/$', get_subject_type_drop_down),
 
-    # create subject
+    # Create subject
     url(r'^create_subject/$', CreateSubject.as_view()),
 
-    # delete subject
+    # Delete subject
     url(r'^delete_subject/$', DeleteSubject.as_view()),
+
+    # Save subject
+    url(r'^save_subject/$', SaveSubject.as_view()),
 
     # grade view
     url(r'^defaultgradesview/$', defaultgradesview),
