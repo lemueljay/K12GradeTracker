@@ -205,8 +205,16 @@ body, #sb-site {
     cursor: pointer;
 }
 
+.trfocus {
+    cursor: pointer;
+    color: black;
+    background: rgba(0, 0, 0, 0.05);
+}
+
 #tableclassesview table tbody tr:hover {
     cursor: pointer;
+    color: black;
+    background: rgba(0, 0, 0, 0.05);
 }
 
 #tableclassesview table thead tr td {
@@ -218,11 +226,19 @@ body, #sb-site {
 }
 
 #tableclassesview table tbody tr td i.fa-remove:hover {
-
+    color: red;
 }
 
-#tableclassesview table tbody tr td i.fa-edit:hover {
+#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-save:hover  {
+    color: #00bcd4;
+}
 
+#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-apple:hover  {
+    color: #00bcd4;
+}
+
+#subjectscontainer {
+    padding: 0px;
 }
 
 

@@ -6,6 +6,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>VIEW SUBJECT</th>
             <th>SUBJECT NAME</th>
             <th>SECTION NAME</th>
             <th>SUBJECT TYPE</th>
@@ -15,6 +16,7 @@
         <tbody>
         {% for subject in subjects %}
             <tr id="tr{{ subject.id }}">
+                <td class=""><i onclick="viewSubject({{ subject.id }});" class="fa fa-apple fa-2x"></i></td>
                 <td>
                     <input class="hidden form-control tdinput" value="{{ subject.name }}">
                     <span class="tdtext">{{ subject.name }}</span>

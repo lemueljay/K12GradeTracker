@@ -83,6 +83,7 @@ function createSubject() {
                     $('.contentbar-error-redundant').addClass('hidden');
                     $('#spinner').addClass('hidden');
                     $("<tr id='tr" + data['subject_id'] + "'>" +
+                        "<td class=''><i onclick='viewSubject(" + data['subject_id'] + ")' class='fa fa-apple fa-2x'></i></td>" +
                     "<td><input class='hidden form-control tdinput' value='" + subject_name + "'><span class='tdtext'>" + subject_name + "</span></td>" +
                     "<td><select class='hidden form-control section-drop-down tdselect'></select><span id='td" + data['subject_id'] + "sectionid' class='hidden sectionid'>" + section_value + "</span><span class='tdtext sectionname'>" + section_name + "</span></td>" +
                     "<td><select class='hidden form-control subject-type-drop-down tdselect'></select><span id='td" + data['subject_id'] + "subjecttypeid' class='hidden subjecttypeid'>" + subject_type_value + "</span><span class='tdtext subjecttypename'>" + subject_type +"</span></td>" +
@@ -133,41 +134,46 @@ function editSubject(subject_id) {
     $('.tdselect').addClass('hidden');
     $('.tdinput').addClass('hidden');
     $('.tdtext').removeClass('hidden');
-    $('#tr' + subject_id + ' td input').removeClass('hidden');
-    $('#tr' + subject_id + ' td select').removeClass('hidden');
-    $('#tr' + subject_id + ' td span').addClass('hidden');
+    $('#tr' + subject_id + ' td').addClass('trfocus');
+    /* Get data and apply to form. */
     var subject_name = $('#tr' + subject_id + ' td:nth-child(1) span').text();
     $('#tr' + subject_id + ' td:nth-child(1) input').val(subject_name);
     var section_value = $('#td' + subject_id + 'sectionid').text();
     $("select.section-drop-down option[value=" + section_value + "]").attr("selected","selected");
     var subjecttype = $('#td' + subject_id + 'subjecttypeid').text();
     $("select.subject-type-drop-down option[value=" + subjecttype + "]").attr("selected","selected");
+    /* Show form. */
+    $('#tr' + subject_id + ' td input').removeClass('hidden');
+    $('#tr' + subject_id + ' td select').removeClass('hidden');
+    $('#tr' + subject_id + ' td span').addClass('hidden');
 }
 
 function saveSubject(subject_id) {
-    /* Get data */
+    /* POST token. */
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
-    var new_subject_name = $('#tr' + subject_id + ' td input.tdinput').val().toUpperCase();
-    var new_section_value = $('#tr' + subject_id + ' td:nth-child(2) select').val();
-    var new_section_name = $('#tr' + subject_id + ' td:nth-child(2) select option[value=' + new_section_value+ ']').text();
-    var new_subject_type_id = $('#tr' + subject_id + ' td:nth-child(3) select').val();
-    var new_subject_type = $('#tr' + subject_id + ' td:nth-child(3) select option[value=' + new_subject_type_id+ ']').text();
+    /* Get data */
+    var new_subject_name = $('#tr' + subject_id + ' td:nth-child(2) input.tdinput').val().toUpperCase();
+    var new_section_value = $('#tr' + subject_id + ' td:nth-child(3) select').val();
+    var new_section_name = $('#tr' + subject_id + ' td:nth-child(3) select option[value=' + new_section_value+ ']').text();
+    var new_subject_type_id = $('#tr' + subject_id + ' td:nth-child(4) select').val();
+    var new_subject_type = $('#tr' + subject_id + ' td:nth-child(4) select option[value=' + new_subject_type_id+ ']').text();
     /* Check for changes */
-    var temp1 = $('#tr' + subject_id + ' td:nth-child(1) span').text();
-    var temp2 = $('#tr' + subject_id + ' td input.tdinput').val().toUpperCase();
-    var temp3 = $('#tr' + subject_id + ' td:nth-child(2) span.sectionid').text();
-    var temp4 = $('#tr' + subject_id + ' td:nth-child(2) select').val();
-    var temp5 = $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypeid').text();
-    var temp6 = $('#tr' + subject_id + ' td:nth-child(3) select').val();
+    var temp1 = $('#tr' + subject_id + ' td:nth-child(2) span').text();
+    var temp2 = $('#tr' + subject_id + ' td:nth-child(2) input.tdinput').val().toUpperCase();
+    var temp3 = $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text();
+    var temp4 = $('#tr' + subject_id + ' td:nth-child(3) select').val();
+    var temp5 = $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text();
+    var temp6 = $('#tr' + subject_id + ' td:nth-child(4) select').val();
     if(temp1 == temp2 && temp3 == temp4 && temp5 == temp6) {
+        $('#tr' + subject_id + ' td').removeClass('trfocus');
         $('.contentbar-error').addClass('hidden');
         $('.contentbar-error-redundant').addClass('hidden');
         /* Request successful. */
-        $('#tr' + subject_id + ' td:nth-child(1) span').text(new_subject_name);
-        $('#tr' + subject_id + ' td:nth-child(2) span.sectionid').text(new_section_value);
-        $('#tr' + subject_id + ' td:nth-child(2) span.sectionname').text(new_section_name);
-        $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypeid').text(new_subject_type_id);
-        $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypename').text(new_subject_type);
+        $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
+        $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
+        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
+        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
+        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
         alertify.success('No changes made with ' + new_subject_name);
         /* Hide editor, show spans. */
         $('.tdselect').addClass('hidden');
@@ -177,79 +183,87 @@ function saveSubject(subject_id) {
         $('#editbutton' + subject_id).removeClass('hidden');
         $('#savebutton' + subject_id).addClass('hidden');
         $('#tableclassesview table').trigger('update');
-    } else if(temp1 == temp2 && temp3 == temp4) {
-        /* Send data. */
-        var updateOnly = true;
-        console.log(updateOnly);
-        $.ajax({
-            type: 'POST',
-            url: '/save_subject/',
-            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_id': subject_id, 'new_subject_name': new_subject_name, 'new_section_value': new_section_value, 'new_subject_type_id': new_subject_type_id, 'updateOnly': updateOnly},
-            success: function(data) {
-                if(data['error']) {
-                    $('.contentbar-error').addClass('hidden');
-                    $('.contentbar-error-redundant').removeClass('hidden');
-                } else {
-                    $('.contentbar-error').addClass('hidden');
-                    $('.contentbar-error-redundant').addClass('hidden');
-                    /* Request successful. */
-                    $('#tr' + subject_id + ' td:nth-child(1) span').text(new_subject_name);
-                    $('#tr' + subject_id + ' td:nth-child(2) span.sectionid').text(new_section_value);
-                    $('#tr' + subject_id + ' td:nth-child(2) span.sectionname').text(new_section_name);
-                    $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypeid').text(new_subject_type_id);
-                    $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypename').text(new_subject_type);
-                    alertify.success(new_subject_name + ' successfully updated!');
-                     /* Hide editor, show spans. */
-                    $('.tdselect').addClass('hidden');
-                    $('.tdinput').addClass('hidden');
-                    $('.tdtext').removeClass('hidden');
-                    /* Hide this save button. */
-                    $('#editbutton' + subject_id).removeClass('hidden');
-                    $('#savebutton' + subject_id).addClass('hidden');
-                    $('#tableclassesview table').trigger('update');
-                }
-            }
-        });
+    } else if(temp2.trim(" ") == '') {
+        $('.contentbar-error-redundant').addClass('hidden');
+        $('.contentbar-error').removeClass('hidden');
     } else {
-    /* Send data. */
-        var updateOnly = false;
-        $.ajax({
-            type: 'POST',
-            url: '/save_subject/',
-            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_id': subject_id, 'new_subject_name': new_subject_name, 'new_section_value': new_section_value, 'new_subject_type_id': new_subject_type_id, 'updateOnly': updateOnly},
-            success: function(data) {
-                if(data['error']) {
-                    $('.contentbar-error').addClass('hidden');
-                    $('.contentbar-error-redundant').removeClass('hidden');
-                } else {
-                    $('.contentbar-error').addClass('hidden');
-                    $('.contentbar-error-redundant').addClass('hidden');
-                    /* Request successful. */
-                    $('#tr' + subject_id + ' td:nth-child(1) span').text(new_subject_name);
-                    $('#tr' + subject_id + ' td:nth-child(2) span.sectionid').text(new_section_value);
-                    $('#tr' + subject_id + ' td:nth-child(2) span.sectionname').text(new_section_name);
-                    $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypeid').text(new_subject_type_id);
-                    $('#tr' + subject_id + ' td:nth-child(3) span.subjecttypename').text(new_subject_type);
-                    alertify.success(new_subject_name + ' successfully updated!');
-                     /* Hide editor, show spans. */
-                    $('.tdselect').addClass('hidden');
-                    $('.tdinput').addClass('hidden');
-                    $('.tdtext').removeClass('hidden');
-                    /* Hide this save button. */
-                    $('#editbutton' + subject_id).removeClass('hidden');
-                    $('#savebutton' + subject_id).addClass('hidden');
-                    $('#tableclassesview table').trigger('update');
+            if(temp1 == temp2 && temp3 == temp4) {
+            /* Send data. */
+            var updateOnly = true;
+            $.ajax({
+                type: 'POST',
+                url: '/save_subject/',
+                data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_id': subject_id, 'new_subject_name': new_subject_name, 'new_section_value': new_section_value, 'new_subject_type_id': new_subject_type_id, 'updateOnly': updateOnly},
+                success: function(data) {
+                    if(data['error']) {
+                        $('.contentbar-error').addClass('hidden');
+                        $('.contentbar-error-redundant').removeClass('hidden');
+                    } else {
+                        $('.contentbar-error').addClass('hidden');
+                        $('.contentbar-error-redundant').addClass('hidden');
+                        /* Request successful. */
+                        $('#tr' + subject_id + ' td').removeClass('trfocus');
+                        $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
+                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
+                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
+                        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
+                        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
+                        alertify.success(new_subject_name + ' successfully updated!');
+                         /* Hide editor, show spans. */
+                        $('.tdselect').addClass('hidden');
+                        $('.tdinput').addClass('hidden');
+                        $('.tdtext').removeClass('hidden');
+                        /* Hide this save button. */
+                        $('#editbutton' + subject_id).removeClass('hidden');
+                        $('#savebutton' + subject_id).addClass('hidden');
+                        $('#tableclassesview table').trigger('update');
+                        $('#tr' + subject_id + ' td').removeClass('trfocus');
+                    }
                 }
-            }
-        });
+            });
+        } else {
+        /* Send data. */
+            var updateOnly = false;
+            $.ajax({
+                type: 'POST',
+                url: '/save_subject/',
+                data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_id': subject_id, 'new_subject_name': new_subject_name, 'new_section_value': new_section_value, 'new_subject_type_id': new_subject_type_id, 'updateOnly': updateOnly},
+                success: function(data) {
+                    if(data['error']) {
+                        $('.contentbar-error').addClass('hidden');
+                        $('.contentbar-error-redundant').removeClass('hidden');
+                    } else {
+                        $('.contentbar-error').addClass('hidden');
+                        $('.contentbar-error-redundant').addClass('hidden');
+                        /* Request successful. */
+                        $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
+                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
+                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
+                        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
+                        $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
+                        alertify.success(new_subject_name + ' successfully updated!');
+                         /* Hide editor, show spans. */
+                        $('.tdselect').addClass('hidden');
+                        $('.tdinput').addClass('hidden');
+                        $('.tdtext').removeClass('hidden');
+                        /* Hide this save button. */
+                        $('#editbutton' + subject_id).removeClass('hidden');
+                        $('#savebutton' + subject_id).addClass('hidden');
+                        $('#tr' + subject_id + ' td').removeClass('trfocus');
+                        $('#tableclassesview table').trigger('update');
+                    }
+                }
+            });
+        }
     }
 }
+/* View subject function. */
+function viewSubject(subject_id) {
 
+}
 
 /* When the document is ready... */
 $(document).ready(function() {
-    /* Alertify Confirm */
-    console.log($('button.ajs-button.ajs-ok').text());
     /* Initialize the manage subject feature. */
     loadSubjects();
     loadSectionDropdown();
