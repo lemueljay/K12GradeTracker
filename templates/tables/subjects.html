@@ -16,7 +16,9 @@
         <tbody>
         {% for subject in subjects %}
             <tr id="tr{{ subject.id }}">
-                <td class=""><i onclick="viewSubject({{ subject.id }});" class="fa fa-apple fa-2x"></i></td>
+                <td class="">
+                    <i onclick="viewSubject({{ subject.id }});" class="fa fa-apple fa-2x"></i>
+                </td>
                 <td>
                     <input class="hidden form-control tdinput" value="{{ subject.name }}">
                     <span class="tdtext">{{ subject.name }}</span>
@@ -31,7 +33,8 @@
                     <span id="td{{ subject.id }}subjecttypeid" class="hidden subjecttypeid">{{ subject.subject_type.id }}</span>
                     <span class="tdtext subjecttypename">{{ subject.subject_type.name }}</span>
                 </td>
-                <td><i id="savebutton{{ subject.id }}" class="fa fa-save fa-2x hidden savebutton" onclick="saveSubject({{ subject.id }});"></i>
+                <td>
+                    <i id="savebutton{{ subject.id }}" class="fa fa-save fa-2x hidden savebutton" onclick="saveSubject({{ subject.id }});"></i>
                     <i id="editbutton{{ subject.id }}" class="fa fa-edit fa-2x editbutton" onclick="editSubject({{ subject.id }});"></i>
                     <i class="fa fa-remove fa-2x" onclick="removeSubject({{ subject.id }});"></i>
                 </td>

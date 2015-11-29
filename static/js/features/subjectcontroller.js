@@ -259,7 +259,28 @@ function saveSubject(subject_id) {
 }
 /* View subject function. */
 function viewSubject(subject_id) {
-
+    $('#assessmentscontainer span').empty();
+    /* Show loading bar. */
+    $('#assessmentbigspinner').show();
+    var subject_name =  $('#tr' + subject_id + ' td:nth-child(2) span').text();
+    var section_name = $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text();
+    $('#recgradbar div:nth-child(1) span:nth-child(1)').text(subject_name);
+    $('#recgradbar div:nth-child(1) span:nth-child(2)').text(section_name);
+    $('.contentbar').hide();
+    $('#recgradbar').show();
+    $.ajax({
+        type: 'GET',
+        url: '/get_assessments/',
+        data: {},
+        success: function(data) {
+            $('#assessmentscontainer span').html(data).hide();
+        },
+        complete: function() {
+             $('#assessmentbigspinner').fadeOut('fast', function() {
+                $('#assessmentscontainer span').fadeIn();
+            });
+        }
+    });
 }
 
 /* When the document is ready... */

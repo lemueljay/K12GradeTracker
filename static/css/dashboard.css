@@ -99,6 +99,18 @@ body, #sb-site {
     padding-bottom: 30px;
 }
 
+#spinner {
+    margin-bottom: 15px;
+}
+
+#assessmentbigspinner {
+    margin-top: 70px;
+}
+
+#assessmentbigspinner i {
+    color: #607d8b;
+}
+
 .fa-birthday-cake {
     color: #0172bc;
 }
@@ -197,11 +209,11 @@ body, #sb-site {
     margin-bottom: 0px;
 }
 
-#tableclassesview {
+table {
     font-family: "Roboto";
 }
 
-#tableclassesview table thead:hover {
+table thead:hover {
     cursor: pointer;
 }
 
@@ -211,31 +223,33 @@ body, #sb-site {
     background: rgba(0, 0, 0, 0.05);
 }
 
-#tableclassesview table tbody tr:hover {
+table tbody tr:hover {
     cursor: pointer;
     color: black;
     background: rgba(0, 0, 0, 0.05);
 }
 
-#tableclassesview table thead tr td {
+table thead tr td {
     font-weight: bold;
 }
 
-#tableclassesview table tbody tr td i {
+table tbody tr td i {
     padding-left: 10px;
 }
 
-#tableclassesview table tbody tr td i.fa-remove:hover {
+table tbody tr td i.fa-remove:hover {
     color: red;
 }
 
-#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-save:hover  {
+#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-save:hover, #tableclassesview table tbody tr td i.fa-apple:hover  {
     color: #00bcd4;
 }
 
-#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-apple:hover  {
-    color: #00bcd4;
+#tableassessmentsview table tbody tr td i.fa-edit:hover, #tableassessmentsview table tbody tr td i.fa-save:hover, #tableassessmentsview table tbody tr td i.fa-apple:hover  {
+    color: #607d8b;
 }
+
+
 
 #subjectscontainer {
     padding: 0px;

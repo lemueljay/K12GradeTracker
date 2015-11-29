@@ -223,21 +223,5 @@ class SaveSubject(View):
                 return HttpResponse(json.dumps(data), content_type="application/json")
 
 
-class CreateAssessment(View):
-    def get(self, request):
-        class_id = request.GET['class_id']
-        class_instance = Class.objects.get(id=class_id)
-        assessment_name = request.GET['assessment_name']
-        assessment_type = request.GET['assessment_type']
-        assessment_total = request.GET['assessment_total']
-        assessment_gradingperiod = request.GET['assessment_gradingperiod']
-        assessmenttype_instance = AssessmentType.objects.get(id=assessment_type)
-        query = Assessment(name=assessment_name, total=assessment_total, assessmenttype=assessmenttype_instance, classname=class_instance, gradingperiod=assessment_gradingperiod)
-        query.save()
-        assessmenttypes = AssessmentType.objects.all()
-        students = Student.objects.filter(classname=class_instance)
-        for student in students:
-            grade = StudentGrades(student=student, assessment=query, assessmenttype=query.assessmenttype, assessmentgradingperiod=query.assessmentgradingperiod, score=-1)
-            grade.save()
-        grades = StudentGrades.objects.filter(assessment=query, assessmenttype=query.assessmenttype, gradingperiod=query.assessmentgradingperiod)
-        return render(request, 'tables/assessment.html', {'class': class_instance, 'assessment': query, 'assessmenttypes': assessmenttypes, 'students': students, 'grades': grades, 'gradingperiod': gradingperiod})
+def get_assessments(request):
+    return render(request, 'tables/assessments.html', {})

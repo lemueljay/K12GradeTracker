@@ -193,4 +193,5 @@ $(document).ready(function() {
         $('.modal-right').addClass('hidden');
         $('#op-ab').removeClass('hidden');
     });
+
 })

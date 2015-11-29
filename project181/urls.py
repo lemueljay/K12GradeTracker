@@ -43,8 +43,6 @@ urlpatterns = [
     # Save subject
     url(r'^save_subject/$', SaveSubject.as_view()),
 
-    # grade view
-    url(r'^defaultgradesview/$', defaultgradesview),
-
-
+    # Get assessments in a subject
+    url(r'^get_assessments/$', get_assessments),
 ]

@@ -25,7 +25,7 @@
     <!-- Import my own stylesheets and scripts. -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
-     <script type="text/javascript" src="{% static 'js/features/subjectcontroller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features/subjectcontroller.js' %}"></script>
     <title>KGT Dashboard</title>
 </head>
 <body>
@@ -36,7 +36,7 @@
                 <i class="fa fa-reorder sb-toggle-left"></i>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand sb-toggle-left animated tada" href="#">
+                <a class="navbar-brand sb-toggle-left animated tada">
                     <span class="bold">K12</span>
                     <span class="light">Grade</span>
                     <span class="bold">Tracker</span>
@@ -147,7 +147,7 @@
     </div>
     <!--Record Grades Bar -->
     <div id="recgradbar" class="container contentbar">
-        <div class="contentbar-header"><span class="bold">RECORD</span> <span class="light">GRADES</span></div>
+        <div class="contentbar-header"><span class="bold">SUBJECT</span> <span class="light">GRADES</span></div>
         <div id="record_grades_field" class="col-xs-12">
             <div class="col-xs-12">
                 <form class="form-group">
@@ -170,9 +170,12 @@
                     </div>
                 </form>
             </div>
+            <div id="assessmentscontainer" class="col-xs-12 container">
+                <span></span>
+                <div id="assessmentbigspinner" class="text-center" value="show"><i class="fa fa-spin fa-spinner fa-5x"></i></div>
+            </div>
         </div>
     </div>
-
     <!-- Sidebar Bar -->
     <div class="sidebar left">
             <div class="row">
