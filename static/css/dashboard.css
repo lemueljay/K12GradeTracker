@@ -248,12 +248,21 @@ table tbody tr td i.fa-remove:hover {
 #tableassessmentsview table tbody tr td i.fa-edit:hover, #tableassessmentsview table tbody tr td i.fa-save:hover, #tableassessmentsview table tbody tr td i.fa-apple:hover  {
     color: #607d8b;
 }
+/*
+input[name=viewGradesButton], input[name=viewGradesButton]:active, input[name=viewGradesButton]:focus, input[name=viewGradesButton]:active:focus, input[name=viewGradesButton]:hover {
+    background-color: #8bc34a;
+    border: 1px solid #8bc34a;
+}
 
-
-
+input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[name=viewStudentsButton]:focus, input[name=viewStudentsButton]:active:focus, input[name=viewStudentsButton]:hover {
+    background-color: #CC0505;
+    border: 1px solid #CC0505;
+}
+*/
 #subjectscontainer {
     padding: 0px;
 }
+
 
 
 /** Clock **/
@@ -502,6 +511,9 @@ img {
     border: 1px solid #4285f4;
 }
 
+.btn-default:hover {
+    background: none;
+}
 
 * {
   -webkit-box-sizing: border-box;

@@ -45,4 +45,8 @@ urlpatterns = [
 
     # Get assessments in a subject
     url(r'^get_assessments/$', get_assessments),
+
+    # Update Grading Period
+    url(r'^grading_period/$', GradingPeriod.as_view()),
+
 ]

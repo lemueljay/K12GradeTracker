@@ -130,11 +130,24 @@ $(document).ready(function() {
          $('#subjectsbar').show();
 
     });
+    $('#mansubbutt').click(function() {
+         $('.contentbar').hide();
+         $('#subjectsbar').show();
+
+    });
     $('#mansec').click(function() {
         $('.contentbar').hide();
         $('#sectionsbar').show();
     });
+    $('#viewstudbutt').click(function() {
+        $('.contentbar').hide();
+        $('#sectionsbar').show();
+    });
     $('#viewgrad').click(function() {
+        $('.contentbar').hide();
+        $('#viewgradesbar').show();
+    });
+    $('#viewgradbutt').click(function() {
         $('.contentbar').hide();
         $('#viewgradesbar').show();
     });
@@ -174,11 +187,6 @@ $(document).ready(function() {
     $('.oppass').click(function() {
         $('.modal-right').addClass('hidden');
         $('#op-pass').removeClass('hidden');
-    });
-
-    $('.oplin').click(function() {
-        $('.modal-right').addClass('hidden');
-        $('#op-lin').removeClass('hidden');
     });
 
     $('.opsch').click(function() {

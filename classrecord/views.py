@@ -66,7 +66,7 @@ class Signup(View):
                 query.save()
                 user_instance = User.objects.get(username=username)
                 system_instance = GradingSystem.objects.get(id=grading_system)
-                query = UserSystem(user=user_instance, grading_system=system_instance)
+                query = UserProfile(user=user_instance, grading_system=system_instance)
                 query.save()
                 user = auth.authenticate(username=username, password=password)
                 if user is not None:
@@ -91,10 +91,20 @@ def dashboard(request):
     if request.user.is_authenticated():
         fullname = request.user.get_full_name()
         user_instance = request.user
-        system = UserSystem.objects.get(user=user_instance)
-        return render(request, 'dashboard.html', {'fullname': fullname, 'firstname': user_instance.first_name, 'system': system.grading_system.name})
+        system = UserProfile.objects.get(user=user_instance)
+        return render(request, 'dashboard.html', {'fullname': fullname, 'firstname': user_instance.first_name,
+                                                  'lastname': user_instance.last_name,
+                                                  'email': user_instance.email, 'system': system.grading_system.name})
     else:
         return HttpResponseRedirect('/login/')
+
+
+class GradingPeriod(View):
+    def get(self, request):
+        return HttpResponse()
+
+    def post(self, request):
+        return HttpResponse()
 
 
 def get_subjects(request):
@@ -121,7 +131,7 @@ def get_sections_drop_down(request):
 
 def get_subject_type_drop_down(request):
     user_instance = request.user
-    user_system_instance = UserSystem.objects.get(user=user_instance)
+    user_system_instance = UserProfile.objects.get(user=user_instance)
     try:
         subject_types = SubjectType.objects.filter(grading_system=user_system_instance.grading_system).order_by('name')
         if len(subject_types) == 0:

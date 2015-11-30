@@ -25,7 +25,12 @@
     <!-- Import my own stylesheets and scripts. -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features/updateinfo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features/gradingperiod.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/features/subjectcontroller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features/sectioncontroller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/features/assessmentcontroller.js' %}"></script>
+
     <title>KGT Dashboard</title>
 </head>
 <body>
@@ -108,7 +113,7 @@
                         <select id="subject-type-drop-down" class="form-control"></select>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <input name="createSubjectButton" type="button" class="form-control btn btn-primary" value="Create Subject">
+                        <input name="createSubjectButton" type="button" class="form-control btn btn-primary hvr-float" value="Create Subject">
                     </div>
                 </form>
             </div>
@@ -166,13 +171,30 @@
                         <input type="text" class="form-control" placeholder="Total">
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <input type="submit" class="form-control btn btn-warning  hvr-float-shadow" value="Create Assessment">
+                        <input type="button" class="form-control btn btn-warning  hvr-float-shadow" value="Create Assessment">
                     </div>
                 </form>
             </div>
+
+
             <div id="assessmentscontainer" class="col-xs-12 container">
+                <hr>
                 <span></span>
                 <div id="assessmentbigspinner" class="text-center" value="show"><i class="fa fa-spin fa-spinner fa-5x"></i></div>
+            </div>
+            <div class="container col-xs-12">
+                <hr>
+                <div class="form-group">
+                    <div id="mansubbutt" class="col-xs-2 hvr-float">
+                        <input type="button" class="form-control btn btn-warning" value="Back to Subjects">
+                    </div>
+                    <div id="viewgradbutt" class="col-xs-5 hvr-float">
+                        <input  name="viewGradesButton" type="button" class="form-control btn btn-warning" value="View Students's Grades">
+                    </div>
+                    <div id="viewstudbutt" class="col-xs-5 hvr-float">
+                        <input name="viewStudentsButton" type="button" class="form-control btn btn-warning" value="View Students">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -180,7 +202,7 @@
     <div class="sidebar left">
             <div class="row">
                 <div class="col-xs-12">
-                    <img class="img-responsive img-circle" src="{% static 'img/profile.png' %}">
+                    <img class="img-circle img-responsive" src="{% static 'img/profile.png' %}" style="max-height:200px;width:130px;">
                     <div class="profile-footer">{{ fullname }}</div>
                 </div>
                 <div class="col-xs-12 options">
@@ -208,23 +230,28 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Change Grading Period</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body container col-xs-12">
                 <form id="changeGradingForm" class="form-group">
-                    <select class="form-control">
-                        <option value="1" selected>1st Grading</option>
-                        <option value="2">2nd Grading</option>
-                        <option value="3">3rd Grading</option>
-                        <option value="3">4th Grading</option>
-                    </select>
+                    <div id="1stgrad" class="col-xs-3 hvr-buzz">
+                        <input type="button" class="form-control btn btn-danger" data-dismiss="modal" value="1st Grading">
+                    </div>
+                    <div id="2ndgrad" class="col-xs-3 hvr-buzz">
+                        <input  name="" type="button" class="form-control btn btn-danger" data-dismiss="modal" value="2nd Grading">
+                    </div>
+                    <div id="3rdgrad" class="col-xs-3 hvr-buzz">
+                        <input name="" type="button" class="form-control btn btn-danger" data-dismiss="modal" value="3rd Grading">
+                    </div>
+                     <div id="4thgrad" class="col-xs-3 hvr-buzz">
+                        <input name="" type="button" class="form-control btn btn-danger" data-dismiss="modal" value="4th Grading">
+                    </div>
                 </form>
           </div>
-          <div class="modal-footer">
-            <input type="button" class="btn btn-default hvr-float" data-dismiss="modal" value="Close">
-            <input type="button" class="btn btn-danger hvr-float" value="Save Changes">
-          </div>
+          <div class="modal-footer"></div>
         </div>
       </div>
     </div>
+
+
     <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -238,7 +265,6 @@
                   <div class="opprof">Profile</div>
                   <div class="opem">Emails</div>
                   <div class="oppass">Password</div>
-                  <div class="oplin">Linked Accounts</div>
                   <div class="opsch">School</div>
                   <div class="oploc">Local</div>
                   <div class="opab">Abouts</div>
@@ -253,6 +279,12 @@
                         <div>
                             <img class="img-circle img-responsive" src="{% static 'img/profile.png' %}">
                         </div>
+                        <div>
+                            <form>
+                                <input type="file">
+                                <input type="submit" value="upload">
+                            </form>
+                        </div>
                   </div>
               </div>
               <div  id="op-prof" class="col-sm-9 modal-right hidden">
@@ -265,9 +297,9 @@
                       <form class="form-group">
                           <div class="form-horizontal">
                               <label>First Name: </label>
-                              <input type="text" class="form-control" value="Lemuel Jay">
+                              <input name="modFirstname" type="text" class="form-control" placeholder="First Name" value="{{ firstname }}">
                               <label>Last Name: </label>
-                              <input type="text" class="form-control" value="Vallinas">
+                              <input name="modLastname" type="text" class="form-control" placeholder="Last Name" value="{{ lastname }}">
                           </div>
                       </form>
                   </div>
@@ -282,13 +314,9 @@
                       <form class="form-group">
                           <div class="form-horizontal">
                               <label>Email: </label>
-                              <input type="email" class="form-control" value="lemueljayvallinas@gmail.com">
+                              <input name="modEmail" type="email" class="form-control" placeholder="Email Address" value="{{ email }}">
                               <label>Facebook: </label>
-                              <input type="url" class="form-control" value="facebook.com/lemueljay">
-                              <label>Twitter: </label>
-                              <input type="url" class="form-control" value="twitter.com/lemmeister">
-                              <label>Instagram: </label>
-                              <input type="url" class="form-control" value="instagram.com/lemmoi">
+                              <input name="modFb" type="url" class="form-control" placeholder="facebook.com">
                           </div>
                       </form>
                   </div>
@@ -306,7 +334,7 @@
                               <label>Current Password: </label>
                               <input type="password" class="form-control" placeholder="Type current password.">
                               <label>New Password: </label>
-                              <input type="password" class="form-control" placeholder="Type new password.">
+                              <input name="modPass" type="password" class="form-control" placeholder="Type new password.">
                               <label>Password: </label>
                               <input type="password" class="form-control" placeholder="Confirm  Passord">
                           </div>
@@ -320,25 +348,6 @@
                       </div>
                   </div>
               </div>
-              <div  id="op-lin" class="col-sm-9 modal-right hidden">
-                  <div class="modal-right-header">Linked Accounts</div>
-                  <hr>
-                   <div class="col-xs-12">
-                      <div>
-                          In order to change your linked accounts, just fill up the requirements below.
-                      </div>
-                      <form class="form-group">
-                          <div class="form-horizontal">
-                              <label>Facebook: </label>
-                              <input type="url" class="form-control" value="facebook.com/lemueljay">
-                              <label>Twitter: </label>
-                              <input type="url" class="form-control" value="twitter.com/lemmeister">
-                              <label>Instagram: </label>
-                              <input type="url" class="form-control" value="instagram.com/lemmoi">
-                          </div>
-                      </form>
-                  </div>
-              </div>
               <div  id="op-sch" class="col-sm-9 modal-right hidden">
                   <div class="modal-right-header">School</div>
                   <hr>
@@ -349,7 +358,7 @@
                       <form class="form-group">
                           <div class="form-horizontal">
                               <label>School: </label>
-                              <input type="text" class="form-control" value="Mabuhay Elementary School">
+                              <input name="modSchool" type="text" class="form-control" placeholder="School Name">
                           </div>
                       </form>
                   </div>
@@ -364,10 +373,10 @@
                       <form class="form-group">
                           <div class="form-horizontal">
                               <label>Address: </label>
-                              <input type="text" class="form-control" value="Dipolog, Zamboanga del Norte, Philippines">
+                              <input name="modHome" type="text" class="form-control" placeholder="Home Address">
                               <div class="form-horizontal">
                               <label>Postal Code: </label>
-                              <input type="text" class="form-control" value="7110">
+                              <input name="modPosCode" type="text" class="form-control" placeholder="Postal Code">
                           </div>
                           </div>
                       </form>
@@ -383,7 +392,7 @@
                       <form class="form-group">
                           <div class="form-horizontal">
                               <label>School: </label>
-                              <textarea class="form-control" placeholder="Write anything about yourself." rows="10"></textarea>
+                              <textarea name="modText" class="form-control" placeholder="Write anything about yourself." rows="10"></textarea>
                           </div>
                       </form>
                   </div>
@@ -391,7 +400,7 @@
           </div>
           <div class="modal-footer">
             <input type="button" class="btn btn-default hvr-float" data-dismiss="modal" value="Close">
-            <input type="button" class="btn btn-info hvr-float" value="Save Changes">
+            <input id="saveChangesButt" type="button" class="btn btn-info hvr-float" data-dismiss="modal" value="Save Changes">
           </div>
         </div>
       </div>

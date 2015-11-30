@@ -11,8 +11,8 @@ class GradingSystem(models.Model):
         return u'%s %s' % (self.id, self.name)
 
 
-# User System Model
-class UserSystem(models.Model):
+# User Profile Model
+class UserProfile(models.Model):
     user = models.ForeignKey(User)
     grading_system = models.ForeignKey(GradingSystem)
 

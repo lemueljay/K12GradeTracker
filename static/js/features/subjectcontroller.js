@@ -115,7 +115,7 @@ function removeSubject(subject_id) {
                 $('#tr' + subject_id).fadeOut('slow', function() {
                     $('#tr' + subject_id).remove();
                 });
-                alertify.error($('#tr' + subject_id + ' td:nth-child(1)').text() + ' successfully removed!');
+                alertify.error($('#tr' + subject_id + ' td:nth-child(2)').text() + ' successfully removed!');
             }
         });
     }, function() {
@@ -260,6 +260,7 @@ function saveSubject(subject_id) {
 /* View subject function. */
 function viewSubject(subject_id) {
     $('#assessmentscontainer span').empty();
+
     /* Show loading bar. */
     $('#assessmentbigspinner').show();
     var subject_name =  $('#tr' + subject_id + ' td:nth-child(2) span').text();
@@ -273,6 +274,7 @@ function viewSubject(subject_id) {
         url: '/get_assessments/',
         data: {},
         success: function(data) {
+
             $('#assessmentscontainer span').html(data).hide();
         },
         complete: function() {
