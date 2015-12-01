@@ -6,6 +6,7 @@ from classrecord.models import *
 from classrecord.forms import *
 import json
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -235,3 +236,11 @@ class SaveSubject(View):
 
 def get_assessments(request):
     return render(request, 'tables/assessments.html', {})
+
+
+class CreateAssessment(View):
+    def get(self, request):
+        return HttpResponse()
+
+    def post(self, request):
+        return HttpResponse()
