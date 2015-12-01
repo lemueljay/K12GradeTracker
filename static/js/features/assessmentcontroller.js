@@ -10,8 +10,11 @@ function validateAssessmentForm() {
     var assessmentType = $('#recgradassessmenttype').val();
     var assessmentTotal = $('input[name=recgradtotal]').val();
     if(assessmentName.trim(" ") == '' || assessmentType == null || assessmentTotal.trim(" ") == '') {
+        $('.recgradbar-error').removeClass('hidden');
         return false;
     } else {
+        $('.recgradbar-error').addClass('hidden');
+        $('.recgradbar-error-redundant').addClass('hidden');
         return true;
     }
 }
@@ -38,9 +41,13 @@ function createAssessment() {
             /* Check for uniqueness. */
             if(data['error']) {{
                 /* If there is redundancy. */
+                $('.recgradbar-error').addClass('hidden');
+                $('.recgradbar-error-redundant').removeClass('hidden');
                 console.log('Error!');
             }} else {
                 /* No redundancy, go for gold. */
+                $('.recgradbar-error').addClass('hidden');
+                $('.recgradbar-error-redundant').addClass('hidden');
                 $("<tr>" +
                 "<td>" +
                 "<i onclick='' class='fa fa-apple fa-2x'></i>" +
@@ -91,6 +98,8 @@ function goToViewStudents() {
 
 $(document).ready(function() {
     $('input[value="Create Assessment"]').click(function() {
+        $('.recgradbar-error').addClass('hidden');
+        $('.recgradbar-error-redundant').addClass('hidden');
        /* Validate */
        if(validateAssessmentForm()) {
             /* Send Form */
