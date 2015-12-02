@@ -243,4 +243,25 @@ class CreateAssessment(View):
         return HttpResponse()
 
     def post(self, request):
-        return HttpResponse()
+        # Get assessment data
+        name = request.POST['assessmentName']
+        total = request.POST['assessmentTotal']
+        assessmenttype = request.POST['assessmentType']
+        subject_id = request.POST['subject_id']
+        # Get instances of data
+        assessmenttype_instance = AssessmentType.objects.get(id=assessmenttype)
+        subject_instance = Subject.objects.get(id=subject_id)
+        # Test redundancy.
+        redundant = Assessment.objects.filter(name=name)
+        if len(redundant) == 0:
+            # Prepare and save the query.
+            query = Assessment(name=name, total=total, assessmenttype=assessmenttype_instance, subject=subject_instance)
+            query.save()
+            data = dict()
+            data['error'] = False
+            data['assessment_id'] = query.id
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")

@@ -22,7 +22,7 @@ class UserProfile(models.Model):
 
 # Subject Type Model
 class SubjectType(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     written_works = models.CharField(max_length=200)
     performance_tasks = models.CharField(max_length=200)
     quarterly_assessments = models.CharField(max_length=200)
@@ -54,6 +54,7 @@ class Subject(models.Model):
         return u'%s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user)
 
 
+# !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!
 class Class(models.Model):
     name = models.CharField(max_length=200)
     section = models.CharField(max_length=200)
@@ -82,11 +83,15 @@ class AssessmentType(models.Model):
         return self.type
 
 
+# Assessment Model
 class Assessment(models.Model):
-    name = models.CharField(max_length=200)
-    total = models.IntegerField(default=100)
+    name = models.CharField(max_length=200, unique=True)
+    total = models.IntegerField(default=0)
     assessmenttype = models.ForeignKey(AssessmentType, default=0)
-    classname = models.ForeignKey(Class)
+    subject = models.ForeignKey(Subject, default=0)
+
+    def __unicode__(self):
+        return u'%s %s %s %s' % (self.name, self.total, self.assessmenttype.type, self.subject.name)
 
 
 class StudentGrades(models.Model):

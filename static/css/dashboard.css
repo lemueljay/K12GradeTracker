@@ -191,13 +191,13 @@ body, #sb-site {
 }
 
 /** Form **/
-.contentbar-error {
+.contentbar-error, .recgradbar-error {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;
 }
 
-.contentbar-error-redundant {
+.contentbar-error-redundant, .recgradbar-error-redundant {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;
