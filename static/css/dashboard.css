@@ -67,6 +67,7 @@ body, #sb-site {
     min-height: 500px;
     margin-top: 50px;
     margin-bottom: 100px;
+    padding-bottom: 30px;
 }
 
 .contentbar-header {
@@ -434,6 +435,13 @@ img {
 }
 
 /** Modal **/
+.gradingperiodfooter {
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #AB0000;
+}
+
 .modal-body {
     color: #000000;
     background-color: white;

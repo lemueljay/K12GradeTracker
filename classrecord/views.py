@@ -97,7 +97,8 @@ def dashboard(request):
         system = UserProfile.objects.get(user=user_instance)
         return render(request, 'dashboard.html', {'fullname': fullname, 'firstname': user_instance.first_name,
                                                   'lastname': user_instance.last_name,
-                                                  'email': user_instance.email, 'system': system.grading_system.name})
+                                                  'email': user_instance.email, 'system': system.grading_system.name,
+                                                  'grading_period': system.grading_period})
     else:
         return HttpResponseRedirect('/login/')
 
@@ -107,6 +108,10 @@ class GradingPeriod(View):
         return HttpResponse()
 
     def post(self, request):
+        grading_period = request.POST['value']
+        query = UserProfile.objects.get(user=request.user)
+        query.grading_period = grading_period
+        query.save()
         return HttpResponse()
 
 
