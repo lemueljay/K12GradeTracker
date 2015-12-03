@@ -7,7 +7,7 @@ body, #sb-site {
     font-family: "open sans", sans-serif;
     font-size: 14px;
     color: white;
-    background-color: #edecec;
+    background-color: #171717;
 }
 
 .navbar {
@@ -191,13 +191,13 @@ body, #sb-site {
 }
 
 /** Form **/
-.contentbar-error, .recgradbar-error {
+.contentbar-error, .recgradbar-error, .sectionsbar-error {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;
 }
 
-.contentbar-error-redundant, .recgradbar-error-redundant {
+.contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;

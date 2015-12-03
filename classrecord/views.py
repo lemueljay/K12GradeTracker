@@ -335,3 +335,16 @@ class CreateAssessment(View):
             data = dict()
             data['error'] = True
             return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+def get_sections(request):
+    sections = Section.objects.filter(user=request.user)
+    return render(request, 'tables/sections.html', {'sections': sections})
+
+
+class CreateSection(View):
+    def post(self, request):
+        section_name = request.POST['sectionName']
+        query = Section(name=section_name, user=request.user)
+        query.save()
+        return HttpResponse()
