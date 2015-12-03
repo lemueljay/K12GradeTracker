@@ -13,42 +13,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>
-                <i onclick="" class="fa fa-apple fa-2x"></i>
-            </td>
-            <td>SECTION 1</td>
-            <td>Subject 1, Subject 2, Subject 3</td>
-            <td>
-                <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
-                <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
-                <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <i onclick="" class="fa fa-apple fa-2x"></i>
-            </td>
-            <td>SECTION 1</td>
-            <td>Subject 1, Subject 2, Subject 3</td>
-            <td>
-                <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
-                <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
-                <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <i onclick="" class="fa fa-apple fa-2x"></i>
-            </td>
-            <td>SECTION 1</td>
-            <td>Subject 1, Subject 2, Subject 3</td>
-            <td>
-                <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
-                <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
-                <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
-            </td>
-        </tr>
+        {% for section in sections %}
+            <tr>
+                <td>
+                    <i onclick="" class="fa fa-apple fa-2x"></i>
+                </td>
+                <td>{{ section.name }}</td>
+                <td></td>
+                <td>
+                    <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
+                    <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
+                    <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
+                </td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 </span>

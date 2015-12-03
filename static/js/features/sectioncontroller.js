@@ -18,8 +18,17 @@ function validateSectionForm() {
 }
 
 function createSection() {
+     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     /* Get section name. */
     var sectionName = $('#sections_field > div:nth-child(1) > form > div.col-xs-12.col-sm-9 > input').val().toUpperCase();
+    $.ajax({
+        type: 'POST',
+        url: '/create_section/',
+        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'sectionName': sectionName},
+        success: function(data) {
+
+        }
+    });
 
 }
 

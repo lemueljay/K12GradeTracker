@@ -39,7 +39,7 @@ class Section(models.Model):
     user = models.ForeignKey(User, default=0)
 
     def __unicode__(self):
-        return u'%s %s %s %s' % (self.id, self.name, self.gradelevel, self.user)
+        return u'%s %s %s' % (self.id, self.name, self.user)
 
 
 # Subject Model
