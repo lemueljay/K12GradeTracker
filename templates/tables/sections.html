@@ -17,10 +17,13 @@
                 <td>
                     <i onclick="" class="fa fa-apple fa-2x"></i>
                 </td>
-                <td>{{ section.name }}</td>
                 <td>
-                    <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
-                    <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
+                    <input id="tdsectionnameinput{{ section.id }}" class="hidden tdsectionnameinput form-control">
+                    <span id="tdsectionname{{ section.id }}" class="tdsectionname">{{ section.name }}</span>
+                </td>
+                <td>
+                    <i id="savesectionbutton{{ section.id }}" class="fa fa-save fa-2x hidden savesectionbutton" onclick="saveSection({{ section.id }})"></i>
+                    <i id="editsectionbutton{{ section.id }}" class="fa fa-edit fa-2x editsectionbutton" onclick="editSection({{ section.id }})"></i>
                     <i class="fa fa-remove fa-2x removebutton" onclick="removeSection({{ section.id }})"></i>
                 </td>
             </tr>

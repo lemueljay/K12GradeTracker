@@ -356,6 +356,7 @@ class CreateSection(View):
             query.save()
             data = dict()
             data['error'] = False
+            data['section_id'] = query.id
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = dict()

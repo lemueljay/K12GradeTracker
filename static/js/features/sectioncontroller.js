@@ -32,12 +32,18 @@ function createSection() {
                 $('.sectionsbar-error-redundant').removeClass('hidden');
                 $('#sectionspinner').addClass('hidden');
             } else {
-                $("<tr>" +
-                "<td><i onclick='' class='fa fa-apple fa-2x'></i></td>" +
-                "<td>" + sectionName + "</td>" +
-                "<td><i class='fa fa-save fa-2x hidden savebutton' onclick=''></i>" +
-                "<i class='fa fa-edit fa-2x editbutton' onclick=''></i>" +
-                "<i class='fa fa-remove fa-2x removebutton' onclick=''></i>" +
+                $("<tr id='trsection" + data['section_id'] + "'>" +
+                "<td>" +
+                "<i onclick='' class='fa fa-apple fa-2x'></i>" +
+                "</td>" +
+                "<td>" +
+                "<input id='tdsectionnameinput" + data['section_id'] + "' class='hidden tdsectionnameinput form-control'>" +
+                "<span id='tdsectionname" + data['section_id'] + "' class='tdsectionname'>" + sectionName + "</span>" +
+                "</td>" +
+                "<td>" +
+                "<i id='savesectionbutton" + data['section_id'] + "' class='fa fa-save fa-2x hidden savesectionbutton' onclick='saveSection(" + data['section_id'] + ")'></i>" +
+                "<i id='editsectionbutton" + data['section_id'] + "' class='fa fa-edit fa-2x editsectionbutton' onclick='editSection(" + data['section_id'] + ")'></i>" +
+                "<i class='fa fa-remove fa-2x removebutton' onclick='removeSection(" + data['section_id'] + ")'></i>" +
                 "</td>" +
                 "</tr>").appendTo('#tablesectionview table tbody').hide().fadeIn();
                 /* Clear form and remove error prompts. */
@@ -69,9 +75,8 @@ function removeSection(section_id) {
                 $('#trsection' + section_id).fadeOut('slow', function () {
                     $('#trsection' + section_id).remove();
                     $('#sectionspinner').addClass('hidden');
+                    alertify.error($('#trsection' + section_id + ' td:nth-child(2)').text() + ' successfully removed!');
                 });
-
-                alertify.error($('#trsection' + section_id + ' td:nth-child(2)').text() + ' successfully removed!');
             }
         });
     }, function() {
@@ -79,12 +84,24 @@ function removeSection(section_id) {
     });
 }
 
-function editSection() {
-
+function editSection(section_id) {
+    $('.savesectionbutton').addClass('hidden');
+    $('.editsectionbutton').removeClass('hidden');
+    $('#editsectionbutton' + section_id).addClass('hidden');
+    $('#savesectionbutton' + section_id).removeClass('hidden');
+    $('.tdsectionnameinput').addClass('hidden');
+    $('.tdsectionname').removeClass('hidden');
+    $('#tdsectionnameinput' + section_id).removeClass('hidden').val($('#tdsectionname' + section_id).text());
+    $('#tdsectionname' + section_id).addClass('hidden');
 }
 
-function saveSection() {
-
+function saveSection(section_id) {
+    $('#savesectionbutton' + section_id).addClass('hidden');
+    $('#editsectionbutton' + section_id).removeClass('hidden');
+    var newName = $('#tdsectionnameinput' + section_id).val();
+    $('#tdsectionname' + section_id).text(newName);
+    $('.tdsectionnameinput').addClass('hidden');
+    $('.tdsectionname').removeClass('hidden');
 }
 
 $(document).ready(function() {

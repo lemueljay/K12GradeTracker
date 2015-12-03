@@ -114,12 +114,10 @@ function removeSubject(subject_id) {
             success: function(data) {
                     $('#spinner').removeClass('hidden');
                     $('#tr' + subject_id).fadeOut('slow', function() {
-                    $('#tr' + subject_id).remove();
-                    $('#spinner').addClass('hidden');
+                        $('#tr' + subject_id).remove();
+                        $('#spinner').addClass('hidden');
+                        alertify.error($('#tr' + subject_id + ' td:nth-child(2)').text() + ' successfully removed!');
                 });
-
-                alertify.error($('#tr' + subject_id + ' td:nth-child(2)').text() + ' successfully removed!');
-
             }
         });
     }, function() {
