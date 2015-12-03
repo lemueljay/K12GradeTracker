@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#changeGradingForm div').click(function() {
         var gradingPeriod = $("input", this).val();
         var gradingNumber = gradingPeriod.slice(0, 3);
-        var value = gradingPeriod.slice(0, 1);
+        var value = gradingNumber;
         $.ajax({
             type: 'POST',
             url: '/grading_period/',

@@ -15,6 +15,7 @@ class GradingSystem(models.Model):
 class UserProfile(models.Model):
     user = models.ForeignKey(User)
     grading_system = models.ForeignKey(GradingSystem)
+    grading_period = models.CharField(max_length=5, default='1st')
 
     def __unicode__(self):
         return u'%s %s %s' % (self.id, self.user, self.grading_system)
