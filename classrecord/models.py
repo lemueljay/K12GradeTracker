@@ -22,7 +22,7 @@ class UserProfile(models.Model):
 
 # Subject Type Model
 class SubjectType(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200)
     written_works = models.CharField(max_length=200)
     performance_tasks = models.CharField(max_length=200)
     quarterly_assessments = models.CharField(max_length=200)
@@ -85,13 +85,15 @@ class AssessmentType(models.Model):
 
 # Assessment Model
 class Assessment(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200)
     total = models.IntegerField(default=0)
+    grading_period = models.CharField(default='1st Grading', max_length=200)
+    date = models.DateTimeField()
     assessmenttype = models.ForeignKey(AssessmentType, default=0)
     subject = models.ForeignKey(Subject, default=0)
 
     def __unicode__(self):
-        return u'%s %s %s %s' % (self.name, self.total, self.assessmenttype.type, self.subject.name)
+        return u'%s %s %s %s %s %s' % (self.name, self.total,  self.grading_period, self.date, self.assessmenttype.type, self.subject.name)
 
 
 class StudentGrades(models.Model):
