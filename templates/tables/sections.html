@@ -1,32 +1,47 @@
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
-<hr>
-<span id="tablesectionview">
+<span id="tableassessmentsview">
     <table class="table table-striped">
         <thead>
         <tr>
-            <td>VIEW SECTION</td>
-            <td>SECTION NAME</td>
-            <td>SECTION SUBJECTS</td>
+            <td>VIEW ASSESSMENT</td>
+            <td>ASSESSMENT NAME</td>
+            <td>TOTAL</td>
+            <td>ASSESSMENT TYPE</td>
+            <td>DATE PERFORMED</td>
             <td>ACTION</td>
         </tr>
         </thead>
         <tbody>
-        {% for section in sections %}
-            <tr>
-                <td>
-                    <i onclick="" class="fa fa-apple fa-2x"></i>
-                </td>
-                <td>{{ section.name }}</td>
-                <td></td>
-                <td>
-                    <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
-                    <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
-                    <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
-                </td>
-            </tr>
-        {% endfor %}
+        <tr>
+            <td>
+                <i onclick="" class="fa fa-apple fa-2x"></i>
+            </td>
+            <td>Assessment name</td>
+            <td>Total</td>
+            <td>assessment type</td>
+            <td>date perfomed</td>
+            <td>
+                <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
+                <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
+                <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <i onclick="" class="fa fa-apple fa-2x"></i>
+            </td>
+            <td>Assessment name</td>
+            <td>Total</td>
+            <td>assessment type</td>
+            <td>date perfomed</td>
+            <td>
+                <i class="fa fa-save fa-2x hidden savebutton" onclick=""></i>
+                <i class="fa fa-edit fa-2x editbutton" onclick=""></i>
+                <i class="fa fa-remove fa-2x removebutton" onclick=""></i>
+            </td>
+        </tr>
         </tbody>
     </table>
 </span>

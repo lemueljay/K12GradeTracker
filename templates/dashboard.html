@@ -127,10 +127,7 @@
     </div>
     <!--Sections Bar -->
     <div id="sectionsbar" class="container contentbar">
-        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">SECTIONS</span>
-        <span class="hidden sectionsbar-error animated infinite tada"> Error! Please fill out forms!</span>
-        <span class="hidden sectionsbar-error-redundant animated infinite jello"> Error! Such assessment already exists!</span>
-        </div>
+        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">SECTIONS</span></div>
         <div id="sections_field" class="col-xs-12">
             <div class="col-xs-12">
                 <form class="form-group">
@@ -138,11 +135,10 @@
                         <input type="text" class="form-control" placeholder="Section Name">
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <input name="createSectionButton" type="button" class="form-control btn btn-success  hvr-float-shadow" value="Create Section">
+                        <input type="submit" class="form-control btn btn-success  hvr-float-shadow" value="Create Section">
                     </div>
                 </form>
             </div>
-            <div id="sectionscontainer" class="col-xs-12 container"></div>
         </div>
     </div>
     <!--View Grades Bar -->
@@ -183,6 +179,13 @@
                     </div>
                 </form>
             </div>
+
+
+            <div id="assessmentscontainer" class="col-xs-12 container">
+                <hr>
+                <span></span>
+                <div id="assessmentbigspinner" class="text-center" value="show"><i class="fa fa-spin fa-spinner fa-5x"></i></div>
+            </div>
             <div class="container col-xs-12">
                 <hr>
                 <div class="form-group">
@@ -196,11 +199,6 @@
                         <input name="viewStudentsButton" type="button" class="form-control btn btn-warning" value="View Students">
                     </div>
                 </div>
-            </div>
-            <div id="assessmentscontainer" class="col-xs-12 container">
-                <hr>
-                <span></span>
-                <div id="assessmentbigspinner" class="text-center" value="show"><i class="fa fa-spin fa-spinner fa-5x"></i></div>
             </div>
         </div>
     </div>
