@@ -25,7 +25,7 @@ function createAssessment() {
 
     /* Get data. */
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
-    var assessmentName = $('input[name=recgradassessmentname]').val();
+    var assessmentName = $('input[name=recgradassessmentname]').val().toUpperCase();
     var assessmentType = $('#recgradassessmenttype').val();
     var assessmentTypeName = $('#recgradassessmenttype option[value=' + assessmentType + ']').text();
     var assessmentTotal = $('input[name=recgradtotal]').val();
