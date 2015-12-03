@@ -5,6 +5,8 @@ from django.contrib import auth
 from classrecord.models import *
 from classrecord.forms import *
 import json
+from django.utils import timezone
+import datetime
 
 
 def index(request):
@@ -111,7 +113,7 @@ class GradingPeriod(View):
 def get_subjects(request):
     user_instance = request.user
     try:
-        subjects = Subject.objects.filter(user=user_instance).order_by('name')
+        subjects = Subject.objects.filter(user=user_instance)
         if len(subjects) == 0:
             subjects = None
     except subjects.DoesNotExist:
@@ -235,7 +237,10 @@ class SaveSubject(View):
 
 
 def get_assessments(request):
-    return render(request, 'tables/assessments.html', {})
+    subject_id = request.GET['subject_id']
+    subject_instance = Subject.objects.get(id=subject_id)
+    assessments = Assessment.objects.filter(subject=subject_instance)
+    return render(request, 'tables/assessments.html', {'assessments': assessments})
 
 
 class CreateAssessment(View):
@@ -248,18 +253,83 @@ class CreateAssessment(View):
         total = request.POST['assessmentTotal']
         assessmenttype = request.POST['assessmentType']
         subject_id = request.POST['subject_id']
+        grading_period = request.POST['gradingPeriod'] + ' Grading'
+        date = timezone.now()
         # Get instances of data
         assessmenttype_instance = AssessmentType.objects.get(id=assessmenttype)
         subject_instance = Subject.objects.get(id=subject_id)
         # Test redundancy.
-        redundant = Assessment.objects.filter(name=name)
+        redundant = Assessment.objects.filter(name=name, subject=subject_instance)
         if len(redundant) == 0:
             # Prepare and save the query.
-            query = Assessment(name=name, total=total, assessmenttype=assessmenttype_instance, subject=subject_instance)
+            query = Assessment(name=name, total=total, assessmenttype=assessmenttype_instance,
+                               grading_period=grading_period, date=date, subject=subject_instance)
             query.save()
             data = dict()
             data['error'] = False
             data['assessment_id'] = query.id
+
+            # Get local time.
+            myDate = str(datetime.datetime.now())
+
+            monthList = {'01': 'Jan.',
+                         '02': 'Feb.',
+                         '03': 'March',
+                         '04': 'Apr.',
+                         '05': 'May',
+                         '06': 'June',
+                         '07': 'July',
+                         '08': 'Aug.',
+                         '09': 'Sep.',
+                         '10': 'Oct.',
+                         '11': 'Nov.',
+                         '12': 'Dec.'}
+
+
+            year = myDate[0:4]
+            month = myDate[5:7]
+            day = myDate[8:10]
+            hour = myDate[11:13]
+            min = myDate[14:16]
+
+            if int(day) < 10:
+                day = myDate[9:10]
+
+            hourList = {
+                '01': 1,
+                '02': 2,
+                '03': 3,
+                '04': 4,
+                '05': 5,
+                '06': 6,
+                '07': 7,
+                '08': 8,
+                '09': 9,
+                '10': 10,
+                '11': 11,
+                '12': 12,
+                '13': 1,
+                '14': 2,
+                '15': 3,
+                '16': 4,
+                '17': 5,
+                '18': 6,
+                '19': 7,
+                '20': 8,
+                '21': 9,
+                '22': 10,
+                '23': 11,
+                '24': 12
+            }
+
+            t = 'a.m.'
+            if myDate[11:13] > 12:
+                t = 'p.m.'
+
+
+            myDate = monthList[str(month)] + ' ' + day + ', ' + year + ', ' + str(hourList[str(hour)]) + ':' + min + ' ' + t
+
+            data['timezone'] = myDate
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = dict()

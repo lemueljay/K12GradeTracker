@@ -273,9 +273,8 @@ function viewSubject(subject_id) {
     $.ajax({
         type: 'GET',
         url: '/get_assessments/',
-        data: {},
+        data: {'subject_id': subject_id},
         success: function(data) {
-
             $('#assessmentscontainer span').html(data).hide();
         },
         complete: function() {

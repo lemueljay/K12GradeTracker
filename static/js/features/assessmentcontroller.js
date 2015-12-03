@@ -43,7 +43,6 @@ function createAssessment() {
                 /* If there is redundancy. */
                 $('.recgradbar-error').addClass('hidden');
                 $('.recgradbar-error-redundant').removeClass('hidden');
-                console.log('Error!');
             }} else {
                 /* No redundancy, go for gold. */
                 $('.recgradbar-error').addClass('hidden');
@@ -55,7 +54,8 @@ function createAssessment() {
                 "<td>" + assessmentName + "</td>" +
                 "<td>" + assessmentTotal + "</td>" +
                 "<td>" + assessmentTypeName + "</td>" +
-                "<td>date perfomed</td>" +
+                "<td>" + gradingPeriod + " Grading" + "</td>" +
+                "<td>" + data['timezone'] + "</td>" +
                 "<td>" +
                 "<i class='fa fa-save fa-2x hidden savebutton' onclick=''></i>" +
                 "<i class='fa fa-edit fa-2x editbutton' onclick=''></i>" +
