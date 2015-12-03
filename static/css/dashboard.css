@@ -249,6 +249,11 @@ table tbody tr td i.fa-remove:hover {
 #tableassessmentsview table tbody tr td i.fa-edit:hover, #tableassessmentsview table tbody tr td i.fa-save:hover, #tableassessmentsview table tbody tr td i.fa-apple:hover  {
     color: #607d8b;
 }
+
+#tablesectionview table tbody tr td i.fa-edit:hover, #tablesectionview table tbody tr td i.fa-save:hover, #tablesectionview table tbody tr td i.fa-apple:hover  {
+    color: #8bc34a;
+}
+
 /*
 input[name=viewGradesButton], input[name=viewGradesButton]:active, input[name=viewGradesButton]:focus, input[name=viewGradesButton]:active:focus, input[name=viewGradesButton]:hover {
     background-color: #8bc34a;

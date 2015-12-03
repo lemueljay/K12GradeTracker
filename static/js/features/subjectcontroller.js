@@ -103,7 +103,6 @@ function createSubject() {
 }
 /* Remove the subject. */
 function removeSubject(subject_id) {
-
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     $('.contentbar-error').addClass('hidden');
     $('.contentbar-error-redundant').addClass('hidden');
@@ -113,8 +112,8 @@ function removeSubject(subject_id) {
             url: '/delete_subject/',
             data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_id': subject_id},
             success: function(data) {
-                $('#spinner').removeClass('hidden');
-                $('#tr' + subject_id).fadeOut('slow', function() {
+                    $('#spinner').removeClass('hidden');
+                    $('#tr' + subject_id).fadeOut('slow', function() {
                     $('#tr' + subject_id).remove();
                     $('#spinner').addClass('hidden');
                 });

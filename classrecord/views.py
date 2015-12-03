@@ -233,7 +233,6 @@ class SaveSubject(View):
                 query.save()
                 data = dict()
                 data['error'] = False
-                data['rots'] = 'kani'
                 return HttpResponse(json.dumps(data), content_type="application/json")
             else:
                 data = dict()
@@ -350,6 +349,20 @@ def get_sections(request):
 class CreateSection(View):
     def post(self, request):
         section_name = request.POST['sectionName']
-        query = Section(name=section_name, user=request.user)
-        query.save()
+        # Check redundancy.
+        redundant = Section.objects.filter(name=section_name, user=request.user)
+        if len(redundant) == 0:
+            query = Section(name=section_name, user=request.user)
+            query.save()
+            data = dict()
+            data['error'] = False
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+class DeleteSection(View):
+    def post(self, request):
         return HttpResponse()

@@ -55,4 +55,6 @@ urlpatterns = [
     url(r'^get_sections/$', get_sections),
 
     url(r'^create_section/$', CreateSection.as_view()),
+
+    url(r'^delete_section/$', DeleteSection.as_view()),
 ]
