@@ -36,7 +36,6 @@ class SubjectType(models.Model):
 # Section Model
 class Section(models.Model):
     name = models.CharField(max_length=200)
-    gradelevel = models.CharField(max_length=200, default=0)
     user = models.ForeignKey(User, default=0)
 
     def __unicode__(self):

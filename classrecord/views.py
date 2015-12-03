@@ -335,3 +335,7 @@ class CreateAssessment(View):
             data = dict()
             data['error'] = True
             return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+def get_sections(request):
+    return render(request, 'tables/sections.html')
