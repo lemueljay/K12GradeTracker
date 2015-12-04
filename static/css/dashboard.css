@@ -358,6 +358,16 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     -webkit-transform: translate(0px, -15px);
 }
 
+#schoolyear {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#syyear {
+    font-size: 22px;
+}
+
 /** Sidebar **/
 .sidebar.left {
     margin-top: 65px;

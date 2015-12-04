@@ -11,6 +11,15 @@ function updateTime() {
         mm='0'+mm
     }
 
+    var schoolyear = '';
+    if(mm >= 6) {
+        schoolyear = yyyy + '-' + (parseInt(yyyy) + 1).toString();
+    } else if(mm < 6) {
+        schoolyear = (parseInt(yyyy) - 1).toString() + '-' + yyyy;
+    }
+    /* Update school year. */
+    $('#syyear').text(schoolyear);
+
     today = '';
     switch(mm) {
         case 1:

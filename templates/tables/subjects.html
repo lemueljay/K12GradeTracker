@@ -10,6 +10,7 @@
             <th>SUBJECT NAME</th>
             <th>SECTION NAME</th>
             <th>SUBJECT TYPE</th>
+            <th>SCHOOL YEAR</th>
             <th>ACTION</th>
         </tr>
         </thead>
@@ -32,6 +33,9 @@
                     <select class="hidden form-control subject-type-drop-down tdselect"></select>
                     <span id="td{{ subject.id }}subjecttypeid" class="hidden subjecttypeid">{{ subject.subject_type.id }}</span>
                     <span class="tdtext subjecttypename">{{ subject.subject_type.name }}</span>
+                </td>
+                <td>
+
                 </td>
                 <td>
                     <i id="savebutton{{ subject.id }}" class="fa fa-save fa-2x hidden savebutton" onclick="saveSubject({{ subject.id }});"></i>
