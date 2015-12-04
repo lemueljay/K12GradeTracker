@@ -7,7 +7,7 @@ from classrecord.forms import *
 import json
 from django.utils import timezone
 import datetime
-
+from django.db import connection
 
 def index(request):
     return render(request, 'index.html')
@@ -117,12 +117,21 @@ class GradingPeriod(View):
 
 def get_subjects(request):
     user_instance = request.user
-    try:
-        subjects = Subject.objects.filter(user=user_instance)
-        if len(subjects) == 0:
+    school_year = request.GET['school_year']
+    if school_year == "ALL":
+        try:
+            subjects = Subject.objects.filter(user=user_instance)
+            if len(subjects) == 0:
+                subjects = None
+        except subjects.DoesNotExist:
             subjects = None
-    except subjects.DoesNotExist:
-        subjects = None
+    else:
+        try:
+            subjects = Subject.objects.filter(user=user_instance, school_year=school_year)
+            if len(subjects) == 0:
+                subjects = None
+        except subjects.DoesNotExist:
+            subjects = None
     return render(request, 'tables/subjects.html', {'subjects': subjects})
 
 
@@ -149,11 +158,20 @@ def get_subject_type_drop_down(request):
     return render(request, 'partials/subject_type_drop_down.html', {'subject_types': subject_types})
 
 
-def defaultgradesview(request):
-    user_id = request.user.id
-    user_instance = User.objects.get(id=user_id)
-    classes = Class.objects.filter(user=user_instance, hidden=0)
-    return render(request, 'partials/defaultgradesview.html', {'classes': classes})
+def dictfetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
+
+
+def filter_dropdown(request):
+    cursor = connection.cursor()
+    cursor.execute('SELECT DISTINCT(school_year) FROM classrecord_subject')
+    row = dictfetchall(cursor)
+    return render(request, 'partials/filter_dropdown.html', {'years': row})
 
 
 class CreateSubject(View):
@@ -165,15 +183,16 @@ class CreateSubject(View):
         subject_name = request.POST['subject_name']
         section_value = request.POST['section_value']
         subject_type_value = request.POST['subject_type_value']
+        school_year = request.POST['school_year']
         # Get instances of models.
         user_instance = request.user
         section_instance = Section.objects.get(id=section_value)
         subject_type_instance = SubjectType.objects.get(id=subject_type_value)
         # Check for redundancy.
-        redundant = Subject.objects.filter(name=subject_name, section=section_instance)
+        redundant = Subject.objects.filter(name=subject_name, section=section_instance, school_year=school_year)
         if len(redundant) == 0:
             # Prepare and save the query.
-            query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance)
+            query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance, school_year=school_year)
             query.save()
             data = dict()
             data['error'] = False
@@ -349,10 +368,11 @@ def get_sections(request):
 class CreateSection(View):
     def post(self, request):
         section_name = request.POST['sectionName']
+        school_year = request.POST['school_year']
         # Check redundancy.
-        redundant = Section.objects.filter(name=section_name, user=request.user)
+        redundant = Section.objects.filter(name=section_name, user=request.user, school_year=school_year)
         if len(redundant) == 0:
-            query = Section(name=section_name, user=request.user)
+            query = Section(name=section_name, user=request.user, school_year=school_year)
             query.save()
             data = dict()
             data['error'] = False

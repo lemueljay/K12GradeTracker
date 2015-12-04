@@ -1,7 +1,6 @@
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
-<hr>
 <span id="tableclassesview" class="classesview">
     <table class="table table-striped">
         <thead>
@@ -35,7 +34,7 @@
                     <span class="tdtext subjecttypename">{{ subject.subject_type.name }}</span>
                 </td>
                 <td>
-
+                    <span class="tdschoolyear">{{ subject.school_year }}</span>
                 </td>
                 <td>
                     <i id="savebutton{{ subject.id }}" class="fa fa-save fa-2x hidden savebutton" onclick="saveSubject({{ subject.id }});"></i>

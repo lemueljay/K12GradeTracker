@@ -8,6 +8,7 @@
         <tr>
             <td>VIEW SECTION</td>
             <td>SECTION NAME</td>
+            <td>SCHOOL YEAR</td>
             <td>ACTION</td>
         </tr>
         </thead>
@@ -20,6 +21,9 @@
                 <td>
                     <input id="tdsectionnameinput{{ section.id }}" class="hidden tdsectionnameinput form-control">
                     <span id="tdsectionname{{ section.id }}" class="tdsectionname">{{ section.name }}</span>
+                </td>
+                <td>
+                    <span>{{ section.school_year }}</span>
                 </td>
                 <td>
                     <i id="savesectionbutton{{ section.id }}" class="fa fa-save fa-2x hidden savesectionbutton" onclick="saveSection({{ section.id }})"></i>

@@ -4,10 +4,10 @@ body, #sb-site {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: "open sans", sans-serif;
+    font-family: "Roboto";
     font-size: 14px;
     color: white;
-    background-color: #171717;
+    background-color: #edecec;
 }
 
 .navbar {
@@ -206,12 +206,22 @@ body, #sb-site {
 
 /** Tables **/
 
+#classes_field {
+    padding: 0px;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
 .table {
     margin-bottom: 0px;
 }
 
 table {
     font-family: "Roboto";
+    font-size: 13px;
+    color: #5e5e5e;
 }
 
 table thead:hover {
@@ -224,10 +234,29 @@ table thead:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
-table tbody tr:hover {
-    cursor: pointer;
-    color: black;
-    background: rgba(0, 0, 0, 0.05);
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 15px;
+    line-height: 1.42857143;
+    border-top: 1px solid #f0f0f0;
+}
+
+
+tr th {
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+}
+
+.table>thead>tr>th {
+    border-bottom: none;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    border-top: none;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f4f4f4;
 }
 
 table thead tr td {

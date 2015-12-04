@@ -22,10 +22,11 @@ function createSection() {
      var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     /* Get section name. */
     var sectionName = $('#sections_field > div:nth-child(1) > form > div.col-xs-12.col-sm-9 > input').val().toUpperCase();
+    var school_year = $('#syyear').text();
     $.ajax({
         type: 'POST',
         url: '/create_section/',
-        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'sectionName': sectionName},
+        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'sectionName': sectionName, 'school_year': school_year},
         success: function(data) {
             if(data['error']) {
                 $('.sectionsbar-error').addClass('hidden');
@@ -39,6 +40,9 @@ function createSection() {
                 "<td>" +
                 "<input id='tdsectionnameinput" + data['section_id'] + "' class='hidden tdsectionnameinput form-control'>" +
                 "<span id='tdsectionname" + data['section_id'] + "' class='tdsectionname'>" + sectionName + "</span>" +
+                "</td>" +
+                "<td>" +
+                "<span>" + school_year + "</span>" +
                 "</td>" +
                 "<td>" +
                 "<i id='savesectionbutton" + data['section_id'] + "' class='fa fa-save fa-2x hidden savesectionbutton' onclick='saveSection(" + data['section_id'] + ")'></i>" +
@@ -64,7 +68,7 @@ function removeSection(section_id) {
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     $('.sectionsbar-error').addClass('hidden');
     $('.sectionsbar-error-redundant').addClass('hidden');
-    alertify.confirm('THINK AGAIN!', 'Subjects that have these section will also be deleted!', function() {
+    alertify.confirm('THINK AGAIN!', 'Are you sure you want to delete the selected section? All of the following objects and their related items will be deleted.', function() {
         $.ajax({
             type: 'POST',
             url: '/delete_section/',

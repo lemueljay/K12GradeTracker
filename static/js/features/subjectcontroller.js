@@ -5,10 +5,26 @@
  * **/
 
 /* Load subjects in the container. */
-function loadSubjects() {
+function loadSubjects(year) {
+    $('#subjectbigspinner').show();
+    $('#subjectscontainer span').empty();
     var subject_name =  $('input[name=subjectname]').val();
-    $('#subjectscontainer').load('/get_subjects/', function() {
-        $('input[name=subject-name]').val(subject_name);
+    var school_year = year;
+    if(school_year == undefined) {
+        school_year = $('#syyear').text();
+    }
+    $.ajax({
+        type: 'GET',
+        url: '/get_subjects/',
+        data: {'subject_name': subject_name, 'school_year': school_year},
+        success: function(data) {
+            $('#subjectscontainer span').html(data).hide();
+        },
+        complete: function() {
+             $('#subjectbigspinner').fadeOut('fast', function() {
+                $('#subjectscontainer span').fadeIn();
+            });
+        }
     });
 }
 /* Load section drop down. */
@@ -62,6 +78,7 @@ function createSubject() {
     var section_name = $('#section-drop-down option:selected').text()
     var subject_type_value = $('#subject-type-drop-down').val();
     var subject_type = $('#subject-type-drop-down option:selected').text();
+    var school_year = $('#syyear').text();
     if(validateSubjectForm(subject_name, section_value, subject_type_value)) {
         var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
         /* Show loader while sending request. */
@@ -69,7 +86,7 @@ function createSubject() {
         $.ajax({
             type: 'POST',
             url: '/create_subject/',
-            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_name': subject_name.toUpperCase(), 'section_value': section_value, 'subject_type_value': subject_type_value},
+            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'subject_name': subject_name.toUpperCase(), 'section_value': section_value, 'subject_type_value': subject_type_value, 'school_year': school_year},
             success: function(data) {
                 if(data['error']) {
                     $('.contentbar-error').addClass('hidden');
@@ -87,6 +104,9 @@ function createSubject() {
                     "<td><input class='hidden form-control tdinput' value='" + subject_name + "'><span class='tdtext'>" + subject_name + "</span></td>" +
                     "<td><select class='hidden form-control section-drop-down tdselect'></select><span id='td" + data['subject_id'] + "sectionid' class='hidden sectionid'>" + section_value + "</span><span class='tdtext sectionname'>" + section_name + "</span></td>" +
                     "<td><select class='hidden form-control subject-type-drop-down tdselect'></select><span id='td" + data['subject_id'] + "subjecttypeid' class='hidden subjecttypeid'>" + subject_type_value + "</span><span class='tdtext subjecttypename'>" + subject_type +"</span></td>" +
+                    "<td>" +
+                    "<span class='tdschoolyear'>" + school_year + "</span>" +
+                    "</td>" +
                     "<td><i id='savebutton" + data['subject_id'] + "' class='fa fa-save fa-2x hidden savebutton' onclick='saveSubject(" + data['subject_id'] + ");'></i><i id='editbutton"+ data['subject_id'] +"' class='fa fa-edit fa-2x editbutton' onclick='editSubject(" + data['subject_id'] + ");'></i><i class='fa fa-remove fa-2x' onclick='removeSubject(" + data['subject_id'] + ");'></i></td>" +
                     "</tr>").appendTo('#tableclassesview table tbody').hide().fadeIn();
                     loadSectionDropdown();
@@ -106,6 +126,7 @@ function removeSubject(subject_id) {
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     $('.contentbar-error').addClass('hidden');
     $('.contentbar-error-redundant').addClass('hidden');
+    var subject_name = $('#tr' + subject_id + ' td:nth-child(2) span').text();
     alertify.confirm('THINK AGAIN!', 'You cannot undo these once deleted.', function() {
        $.ajax({
             type: 'POST',
@@ -116,7 +137,8 @@ function removeSubject(subject_id) {
                     $('#tr' + subject_id).fadeOut('slow', function() {
                         $('#tr' + subject_id).remove();
                         $('#spinner').addClass('hidden');
-                        alertify.error($('#tr' + subject_id + ' td:nth-child(2)').text() + ' successfully removed!');
+                        $('#tableclassesview table').trigger('update');
+                        alertify.error(subject_name + ' successfully removed!');
                 });
             }
         });
@@ -148,6 +170,7 @@ function editSubject(subject_id) {
     $('#tr' + subject_id + ' td input').removeClass('hidden');
     $('#tr' + subject_id + ' td select').removeClass('hidden');
     $('#tr' + subject_id + ' td span').addClass('hidden');
+    $('.tdschoolyear').removeClass('hidden');
 }
 
 function saveSubject(subject_id) {
@@ -258,6 +281,7 @@ function saveSubject(subject_id) {
             });
         }
     }
+    $('#tableclassesview table').trigger('update');
 }
 /* View subject function. */
 function viewSubject(subject_id) {
@@ -290,6 +314,7 @@ function viewSubject(subject_id) {
 /* When the document is ready... */
 $(document).ready(function() {
     /* Initialize the manage subject feature. */
+    $('#subjectbigspinner').hide();
     loadSubjects();
     loadSectionDropdown();
     loadSubjectTypeDropdown();

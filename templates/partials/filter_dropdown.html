@@ -1,0 +1,5 @@
+{% for year in years %}
+    <li onclick="loadSubjects('{{ year.school_year }}')"><a>{{ year.school_year }}</a></li>
+{% endfor %}
+    <li role="separator" class="divider"></li>
+    <li onclick="loadSubjects('ALL')"><a>Show All</a></li>

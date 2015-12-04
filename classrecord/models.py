@@ -38,6 +38,7 @@ class SubjectType(models.Model):
 class Section(models.Model):
     name = models.CharField(max_length=200)
     user = models.ForeignKey(User, default=0)
+    school_year = models.CharField(max_length=100, default='2014-2015')
 
     def __unicode__(self):
         return u'%s %s %s' % (self.id, self.name, self.user)
@@ -46,12 +47,13 @@ class Section(models.Model):
 # Subject Model
 class Subject(models.Model):
     name = models.CharField(max_length=200)
-    section = models.ForeignKey(Section, default=0)
+    section = models.ForeignKey(Section, default=1)
     subject_type = models.ForeignKey(SubjectType, default=0)
     user = models.ForeignKey(User, default=0)
+    school_year = models.CharField(max_length=100, default='2014-2015')
 
     def __unicode__(self):
-        return u'%s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user)
+        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.school_year, self.subject_type, self.user)
 
 
 # !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!

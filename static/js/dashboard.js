@@ -124,10 +124,15 @@ function initContentBars() {
     $('#mainbar').show();
 }
 
+function updateFilterYear() {
+    $('#dropdownsubMenu1').load('/filter_dropdown/');
+}
+
 $(document).ready(function() {
 
     updateTime();
     initContentBars();
+    updateFilterYear();
     // Dashboard behaviors
     alertify.warning('Welcome '+ $('.contentbar-firstname').text() + ' !');
 
@@ -211,4 +216,11 @@ $(document).ready(function() {
         $('#op-ab').removeClass('hidden');
     });
 
+    /* Drop downs */
+    $().on('show.bs.dropdown', function() {
+
+    })
+    $('').on('hide.bs.dropdown', function() {
+
+    });
 })

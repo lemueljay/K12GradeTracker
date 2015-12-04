@@ -34,6 +34,9 @@ urlpatterns = [
     # Get subject type drop down
     url(r'^get_subject_type_drop_down/$', get_subject_type_drop_down),
 
+    # Update filter drop down
+    url(r'^filter_dropdown/$', filter_dropdown),
+
     # Create subject
     url(r'^create_subject/$', CreateSubject.as_view()),
 
