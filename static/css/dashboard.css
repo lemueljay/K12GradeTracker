@@ -298,7 +298,9 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     padding: 0px;
 }
 
-
+.fa-check {
+    color: green;
+}
 
 /** Clock **/
 

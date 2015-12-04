@@ -12,11 +12,15 @@ function loadSubjects(year) {
     var school_year = year;
     if(school_year == undefined) {
         school_year = $('#syyear').text();
+    } else if(school_year == 'CURRENT') {
+        school_year = $('#syyear').text();
     }
+    var sy = $('#syyear').text();
+    loadSections(school_year);
     $.ajax({
         type: 'GET',
         url: '/get_subjects/',
-        data: {'subject_name': subject_name, 'school_year': school_year},
+        data: {'subject_name': subject_name, 'school_year': school_year, 'sy': sy},
         success: function(data) {
             $('#subjectscontainer span').html(data).hide();
         },
@@ -24,21 +28,38 @@ function loadSubjects(year) {
              $('#subjectbigspinner').fadeOut('fast', function() {
                 $('#subjectscontainer span').fadeIn();
             });
+            loadSectionDropdown();
+            loadSubjectTypeDropdown();
+            /* Make langkat sa buttons. */
+            $('#tableclassesview tbody tr').each(function() {
+                var scyr = $('td:nth-child(5) span', this).text();
+                var sy = $('#syyear').text();
+                if(scyr != sy) {
+                    $('td:nth-child(6) i:nth-child(2)', this).remove();
+                }
+            });
         }
     });
 }
 /* Load section drop down. */
 function loadSectionDropdown() {
     var section_value = $('#section-drop-down').val();
-    $('#section-drop-down').load('/get_sections_drop_down/', function() {
-        if(section_value != null) {
+    var school_year = $('#syyear').text();
+    $.ajax({
+        type: 'GET',
+        url: '/get_sections_drop_down/',
+        data: {'school_year': school_year},
+        success: function(data) {
+            $('#section-drop-down').html(data);
+            $('td select.section-drop-down').html(data);
+            if(section_value != null) {
             $("#section-drop-down option").each(function() {
                 $(this).removeAttr('selected');
             });
             $("#section-drop-down option[value=" + section_value + "]").attr("selected","selected");
         }
+        }
     });
-     $('td select.section-drop-down').load('/get_sections_drop_down/');
 }
 /* Load subject type drop down. */
 function loadSubjectTypeDropdown() {
@@ -314,10 +335,8 @@ function viewSubject(subject_id) {
 /* When the document is ready... */
 $(document).ready(function() {
     /* Initialize the manage subject feature. */
-    $('#subjectbigspinner').hide();
     loadSubjects();
-    loadSectionDropdown();
-    loadSubjectTypeDropdown();
+    $('#subjectbigspinner').hide();
     /* Manage Subject Button clicked! */
     $('#mansub').click(function() {
         loadSectionDropdown();

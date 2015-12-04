@@ -1,5 +1,10 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/features/schoolyearcontroller.js' %}"></script>
+
+    <li onclick="loadSubjects('CURRENT')"><a>Current School Year <i class="hidden fa fa-check fa-fw"></i> </a></li>
+    <li role="separator" class="divider"></li>
 {% for year in years %}
-    <li onclick="loadSubjects('{{ year.school_year }}')"><a>{{ year.school_year }}</a></li>
+    <li class="{{ year.school_year }}" onclick="loadSubjects('{{ year.school_year }}')"><a>{{ year.school_year }} <i class="hidden fa fa-check fa-fw"></i></a></li>
 {% endfor %}
     <li role="separator" class="divider"></li>
-    <li onclick="loadSubjects('ALL')"><a>Show All</a></li>
+    <li onclick="loadSubjects('ALL')"><a>Show All <i class="hidden fa fa-check fa-fw"></i></a></li>

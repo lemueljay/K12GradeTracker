@@ -9,6 +9,7 @@ from django.utils import timezone
 import datetime
 from django.db import connection
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -116,6 +117,7 @@ class GradingPeriod(View):
 
 
 def get_subjects(request):
+    sy = request.GET['sy']
     user_instance = request.user
     school_year = request.GET['school_year']
     if school_year == "ALL":
@@ -132,13 +134,14 @@ def get_subjects(request):
                 subjects = None
         except subjects.DoesNotExist:
             subjects = None
-    return render(request, 'tables/subjects.html', {'subjects': subjects})
+    return render(request, 'tables/subjects.html', {'subjects': subjects, 'sy': sy})
 
 
 def get_sections_drop_down(request):
     user_instance = request.user
+    school_year = request.GET['school_year']
     try:
-        sections = Section.objects.filter(user=user_instance).order_by('name')
+        sections = Section.objects.filter(user=user_instance, school_year=school_year).order_by('name')
         if len(sections) == 0:
             sections = None
     except sections.DoesNotExist:
@@ -169,7 +172,7 @@ def dictfetchall(cursor):
 
 def filter_dropdown(request):
     cursor = connection.cursor()
-    cursor.execute('SELECT DISTINCT(school_year) FROM classrecord_subject')
+    cursor.execute('SELECT DISTINCT(school_year) FROM classrecord_section WHERE user_id=%s' % (request.user.id))
     row = dictfetchall(cursor)
     return render(request, 'partials/filter_dropdown.html', {'years': row})
 
@@ -189,7 +192,7 @@ class CreateSubject(View):
         section_instance = Section.objects.get(id=section_value)
         subject_type_instance = SubjectType.objects.get(id=subject_type_value)
         # Check for redundancy.
-        redundant = Subject.objects.filter(name=subject_name, section=section_instance, school_year=school_year)
+        redundant = Subject.objects.filter(name=subject_name, section=section_instance, school_year=school_year, user=request.user)
         if len(redundant) == 0:
             # Prepare and save the query.
             query = Subject(name=subject_name, section=section_instance, subject_type=subject_type_instance, user=user_instance, school_year=school_year)
@@ -361,8 +364,24 @@ class CreateAssessment(View):
 
 
 def get_sections(request):
-    sections = Section.objects.filter(user=request.user)
+    school_year = request.GET['school_year']
+    if school_year == "ALL":
+        try:
+            sections = Section.objects.filter(user=request.user)
+            if len(sections) == 0:
+                sections = None
+        except sections.DoesNotExist:
+            sections = None
+    else:
+        try:
+            sections = Section.objects.filter(user=request.user, school_year=school_year)
+            if len(sections) == 0:
+                sections = None
+        except sections.DoesNotExist:
+            sections = None
     return render(request, 'tables/sections.html', {'sections': sections})
+
+
 
 
 class CreateSection(View):

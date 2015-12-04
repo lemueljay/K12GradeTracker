@@ -4,8 +4,34 @@
  * Contributors: Arlene Yosoya
  * **/
 
-function loadSections() {
-    $('#sectionscontainer').load('/get_sections/');
+function loadSections(year) {
+    $('#sectionbigspinner').show();
+    $('#sectionscontainer span').empty().hide();
+    var school_year = year;
+     if(school_year == undefined) {
+        school_year = $('#syyear').text();
+    }
+    $.ajax({
+        type: 'GET',
+        url: '/get_sections/',
+        data: {'school_year': school_year},
+        success: function(data) {
+            $('#sectionscontainer span').html(data).hide();
+        },
+        complete: function() {
+            $('#sectionbigspinner').fadeOut('fast', function() {
+                $('#sectionscontainer span').fadeIn();
+            });
+            /* Make langkat sa buttons. */
+            $('#tablesectionview tbody tr').each(function() {
+                var scyr = $('td:nth-child(3) span', this).text();
+                var sy = $('#syyear').text();
+                if(scyr != sy) {
+                    $('td:nth-child(4) i:nth-child(2)', this).remove();
+                }
+            });
+        }
+    });
 }
 
 function validateSectionForm() {
@@ -109,6 +135,7 @@ function saveSection(section_id) {
 }
 
 $(document).ready(function() {
+     $('#subjectbigspinner').hide();
     /* Load sections. */
     loadSections();
     $('input[name=createSectionButton]').click(function() {

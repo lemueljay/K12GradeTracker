@@ -126,10 +126,10 @@ function initContentBars() {
 
 function updateFilterYear() {
     $('#dropdownsubMenu1').load('/filter_dropdown/');
+    $('#dropdownsubMenu2').load('/filter_dropdown/');
 }
 
 $(document).ready(function() {
-
     updateTime();
     initContentBars();
     updateFilterYear();
@@ -142,7 +142,6 @@ $(document).ready(function() {
     $('#mansub').click(function() {
          $('.contentbar').hide();
          $('#subjectsbar').show();
-
     });
     $('#mansubbutt').click(function() {
          $('.contentbar').hide();
