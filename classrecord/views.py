@@ -369,7 +369,7 @@ class RemoveAssessment(View):
 
 
 class SaveAssessment(View):
-    def post(selfs, request):
+    def post(self, request):
         return HttpResponse()
 
 

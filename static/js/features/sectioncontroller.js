@@ -93,6 +93,7 @@ function createSection() {
 
 function removeSection(section_id) {
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+    var section_name = $('#trsection' + section_id + ' td:nth-child(2)').text();
     $('.sectionsbar-error').addClass('hidden');
     $('.sectionsbar-error-redundant').addClass('hidden');
     alertify.confirm('THINK AGAIN!', 'Are you sure you want to delete the selected section? All of the following objects and their related items will be deleted.', function() {
@@ -105,7 +106,7 @@ function removeSection(section_id) {
                 $('#trsection' + section_id).fadeOut('slow', function () {
                     $('#trsection' + section_id).remove();
                     $('#sectionspinner').addClass('hidden');
-                    alertify.error($('#trsection' + section_id + ' td:nth-child(2)').text() + ' successfully removed!');
+                    alertify.error('Section ' + section_name + ' successfully removed!');
                 });
             }
         });
@@ -126,20 +127,42 @@ function editSection(section_id) {
 }
 
 function saveSection(section_id) {
-    $('#savesectionbutton' + section_id).addClass('hidden');
-    $('#editsectionbutton' + section_id).removeClass('hidden');
     var newName = $('#tdsectionnameinput' + section_id).val().toUpperCase();
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
-    $.ajax({
-        type: 'POST',
-        url: '/save_section/',
-        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'newName': newName, 'section_id': section_id},
-        success: function() {
-            $('#tdsectionname' + section_id).text(newName);
-            $('.tdsectionnameinput').addClass('hidden');
-            $('.tdsectionname').removeClass('hidden');
-        }
-    });
+    /* Validation */
+    var valid = false;
+    if(newName.trim(" ") == '') {
+        valid = false;
+    } else {
+        valid = true;
+    }
+    /* If valid. */
+    if(valid) {
+        $.ajax({
+            type: 'POST',
+            url: '/save_section/',
+            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'newName': newName, 'section_id': section_id},
+            success: function(data) {
+                /* Redundancy */
+                if(data['error']) {
+                    $('.sectionsbar-error').addClass('hidden');
+                    $('.sectionsbar-error-redundant').removeClass('hidden');
+                } else {
+                    $('#savesectionbutton' + section_id).addClass('hidden');
+                    $('#editsectionbutton' + section_id).removeClass('hidden');
+                    $('#tdsectionname' + section_id).text(newName);
+                    $('.tdsectionnameinput').addClass('hidden');
+                    $('.tdsectionname').removeClass('hidden');
+                    $('.sectionsbar-error').addClass('hidden');
+                    $('.sectionsbar-error-redundant').addClass('hidden');
+                    alertify.success('Section ' + newName + ' successfully updated!');
+                }
+            }
+        });
+    } else {
+        $('.sectionsbar-error').removeClass('hidden');
+        $('.sectionsbar-error-redundant').addClass('hidden');
+    }
 }
 
 $(document).ready(function() {

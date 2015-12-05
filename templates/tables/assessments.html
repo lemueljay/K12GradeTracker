@@ -20,21 +20,21 @@
             <tr id="trassessment{{ assessment.id }}">
                 <td><i onclick='' class='fa fa-apple fa-2x'></i></td>
                 <td>
-                    <input id="tdassessmentinputname" type="text" class="form-control assessmentinput hidden">
-                    <span class="tdassessmenttext">{{ assessment.name }}</span>
+                    <input id="tdassessmentinputname{{ assessment.id }}" type="text" class="form-control assessmentinput hidden">
+                    <span id="tdassessmenttextname{{ assessment.id }}" class="tdassessmenttext">{{ assessment.name }}</span>
                 </td>
                 <td>
-                    <input id="tdassessmentinputtotal" type="text" class="form-control assessmentinput hidden">
-                    <span class="tdassessmenttext">{{ assessment.total }}</span>
+                    <input id="tdassessmentinputtotal{{ assessment.id }}" type="number" class="form-control assessmentinput hidden">
+                    <span id="tdassessmenttexttotal{{ assessment.id }}" class="tdassessmenttext">{{ assessment.total }}</span>
                 </td>
                 <td>
-                    <select id="tdassessmentinputselect" class="form-control assessmentinput hidden">
+                    <select id="tdassessmentinputselect{{ assessment.id }}" class="form-control assessmentinput hidden">
                         <option value="0" disabled="disabled" selected="selected">Assessment Type</option>
-                        <option value="1">Written Work</option>
-                        <option value="2">Performance Task</option>
-                        <option value="3">Quarterly Exam</option>
+                        <option value="1">Written Works</option>
+                        <option value="2">Performance Tasks</option>
+                        <option value="3">Quarterly Exams</option>
                     </select>
-                    <span class="tdassessmenttext">{{ assessment.assessmenttype.type }}</span>
+                    <span id="tdassessmenttexttype{{ assessment.id }}" class="tdassessmenttext">{{ assessment.assessmenttype.type }}</span>
                 </td>
                 <td>{{ assessment.grading_period }}</td>
                 <td>{{ assessment.date }}</td>
