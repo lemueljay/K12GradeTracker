@@ -363,6 +363,16 @@ class CreateAssessment(View):
             return HttpResponse(json.dumps(data), content_type="application/json")
 
 
+class RemoveAssessment(View):
+    def post(self, request):
+        return HttpResponse()
+
+
+class SaveAssessment(View):
+    def post(selfs, request):
+        return HttpResponse()
+
+
 def get_sections(request):
     school_year = request.GET['school_year']
     if school_year == "ALL":
@@ -380,8 +390,6 @@ def get_sections(request):
         except sections.DoesNotExist:
             sections = None
     return render(request, 'tables/sections.html', {'sections': sections})
-
-
 
 
 class CreateSection(View):
@@ -404,5 +412,10 @@ class CreateSection(View):
 
 
 class DeleteSection(View):
+    def post(self, request):
+        return HttpResponse()
+
+
+class SaveSection(View):
     def post(self, request):
         return HttpResponse()

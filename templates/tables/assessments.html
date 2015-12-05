@@ -17,17 +17,31 @@
         </thead>
         <tbody>
         {% for assessment in assessments %}
-            <tr>
+            <tr id="trassessment{{ assessment.id }}">
                 <td><i onclick='' class='fa fa-apple fa-2x'></i></td>
-                <td>{{ assessment.name }}</td>
-                <td>{{ assessment.total }}</td>
-                <td>{{ assessment.assessmenttype.type }}</td>
+                <td>
+                    <input id="tdassessmentinputname" type="text" class="form-control assessmentinput hidden">
+                    <span class="tdassessmenttext">{{ assessment.name }}</span>
+                </td>
+                <td>
+                    <input id="tdassessmentinputtotal" type="text" class="form-control assessmentinput hidden">
+                    <span class="tdassessmenttext">{{ assessment.total }}</span>
+                </td>
+                <td>
+                    <select id="tdassessmentinputselect" class="form-control assessmentinput hidden">
+                        <option value="0" disabled="disabled" selected="selected">Assessment Type</option>
+                        <option value="1">Written Work</option>
+                        <option value="2">Performance Task</option>
+                        <option value="3">Quarterly Exam</option>
+                    </select>
+                    <span class="tdassessmenttext">{{ assessment.assessmenttype.type }}</span>
+                </td>
                 <td>{{ assessment.grading_period }}</td>
                 <td>{{ assessment.date }}</td>
                 <td>
-                    <i class='fa fa-save fa-2x hidden savebutton' onclick=''></i>
-                    <i class='fa fa-edit fa-2x editbutton' onclick=''></i>
-                    <i class='fa fa-remove fa-2x removebutton' onclick=''></i>
+                    <i id="assessmentsavebutton{{ assessment.id }}" class='fa fa-save fa-2x hidden savebutton' onclick='saveAssessment({{ assessment.id }})'></i>
+                    <i id="assessmenteditbutton{{ assessment.id }}" class='fa fa-edit fa-2x editbutton' onclick='editAssessment({{ assessment.id }})'></i>
+                    <i class='fa fa-remove fa-2x removebutton' onclick='deleteAssessment({{ assessment.id }})'></i>
                 </td>
             </tr>
         {% endfor %}

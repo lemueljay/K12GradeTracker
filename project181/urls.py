@@ -55,9 +55,13 @@ urlpatterns = [
     #
     url(r'^create_assessment/$', CreateAssessment.as_view()),
 
+    url(r'^remove_assessment/$', RemoveAssessment.as_view()),
+
     url(r'^get_sections/$', get_sections),
 
     url(r'^create_section/$', CreateSection.as_view()),
 
     url(r'^delete_section/$', DeleteSection.as_view()),
+
+    url(r'^save_section/$', SaveSection.as_view()),
 ]

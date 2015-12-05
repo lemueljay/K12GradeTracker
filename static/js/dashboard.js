@@ -139,9 +139,11 @@ $(document).ready(function() {
     $('#ophome').click(function() {
         initContentBars();
     });
+
     $('#mansub').click(function() {
          $('.contentbar').hide();
          $('#subjectsbar').show();
+         loadSubjects();
     });
     $('#mansubbutt').click(function() {
          $('.contentbar').hide();
@@ -151,6 +153,7 @@ $(document).ready(function() {
     $('#mansec').click(function() {
         $('.contentbar').hide();
         $('#sectionsbar').show();
+        loadSections();
     });
     $('#viewstudbutt').click(function() {
         $('.contentbar').hide();

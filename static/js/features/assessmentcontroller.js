@@ -47,7 +47,7 @@ function createAssessment() {
                 /* No redundancy, go for gold. */
                 $('.recgradbar-error').addClass('hidden');
                 $('.recgradbar-error-redundant').addClass('hidden');
-                $("<tr>" +
+                $("<tr id='trassessment" + data['assessment_id'] + "'>" +
                 "<td>" +
                 "<i onclick='' class='fa fa-apple fa-2x'></i>" +
                 "</td>" +
@@ -72,12 +72,34 @@ function createAssessment() {
     });
 }
 
-function deleteAssessment() {
+function deleteAssessment(assessment_id) {
+    var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+    alertify.confirm('THINK AGAIN!', 'You cannot undo these once deleted.', function() {
+        $.ajax({
+        type: 'POST',
+        url: '/remove_assessment/',
+        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'assessment_id': assessment_id},
+        success: function() {
+            $('#assessmentspinnerspinner').removeClass('hidden');
+            $('#trassessment' + assessment_id).fadeOut('fast', function() {
+                $('#trassessment' + assessment_id).remove();
+                $('#assessmentspinnerspinner').addClass('hidden');
+            });
+        }
+    });
+    }, function() {
 
+    });
 }
 
-function editAssessment() {
-
+function editAssessment(assessment_id) {
+    /* Buttons */
+    $('.savebutton').addClass('hidden');
+    $('.editbutton').removeClass('hidden');
+    $('#assessmenteditbutton' + assessment_id).addClass('hidden');
+    $('#assessmentsavebutton' + assessment_id).removeClass('hidden');
+    /* Inputs */
+    
 }
 
 function saveAssessment() {

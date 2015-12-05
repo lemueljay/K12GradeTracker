@@ -17,6 +17,7 @@ function loadSubjects(year) {
     }
     var sy = $('#syyear').text();
     loadSections(school_year);
+
     $.ajax({
         type: 'GET',
         url: '/get_subjects/',

@@ -30,6 +30,7 @@ function loadSections(year) {
                     $('td:nth-child(4) i:nth-child(2)', this).remove();
                 }
             });
+            $('#tablesectionview table').trigger('update');
         }
     });
 }
@@ -83,8 +84,8 @@ function createSection() {
                 // Notify the user.
                 alertify.success('Section ' + sectionName.toUpperCase() + ' successfully created!');
                 $('#sectionspinner').addClass('hidden');
+                $('#tablesectionview table').trigger('update');
             }
-
         }
     });
 
@@ -100,7 +101,6 @@ function removeSection(section_id) {
             url: '/delete_section/',
             data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'section_id': section_id},
             success: function(data) {
-
                 $('#sectionspinner').removeClass('hidden');
                 $('#trsection' + section_id).fadeOut('slow', function () {
                     $('#trsection' + section_id).remove();
@@ -128,10 +128,18 @@ function editSection(section_id) {
 function saveSection(section_id) {
     $('#savesectionbutton' + section_id).addClass('hidden');
     $('#editsectionbutton' + section_id).removeClass('hidden');
-    var newName = $('#tdsectionnameinput' + section_id).val();
-    $('#tdsectionname' + section_id).text(newName);
-    $('.tdsectionnameinput').addClass('hidden');
-    $('.tdsectionname').removeClass('hidden');
+    var newName = $('#tdsectionnameinput' + section_id).val().toUpperCase();
+    var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+    $.ajax({
+        type: 'POST',
+        url: '/save_section/',
+        data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'newName': newName, 'section_id': section_id},
+        success: function() {
+            $('#tdsectionname' + section_id).text(newName);
+            $('.tdsectionnameinput').addClass('hidden');
+            $('.tdsectionname').removeClass('hidden');
+        }
+    });
 }
 
 $(document).ready(function() {
