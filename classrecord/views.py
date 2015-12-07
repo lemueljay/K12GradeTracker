@@ -412,8 +412,15 @@ class CreateSection(View):
 
 
 class DeleteSection(View):
-    def post(self, request):
+    def get(self, request):
         return HttpResponse()
+
+    def post(self, request):
+        section_id = request.POST['section_id']
+        query = Section.objects.get(id=section_id)
+        query.delete()
+        return HttpResponse()
+
 
 
 class SaveSection(View):
