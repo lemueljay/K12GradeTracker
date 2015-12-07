@@ -165,6 +165,25 @@ function saveSection(section_id) {
     }
 }
 
+function viewSection(section_id) {
+    $('#studentbigspinner').show();
+    $('.contentbar').hide();
+    $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
+    $('#studentsbar').show();
+    $('#studentscontainer span').empty().hide();
+    $.ajax({
+        type: 'GET',
+        url: '/get_students/',
+        data: {'section_id': section_id},
+        success: function(data) {
+            $('#studentbigspinner').fadeOut('fast', function() {
+                $('#studentscontainer span').html(data).show();
+            })
+
+        }
+    });
+}
+
 $(document).ready(function() {
      $('#subjectbigspinner').hide();
     /* Load sections. */

@@ -51,15 +51,29 @@ function createAssessment() {
                 "<td>" +
                 "<i onclick='' class='fa fa-apple fa-2x'></i>" +
                 "</td>" +
-                "<td>" + assessmentName + "</td>" +
-                "<td>" + assessmentTotal + "</td>" +
-                "<td>" + assessmentTypeName + "</td>" +
+                "<td>" +
+                "<input id='tdassessmentinputname" + data['assessment_id'] + "' type='text' class='form-control assessmentinput hidden'>" +
+                "<span id='tdassessmenttextname" + data['assessment_id'] + "' class='tdassessmenttext'>" + assessmentName + "</span>" +
+                "</td>" +
+                "<td>" +
+                "<input id='tdassessmentinputtotal" + data['assessment_id'] + "' type='number' class='form-control assessmentinput hidden'>" +
+                "<span id='tdassessmenttexttotal" + data['assessment_id'] + "' class='tdassessmenttext'>" + assessmentTotal + "</span>" +
+                "</td>" +
+                "<td>" +
+                "<select id='tdassessmentinputselect" + data['assessment_id'] + "' class='form-control assessmentinput hidden'>" +
+                "<option value='0' disabled='disabled' selected='selected'>Assessment Type</option>" +
+                "<option value='1'>Written Works</option>" +
+                "<option value='2'>Performance Tasks</option>" +
+                "<option value='3'>Quarterly Exams</option>" +
+                "</select>" +
+                "<span id='tdassessmenttexttype" + data['assessment_id'] + "' class='tdassessmenttext'>" + assessmentTypeName + "</span>" +
+                "</td>" +
                 "<td>" + gradingPeriod + " Grading" + "</td>" +
                 "<td>" + data['timezone'] + "</td>" +
                 "<td>" +
-                "<i class='fa fa-save fa-2x hidden savebutton' onclick=''></i>" +
-                "<i class='fa fa-edit fa-2x editbutton' onclick=''></i>" +
-                "<i class='fa fa-remove fa-2x removebutton' onclick=''></i>" +
+                "<i id='assessmentsavebutton" + data['assessment_id'] + "' class='fa fa-save fa-2x hidden savebutton' onclick='saveAssessment(" + data['assessment_id'] + ")'></i>" +
+                "<i id='assessmenteditbutton" + data['assessment_id'] + "' class='fa fa-edit fa-2x editbutton' onclick='editAssessment(" + data['assessment_id'] + ")'></i>" +
+                "<i class='fa fa-remove fa-2x removebutton' onclick='deleteAssessment(" + data['assessment_id'] + ")'></i>" +
                 "</td>" +
                 "</tr>").appendTo('#tableassessmentsview table tbody').hide().fadeIn();
                 /* Clear Form */

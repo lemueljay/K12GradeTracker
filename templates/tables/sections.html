@@ -14,7 +14,7 @@
         {% for section in sections %}
             <tr id="trsection{{ section.id }}">
                 <td>
-                    <i onclick="" class="fa fa-apple fa-2x"></i>
+                    <i onclick="viewSection({{ section.id }})" class="fa fa-apple fa-2x"></i>
                 </td>
                 <td>
                     <input id="tdsectionnameinput{{ section.id }}" class="hidden tdsectionnameinput form-control">

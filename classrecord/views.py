@@ -419,3 +419,7 @@ class DeleteSection(View):
 class SaveSection(View):
     def post(self, request):
         return HttpResponse()
+
+
+def get_students(request):
+    return render(request, 'tables/students.html')
