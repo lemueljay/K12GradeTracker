@@ -364,7 +364,13 @@ class CreateAssessment(View):
 
 
 class RemoveAssessment(View):
+    def get(self, request):
+        return HttpResponse()
+
     def post(self, request):
+        assessment_id = request.POST['assessment_id']
+        query = Assessment.objects.get(id=assessment_id)
+        query.delete()
         return HttpResponse()
 
 
