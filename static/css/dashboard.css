@@ -279,6 +279,10 @@ table tbody tr td i.fa-remove:hover {
     color: #8bc34a;
 }
 
+#tablestudentsview table tbody tr td i.fa-edit:hover, #tablestudentsview table tbody tr td i.fa-save:hover, #tablestudentsview table tbody tr td i.fa-apple:hover {
+    color: #ea003d;
+}
+
 /*
 input[name=viewGradesButton], input[name=viewGradesButton]:active, input[name=viewGradesButton]:focus, input[name=viewGradesButton]:active:focus, input[name=viewGradesButton]:hover {
     background-color: #8bc34a;

@@ -438,8 +438,8 @@ class AddStudent(View):
         # Get instance
         section_instance = Section.objects.get(id=section_id)
         # Check redundancy
-        redundant = Student.objects.filter(first_name=first_name, middle_name=middle_name, last_name=last_name,
-                                           section=section_instance)
+        redundant = Student.objects.filter(first_name__iexact=first_name, middle_name__iexact=middle_name,
+                                           last_name__iexact=last_name, section=section_instance)
         if len(redundant) == 0:
             query = Student(first_name=first_name, middle_name=middle_name, last_name=last_name,
                             section=section_instance)
@@ -452,3 +452,13 @@ class AddStudent(View):
             data = dict()
             data['error'] = True
             return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+class RemoveStudent(View):
+    def post(self, request):
+        return HttpResponse()
+
+
+class SaveStudent(View):
+    def post(self, request):
+        return HttpResponse()

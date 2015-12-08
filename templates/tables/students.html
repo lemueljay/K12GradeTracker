@@ -14,18 +14,18 @@
         </thead>
         <tbody>
         {% for student in students %}
-             <tr>
+             <tr id="trstudent{{ student.id }}">
                 <td>
                     <input class="hidden form-control tdstudentinput" name="tdstudentinputlastname{{ student.id }}">
-                    <span id="tdstudentspanfirstname{{ student.id }}" class="tdstudentspan">{{ student.first_name }}</span>
+                    <span id="tdstudentspanlastname{{ student.id }}" class="tdstudentspan">{{ student.last_name }}</span>
                 </td>
                 <td>
                     <input class="hidden form-control tdstudentinput" name="tdstudentinputfirstname{{ student.id }}">
-                    <span id="tdstudentspanlastname{{ student.id }}" class="tdstudentspan">L{{ student. }}</span>
+                    <span id="tdstudentspanfirstname{{ student.id }}" class="tdstudentspan">{{ student.first_name }}</span>
                 </td>
                 <td>
                     <input class="hidden form-control tdstudentinput" name="tdstudentinputmiddlename{{ student.id }}">
-                    <span id="tdstudentspanmiddlename{{ student.id }}" class="tdstudentspan">V.</span>
+                    <span id="tdstudentspanmiddlename{{ student.id }}" class="tdstudentspan">{{ student.middle_name }}</span>
                 </td>
                 <td>
                     <i onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden"></i>

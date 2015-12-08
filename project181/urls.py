@@ -70,4 +70,8 @@ urlpatterns = [
     url(r'^get_students/$', get_students),
 
     url(r'^add_student/$', AddStudent.as_view()),
+
+    url(r'^remove_student/$', RemoveStudent.as_view()),
+
+    url(r'^save_student/$', SaveStudent.as_view()),
 ]

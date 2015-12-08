@@ -38,17 +38,19 @@ function addStudent() {
             data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'first_name': first_name, 'middle_name': middle_name, 'last_name': last_name, 'section_id': section_id},
             success: function(data) {
                 if(data['error']) {
-                    console.log('ERROE!');
+                    $('.studentsbar-error').addClass('hidden');
+                    $('.studentsbar-error-redundant').removeClass('hidden');
                 } else {
-                    console.log('OK');
-                    $("<tr>" +
+                    $('.studentsbar-error').addClass('hidden');
+                    $('.studentsbar-error-redundant').addClass('hidden');
+                    $("<tr id='trstudent" + data['student_id'] + "'>" +
                     "<td>" +
                     "<input class='hidden form-control tdstudentinput' name='tdstudentinputlastname" + data['student_id'] + "'>" +
-                    "<span id='tdstudentspanfirstname" + data['student_id'] + "' class='tdstudentspan'>" + first_name + "</span>" +
+                    "<span id='tdstudentspanfirstname" + data['student_id'] + "' class='tdstudentspan'>" + last_name + "</span>" +
                     "</td>" +
                     "<td>" +
                     "<input class='hidden form-control tdstudentinput' name='tdstudentinputfirstname'" + data['student_id'] + ">" +
-                    "<span id='tdstudentspanlastname'" + data['student_id'] + " class='tdstudentspan'>" + last_name + "</span>" +
+                    "<span id='tdstudentspanlastname'" + data['student_id'] + " class='tdstudentspan'>" + first_name + "</span>" +
                     "</td>" +
                     "<td>" +
                     "<input class='hidden form-control tdstudentinput' name='tdstudentinputmiddlename" + data['student_id'] + "'>" +
@@ -61,17 +63,14 @@ function addStudent() {
                     "</td>" +
                     "</tr>").appendTo('#tablestudentsview table tbody').hide().fadeIn();
                     $('#tablestudentsview table').trigger('update');
+                    /* Clear forms. */
+                    $('input[name=firstname]').val('');
+                    $('input[name=middlename]').val('');
+                    $('input[name=lastname]').val('');
                 }
                 $('#studentspinnerspinner').addClass('hidden');
             }
         });
-        /* Clear forms. */
-        $('input[name=firstname]').val('');
-        $('input[name=middlename]').val('');
-        $('input[name=lastname]').val('');
-        /* Clear errors. */
-        $('.studentsbar-error').addClass('hidden');
-        $('.studentsbar-error-redundant').addClass('hidden');
     } else {
         $('#studentspinnerspinner').addClass('hidden');
         $('.studentsbar-error').removeClass('hidden');
@@ -80,11 +79,34 @@ function addStudent() {
 }
 
 function removeStudent(student_id) {
+    var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+    var first_name = $('#tdstudentspanfirstname' + student_id).text();
+    var middle_name = $('#tdstudentspanmiddlename' + student_id).text();
+    var last_name = $('#tdstudentspanlastname' + student_id).text();
+    $('.studentsbar-error').addClass('hidden');
+    $('.studentsbar-error-redundant').addClass('hidden');
+    alertify.confirm('THINK AGAIN!', 'Are you sure you want to remove the selected student? All of the following objects and their related items will be deleted.', function() {
+        $.ajax({
+            type: 'POST',
+            url: '/remove_student/',
+            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'student_id': student_id},
+            success: function() {
+                $('#studentspinnerspinner').removeClass('hidden');
+                $('#trstudent' + student_id).fadeOut('slow', function () {
+                    $('#trstudent' + student_id).remove();
+                    $('#studentspinnerspinner').addClass('hidden');
+                    alertify.error(first_name + ' ' + middle_name + ' ' + last_name + ' successfully removed!');
+                });
+            }
+        });
+    }, function() {
+
+    });
 
 }
 
 function editStudent() {
-
+    
 }
 
 function saveStudent() {
