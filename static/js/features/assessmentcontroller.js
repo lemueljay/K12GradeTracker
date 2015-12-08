@@ -6,6 +6,8 @@
 
 
 function validateAssessmentForm() {
+     $('input[value="Create Assessment"]').blur();
+    $('#createSectionForm').blur();
     var assessmentName = $('input[name=recgradassessmentname]').val();
     var assessmentType = $('#recgradassessmenttype').val();
     var assessmentTotal = $('input[name=recgradtotal]').val();
@@ -20,6 +22,8 @@ function validateAssessmentForm() {
 }
 
 function createAssessment() {
+     $('input[value="Create Assessment"]').blur();
+    $('#createSectionForm').blur();
     /* Load spinner. */
     $('#assessmentspinnerspinner').removeClass('hidden');
 
