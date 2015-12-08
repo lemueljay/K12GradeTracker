@@ -56,6 +56,16 @@ class Subject(models.Model):
         return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.school_year, self.subject_type, self.user)
 
 
+class Student(models.Model):
+    first_name = models.CharField(max_length=200)
+    middle_name = models.CharField(max_length=200, default='N/A')
+    last_name = models.CharField(max_length=200)
+    section = models.ForeignKey(Section)
+
+    def __unicode__(self):
+        return u'%s %s %s %s' % (self.first_name, self.middle_name, self.last_name, self.section.name)
+
+
 # !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!
 class Class(models.Model):
     name = models.CharField(max_length=200)
@@ -69,13 +79,7 @@ class Class(models.Model):
                                        self.hidden)
 
 
-class Student(models.Model):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    classname = models.ForeignKey(Class)
 
-    def __unicode__(self):
-        return u'%s %s %s' % (self.first_name, self.last_name, self.classname)
 
 
 class AssessmentType(models.Model):

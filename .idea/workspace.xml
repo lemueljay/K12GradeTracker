@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="56ce5335-0cc9-4331-847b-55ced6df57f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/assessmentcontroller.js" afterPath="$PROJECT_DIR$/static/js/features/assessmentcontroller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/dashboard.css" afterPath="$PROJECT_DIR$/static/css/dashboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard.html" afterPath="$PROJECT_DIR$/templates/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/models.py" afterPath="$PROJECT_DIR$/classrecord/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/sectioncontroller.js" afterPath="$PROJECT_DIR$/static/js/features/sectioncontroller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/studentcontroller.js" afterPath="$PROJECT_DIR$/static/js/features/studentcontroller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tables/students.html" afterPath="$PROJECT_DIR$/templates/tables/students.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project181/urls.py" afterPath="$PROJECT_DIR$/project181/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/views.py" afterPath="$PROJECT_DIR$/classrecord/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="project181.iws" />
@@ -44,11 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="studentcontroller.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/features/studentcontroller.js">
+      <file leaf-file-name="dashboard.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/dashboard.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37226278" vertical-offset="0" max-vertical-offset="918">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2987" max-vertical-offset="13005">
+              <caret line="196" column="136" selection-start-line="196" selection-start-column="136" selection-end-line="196" selection-end-column="136" />
               <folding />
             </state>
           </provider>
@@ -57,8 +61,61 @@
       <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.269231" vertical-offset="2877" max-vertical-offset="8194">
-              <caret line="188" column="45" selection-start-line="188" selection-start-column="45" selection-end-line="188" selection-end-column="45" />
+            <state vertical-scroll-proportion="-20.76923" vertical-offset="2418" max-vertical-offset="8194">
+              <caret line="174" column="140" selection-start-line="174" selection-start-column="134" selection-end-line="174" selection-end-column="140" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="students.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/tables/students.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.807692" vertical-offset="106" max-vertical-offset="765">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classrecord/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="744" max-vertical-offset="1921">
+              <caret line="65" column="101" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="studentcontroller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/features/studentcontroller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
+              <caret line="37" column="152" selection-start-line="37" selection-start-column="142" selection-end-line="37" selection-end-column="152" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classrecord/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6999" max-vertical-offset="7752">
+              <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1449556390896" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sectioncontroller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.13839285" vertical-offset="1028" max-vertical-offset="3604">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -106,7 +163,6 @@
         <option value="$PROJECT_DIR$/static/js/features/updateinfo.js" />
         <option value="$PROJECT_DIR$/static/css/plugin/alertify.css" />
         <option value="$PROJECT_DIR$/static/js/features/schoolyear.js" />
-        <option value="$PROJECT_DIR$/classrecord/models.py" />
         <option value="$PROJECT_DIR$/templates/tables/subjects.html" />
         <option value="$PROJECT_DIR$/templates/partials/filter_dropdown.html" />
         <option value="$PROJECT_DIR$/static/js/features/schoolyearcontroller.js" />
@@ -115,14 +171,15 @@
         <option value="$PROJECT_DIR$/static/js/dashboard.js" />
         <option value="$PROJECT_DIR$/templates/tables/assessments.html" />
         <option value="$PROJECT_DIR$/templates/tables/sections.html" />
+        <option value="$PROJECT_DIR$/static/js/features/assessmentcontroller.js" />
         <option value="$PROJECT_DIR$/static/css/dashboard.css" />
         <option value="$PROJECT_DIR$/project181/urls.py" />
-        <option value="$PROJECT_DIR$/classrecord/views.py" />
-        <option value="$PROJECT_DIR$/templates/tables/students.html" />
-        <option value="$PROJECT_DIR$/static/js/features/sectioncontroller.js" />
-        <option value="$PROJECT_DIR$/static/js/features/assessmentcontroller.js" />
         <option value="$PROJECT_DIR$/templates/dashboard.html" />
+        <option value="$PROJECT_DIR$/templates/tables/students.html" />
+        <option value="$PROJECT_DIR$/classrecord/models.py" />
+        <option value="$PROJECT_DIR$/static/js/features/sectioncontroller.js" />
         <option value="$PROJECT_DIR$/static/js/features/studentcontroller.js" />
+        <option value="$PROJECT_DIR$/classrecord/views.py" />
       </list>
     </option>
   </component>
@@ -1011,13 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classrecord/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="1853">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/features/schoolyearcontroller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07445256" vertical-offset="0" max-vertical-offset="685">
@@ -1039,13 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tables/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="969">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38248175" vertical-offset="2186" max-vertical-offset="3961">
@@ -1053,20 +1096,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6472" max-vertical-offset="7310">
-          <caret line="424" column="49" selection-start-line="424" selection-start-column="49" selection-end-line="424" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/tables/sections.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39453718" vertical-offset="12" max-vertical-offset="697">
           <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,6 +1108,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.01972686" vertical-offset="293" max-vertical-offset="952">
           <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,58 +1116,89 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7083333" vertical-offset="1887" max-vertical-offset="5967">
           <caret line="143" column="35" selection-start-line="142" selection-start-column="4" selection-end-line="143" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/dashboard.css">
+    <entry file="file://$PROJECT_DIR$/templates/tables/subjects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36160713" vertical-offset="4551" max-vertical-offset="13005">
-          <caret line="282" column="152" selection-start-line="282" selection-start-column="146" selection-end-line="282" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tables/students.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69044006" vertical-offset="276" max-vertical-offset="935">
-          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="119" max-vertical-offset="969">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project181/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8510949" vertical-offset="556" max-vertical-offset="1275">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.8510949" vertical-offset="590" max-vertical-offset="1309">
+          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/features/assessmentcontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60714287" vertical-offset="0" max-vertical-offset="3995">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.15178572" vertical-offset="408" max-vertical-offset="3995">
+          <caret line="30" column="73" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
+    <entry file="file://$PROJECT_DIR$/static/css/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36755952" vertical-offset="603" max-vertical-offset="3587">
-          <caret line="50" column="35" selection-start-line="49" selection-start-column="3" selection-end-line="50" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2987" max-vertical-offset="13005">
+          <caret line="196" column="136" selection-start-line="196" selection-start-column="136" selection-end-line="196" selection-end-column="136" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.269231" vertical-offset="2877" max-vertical-offset="8194">
-          <caret line="188" column="45" selection-start-line="188" selection-start-column="45" selection-end-line="188" selection-end-column="45" />
+        <state vertical-scroll-proportion="-20.76923" vertical-offset="2418" max-vertical-offset="8194">
+          <caret line="174" column="140" selection-start-line="174" selection-start-column="134" selection-end-line="174" selection-end-column="140" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tables/students.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.807692" vertical-offset="106" max-vertical-offset="765">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classrecord/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="744" max-vertical-offset="1921">
+          <caret line="65" column="101" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="101" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/features/studentcontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37226278" vertical-offset="0" max-vertical-offset="918">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
+          <caret line="37" column="152" selection-start-line="37" selection-start-column="142" selection-end-line="37" selection-end-column="152" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6999" max-vertical-offset="7752">
+          <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1449556390896" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13839285" vertical-offset="1028" max-vertical-offset="3604">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
           <folding />
         </state>
       </provider>

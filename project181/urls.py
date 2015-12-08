@@ -68,4 +68,6 @@ urlpatterns = [
     url(r'^save_section/$', SaveSection.as_view()),
 
     url(r'^get_students/$', get_students),
+
+    url(r'^add_student/$', AddStudent.as_view()),
 ]

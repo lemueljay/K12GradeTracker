@@ -14,36 +14,26 @@
         </thead>
         <tbody>
         {% for student in students %}
-            <tr>
-                <td>{{ student.last_name }}</td>
-                <td>{{ student.first_name }}</td>
+             <tr>
                 <td>
-                    <i class="fa fa-save"></i>
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-remove"></i>
+                    <input class="hidden form-control tdstudentinput" name="tdstudentinputlastname{{ student.id }}">
+                    <span id="tdstudentspanfirstname{{ student.id }}" class="tdstudentspan">{{ student.first_name }}</span>
                 </td>
-            </tr>
-        {% endfor %}
-            <tr>
-                <td>Vallinas</td>
-                <td>Lemuel Jay</td>
-                <td>V.</td>
                 <td>
-                    <i class="fa fa-save fa-2x hidden"></i>
-                    <i class="fa fa-edit fa-2x"></i>
-                    <i class="fa fa-remove fa-2x"></i>
+                    <input class="hidden form-control tdstudentinput" name="tdstudentinputfirstname{{ student.id }}">
+                    <span id="tdstudentspanlastname{{ student.id }}" class="tdstudentspan">L{{ student. }}</span>
                 </td>
-            </tr>
-            <tr>
-                <td>Baluarte</td>
-                <td>Zoeamar</td>
-                <td>T.</td>
                 <td>
-                    <i class="fa fa-save fa-2x hidden"></i>
-                    <i class="fa fa-edit fa-2x"></i>
+                    <input class="hidden form-control tdstudentinput" name="tdstudentinputmiddlename{{ student.id }}">
+                    <span id="tdstudentspanmiddlename{{ student.id }}" class="tdstudentspan">V.</span>
+                </td>
+                <td>
+                    <i onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden"></i>
+                    <i onclick="editStudent({{ student.id }})" class="fa fa-edit fa-2x"></i>
                     <i onclick="removeStudent({{ student.id }})" class="fa fa-remove fa-2x"></i>
                 </td>
             </tr>
+        {% endfor %}
         </tbody>
     </table>
     <div id="studentspinnerspinner" class="col-xs-12 text-center hidden"><i class="fa fa-spinner fa-spin fa-2x"></i></div>

@@ -423,3 +423,29 @@ class SaveSection(View):
 
 def get_students(request):
     return render(request, 'tables/students.html')
+
+
+class AddStudent(View):
+    def post(self, request):
+        # Get data
+        first_name = request.POST['first_name']
+        middle_name = request.POST['middle_name']
+        last_name = request.POST['last_name']
+        section_id = request.POST['section_id']
+        # Get instance
+        section_instance = Section.objects.get(id=section_id)
+        # Check redundancy
+        redundant = Student.objects.filter(first_name=first_name, middle_name=middle_name, last_name=last_name,
+                                           section=section_instance)
+        if len(redundant) == 0:
+            query = Student(first_name=first_name, middle_name=middle_name, last_name=last_name,
+                            section=section_instance)
+            query.save()
+            data = dict()
+            data['error'] = False
+            data['student_id'] = query.id
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")
