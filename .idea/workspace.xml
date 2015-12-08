@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56ce5335-0cc9-4331-847b-55ced6df57f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/dashboard.css" afterPath="$PROJECT_DIR$/static/css/dashboard.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard.html" afterPath="$PROJECT_DIR$/templates/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/models.py" afterPath="$PROJECT_DIR$/classrecord/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/sectioncontroller.js" afterPath="$PROJECT_DIR$/static/js/features/sectioncontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/studentcontroller.js" afterPath="$PROJECT_DIR$/static/js/features/studentcontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tables/students.html" afterPath="$PROJECT_DIR$/templates/tables/students.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project181/urls.py" afterPath="$PROJECT_DIR$/project181/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/views.py" afterPath="$PROJECT_DIR$/classrecord/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="project181.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,24 +90,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classrecord/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6999" max-vertical-offset="7752">
-              <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.42919707" vertical-offset="6965" max-vertical-offset="7803">
+              <caret line="427" column="72" selection-start-line="427" selection-start-column="72" selection-end-line="427" selection-end-column="72" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1449556390896" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
+                <marker date="1449556593927" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sectioncontroller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sectioncontroller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.13839285" vertical-offset="1028" max-vertical-offset="3604">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2830" max-vertical-offset="3604">
+              <caret line="180" column="39" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -1184,22 +1176,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
+    <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6999" max-vertical-offset="7752">
-          <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1449556390896" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="2830" max-vertical-offset="3604">
+          <caret line="180" column="39" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/features/sectioncontroller.js">
+    <entry file="file://$PROJECT_DIR$/classrecord/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13839285" vertical-offset="1028" max-vertical-offset="3604">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
-          <folding />
+        <state vertical-scroll-proportion="0.42919707" vertical-offset="6965" max-vertical-offset="7803">
+          <caret line="427" column="72" selection-start-line="427" selection-start-column="72" selection-end-line="427" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1449556593927" expanded="true" signature="6559:6627" placeholder="SELECT DISTI..classrecord_section..." />
+          </folding>
         </state>
       </provider>
     </entry>

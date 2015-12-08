@@ -422,7 +422,10 @@ class SaveSection(View):
 
 
 def get_students(request):
-    return render(request, 'tables/students.html')
+    section_id = request.GET['section_id']
+    section_instance = Section.objects.get(id=section_id)
+    students = Student.objects.filter(section=section_instance)
+    return render(request, 'tables/students.html', {'students': students})
 
 
 class AddStudent(View):
