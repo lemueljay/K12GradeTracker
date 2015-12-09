@@ -45,21 +45,21 @@ function addStudent() {
                     $('.studentsbar-error-redundant').addClass('hidden');
                     $("<tr id='trstudent" + data['student_id'] + "'>" +
                     "<td>" +
-                    "<input class='hidden form-control tdstudentinput' name='tdstudentinputlastname" + data['student_id'] + "'>" +
-                    "<span id='tdstudentspanfirstname" + data['student_id'] + "' class='tdstudentspan'>" + last_name + "</span>" +
+                    "<input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputlastname" + data['student_id'] + "'>" +
+                    "<span id='tdstudentspanlastname" + data['student_id'] + "' class='tdstudentspan'>" + last_name + "</span>" +
                     "</td>" +
                     "<td>" +
-                    "<input class='hidden form-control tdstudentinput' name='tdstudentinputfirstname'" + data['student_id'] + ">" +
-                    "<span id='tdstudentspanlastname'" + data['student_id'] + " class='tdstudentspan'>" + first_name + "</span>" +
+                    "<input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputfirstname" + data['student_id'] + "'>" +
+                    "<span id='tdstudentspanfirstname" + data['student_id'] + "' class='tdstudentspan'>" + first_name + "</span>" +
                     "</td>" +
                     "<td>" +
-                    "<input class='hidden form-control tdstudentinput' name='tdstudentinputmiddlename" + data['student_id'] + "'>" +
+                    "<input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputmiddlename" + data['student_id'] + "'>" +
                     "<span id='tdstudentspanmiddlename" + data['student_id'] + "' class='tdstudentspan'>" + middle_name + "</span>" +
                     "</td>" +
                     "<td>" +
-                    "<i onclick='saveStudent(" + data['student_id'] + ")' class='fa fa-save fa-2x hidden'></i>" +
-                    "<i onclick='editStudent(" + data['student_id'] + ")' class='fa fa-edit fa-2x'></i>" +
-                    "<i onclick='removeStudent(" + data['student_id'] + ")' class='fa fa-remove fa-2x'></i>" +
+                    "<i id='saveStudentButton{{ student.id }}' onclick='saveStudent(" + data['student_id'] + ")' class='fa fa-save fa-2x hidden'></i>" +
+                    "<i id='editStudentButton{{ student.id }}' onclick='editStudent(" + data['student_id'] + ")' class='fa fa-edit fa-2x'></i>" +
+                    "<i id='removeStudentButton{{ student.id }}' onclick='removeStudent(" + data['student_id'] + ")' class='fa fa-remove fa-2x'></i>" +
                     "</td>" +
                     "</tr>").appendTo('#tablestudentsview table tbody').hide().fadeIn();
                     $('#tablestudentsview table').trigger('update');
@@ -105,8 +105,17 @@ function removeStudent(student_id) {
 
 }
 
-function editStudent() {
-    
+function editStudent(student_id) {
+    var last_name = $('#tdstudentspanlastname' + student_id).text();
+    var first_name = $('#tdstudentspanlastname' + student_id).text();
+    var middle_name = $('#tdstudentspanlastname' + student_id).text();
+    $('#tdstudentspanlastname' + student_id).addClass('hidden');
+    $('#tdstudentspanfirstname' + student_id).addClass('hidden');
+    $('#tdstudentspanmiddlename' + student_id).addClass('hidden');
+    $('input[name=tdstudentinputlastname' + student_id + ']').removeClass('hidden').val(last_name);
+    $('input[name=tdstudentinputfirstname' + student_id + ']').removeClass('hidden').val(first_name);
+    $('input[name=tdstudentinputmiddlename' + student_id + ']').removeClass('hidden').val(middle_name);
+
 }
 
 function saveStudent() {

@@ -456,6 +456,9 @@ class AddStudent(View):
 
 class RemoveStudent(View):
     def post(self, request):
+        student_id = request.POST['student_id']
+        query = Student.objects.get(id=student_id)
+        query.delete()
         return HttpResponse()
 
 

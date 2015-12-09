@@ -16,21 +16,21 @@
         {% for student in students %}
              <tr id="trstudent{{ student.id }}">
                 <td>
-                    <input class="hidden form-control tdstudentinput" name="tdstudentinputlastname{{ student.id }}">
-                    <span id="tdstudentspanlastname{{ student.id }}" class="tdstudentspan">{{ student.last_name }}</span>
+                    <input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputlastname{{ student.id }}'>
+                    <span id='tdstudentspanlastname{{ student.id }}' class='tdstudentspan'>{{ student.last_name }}</span>
                 </td>
                 <td>
-                    <input class="hidden form-control tdstudentinput" name="tdstudentinputfirstname{{ student.id }}">
-                    <span id="tdstudentspanfirstname{{ student.id }}" class="tdstudentspan">{{ student.first_name }}</span>
+                    <input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputfirstname{{ student.id }}'>
+                    <span id='tdstudentspanfirstname{{ student.id }}' class='tdstudentspan'>{{ student.first_name }}</span>
                 </td>
                 <td>
-                    <input class="hidden form-control tdstudentinput" name="tdstudentinputmiddlename{{ student.id }}">
-                    <span id="tdstudentspanmiddlename{{ student.id }}" class="tdstudentspan">{{ student.middle_name }}</span>
+                    <input type='text' class='hidden form-control tdstudentinput' name='tdstudentinputmiddlename{{ student.id }}'>
+                    <span id='tdstudentspanmiddlename{{ student.id }}' class='tdstudentspan'>{{ student.middle_name }}</span>
                 </td>
                 <td>
-                    <i onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden"></i>
-                    <i onclick="editStudent({{ student.id }})" class="fa fa-edit fa-2x"></i>
-                    <i onclick="removeStudent({{ student.id }})" class="fa fa-remove fa-2x"></i>
+                    <i id='saveStudentButton{{ student.id }}' onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden"></i>
+                    <i id='editStudentButton{{ student.id }}' onclick="editStudent({{ student.id }})" class="fa fa-edit fa-2x"></i>
+                    <i id='removeStudentButton{{ student.id }}' onclick="removeStudent({{ student.id }})" class="fa fa-remove fa-2x"></i>
                 </td>
             </tr>
         {% endfor %}
