@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56ce5335-0cc9-4331-847b-55ced6df57f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/features/studentcontroller.js" afterPath="$PROJECT_DIR$/static/js/features/studentcontroller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tables/students.html" afterPath="$PROJECT_DIR$/templates/tables/students.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classrecord/views.py" afterPath="$PROJECT_DIR$/classrecord/views.py" />
     </list>
     <ignored path="project181.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -773,7 +770,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1552" height="842" extended-state="6" />
+    <frame x="-8" y="-8" width="1552" height="842" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9663394" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
