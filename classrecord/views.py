@@ -464,4 +464,27 @@ class RemoveStudent(View):
 
 class SaveStudent(View):
     def post(self, request):
+        section_id = request.POST['section_id']
+        student_id = request.POST['student_id']
+        last_name = request.POST['last_name']
+        first_name = request.POST['first_name']
+        middle_name = request.POST['middle_name']
+        # Check redundancy
+        section_instance = Section.objects.get(id=section_id)
+        redundant = Student.objects.filter(first_name__iexact=first_name, middle_name__iexact=middle_name,
+                                           last_name__iexact=last_name, section=section_instance)
+        if len(redundant) == 0:
+            query = Student.objects.get(id=student_id)
+            query.first_name = first_name
+            query.middle_name = middle_name
+            query.last_name = last_name
+            query.save()
+            data = dict()
+            data['error'] = False
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")
+
         return HttpResponse()

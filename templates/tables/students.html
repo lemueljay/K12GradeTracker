@@ -28,9 +28,9 @@
                     <span id='tdstudentspanmiddlename{{ student.id }}' class='tdstudentspan'>{{ student.middle_name }}</span>
                 </td>
                 <td>
-                    <i id='saveStudentButton{{ student.id }}' onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden"></i>
-                    <i id='editStudentButton{{ student.id }}' onclick="editStudent({{ student.id }})" class="fa fa-edit fa-2x"></i>
-                    <i id='removeStudentButton{{ student.id }}' onclick="removeStudent({{ student.id }})" class="fa fa-remove fa-2x"></i>
+                    <i id='saveStudentButton{{ student.id }}' onclick="saveStudent({{ student.id }})" class="fa fa-save fa-2x hidden studentsavebtn"></i>
+                    <i id='editStudentButton{{ student.id }}' onclick="editStudent({{ student.id }})" class="fa fa-edit fa-2x studenteditbtn"></i>
+                    <i id='removeStudentButton{{ student.id }}' onclick="removeStudent({{ student.id }})" class="fa fa-remove fa-2x studentremovebtn"></i>
                 </td>
             </tr>
         {% endfor %}
