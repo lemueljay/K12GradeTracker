@@ -18,7 +18,7 @@
         <tbody>
         {% for assessment in assessments %}
             <tr id="trassessment{{ assessment.id }}">
-                <td><i onclick='' class='fa fa-apple fa-2x'></i></td>
+                <td><i onclick='goToAssessment({{ assessment.id }})' class='fa fa-apple fa-2x'></i></td>
                 <td>
                     <input id="tdassessmentinputname{{ assessment.id }}" type="text" class="form-control assessmentinput hidden">
                     <span id="tdassessmenttextname{{ assessment.id }}" class="tdassessmenttext">{{ assessment.name }}</span>

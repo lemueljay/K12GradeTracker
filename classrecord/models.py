@@ -18,7 +18,7 @@ class UserProfile(models.Model):
     grading_period = models.CharField(max_length=5, default='1st')
 
     def __unicode__(self):
-        return u'%s %s %s' % (self.id, self.user, self.grading_system)
+        return u'%s %s %s %s' % (self.id, self.user, self.grading_system.name, self.grading_period)
 
 
 # Subject Type Model
@@ -31,7 +31,7 @@ class SubjectType(models.Model):
 
     def __unicode__(self):
             return u'%s %s %s %s %s %s' % (self.id, self.name, self.written_works, self.performance_tasks,
-                                        self.quarterly_assessments, self.grading_system)
+                                           self.quarterly_assessments, self.grading_system)
 
 
 # Section Model
@@ -41,7 +41,7 @@ class Section(models.Model):
     school_year = models.CharField(max_length=100, default='2014-2015')
 
     def __unicode__(self):
-        return u'%s %s %s' % (self.id, self.name, self.user)
+        return u'%s %s %s %s' % (self.id, self.name, self.user.get_full_name(), self.school_year)
 
 
 # Subject Model
@@ -53,7 +53,8 @@ class Subject(models.Model):
     school_year = models.CharField(max_length=100, default='2014-2015')
 
     def __unicode__(self):
-        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.school_year, self.subject_type, self.user)
+        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section.name, self.school_year,
+                                       self.subject_type.name, self.user.get_full_name())
 
 
 class Student(models.Model):
@@ -63,23 +64,7 @@ class Student(models.Model):
     section = models.ForeignKey(Section)
 
     def __unicode__(self):
-        return u'%s %s %s %s' % (self.first_name, self.middle_name, self.last_name, self.section.name)
-
-
-# !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!
-class Class(models.Model):
-    name = models.CharField(max_length=200)
-    section = models.CharField(max_length=200)
-    subject_type = models.ForeignKey(SubjectType, default=1)
-    user = models.ForeignKey(User)
-    hidden = models.CharField(max_length=2, default=0)
-
-    def __unicode__(self):
-        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user,
-                                       self.hidden)
-
-
-
+        return u'%s %s %s %s %s' % (self.id, self.first_name, self.middle_name, self.last_name, self.section.name)
 
 
 class AssessmentType(models.Model):
@@ -100,6 +85,28 @@ class Assessment(models.Model):
 
     def __unicode__(self):
         return u'%s %s %s %s %s %s' % (self.name, self.total,  self.grading_period, self.date, self.assessmenttype.type, self.subject.name)
+
+
+class Record(models.Model):
+    assessment = models.ForeignKey(Assessment)
+    student = models.ForeignKey(Student)
+    score = models.CharField(default='0', max_length=200)
+
+    def __unicode__(self):
+        return u'%s %s %s %s' % (self.id, self.assessment.name, self.student.last_name, self.score)
+
+
+# !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!
+class Class(models.Model):
+    name = models.CharField(max_length=200)
+    section = models.CharField(max_length=200)
+    subject_type = models.ForeignKey(SubjectType, default=1)
+    user = models.ForeignKey(User)
+    hidden = models.CharField(max_length=2, default=0)
+
+    def __unicode__(self):
+        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user,
+                                       self.hidden)
 
 
 class StudentGrades(models.Model):

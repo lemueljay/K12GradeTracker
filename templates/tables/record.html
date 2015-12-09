@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+
+
+<span id="tablerecordview">
+    <table class="table table-striped">
+        <thead>
+            <th>STUDENT NAME</th>
+            <th>SCORE</th>
+        </thead>
+        <tbody>
+        {% for record in records %}
+            <tr>
+                <td>{{ record.student.last_name }}, {{ record.student.first_name }} {{ record.student.middle_name }}</td>
+                <td>{{ record.score }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</span>

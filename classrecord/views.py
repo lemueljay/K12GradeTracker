@@ -291,6 +291,15 @@ class CreateAssessment(View):
             query = Assessment(name=name, total=total, assessmenttype=assessmenttype_instance,
                                grading_period=grading_period, date=date, subject=subject_instance)
             query.save()
+
+            # Prepare for Record Instance
+            section_id = subject_instance.section_id
+            section_instance = Section.objects.get(id=section_id)
+            students = Student.objects.filter(section=section_instance)
+            for student in students:
+                query2 = Record(assessment=query, student=student)
+                query2.save()
+
             data = dict()
             data['error'] = False
             data['assessment_id'] = query.id
@@ -488,3 +497,10 @@ class SaveStudent(View):
             return HttpResponse(json.dumps(data), content_type="application/json")
 
         return HttpResponse()
+
+
+def get_records(request):
+    assessment_id = request.GET['assessment_id']
+    assessment_instance = Assessment.objects.get(id=assessment_id)
+    records = Record.objects.filter(assessment=assessment_instance)
+    return render(request, 'tables/record.html', {'records': records})

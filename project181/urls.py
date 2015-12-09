@@ -74,4 +74,6 @@ urlpatterns = [
     url(r'^remove_student/$', RemoveStudent.as_view()),
 
     url(r'^save_student/$', SaveStudent.as_view()),
+
+    url(r'^get_records/$', get_records),
 ]

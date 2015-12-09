@@ -53,7 +53,7 @@ function createAssessment() {
                 $('.recgradbar-error-redundant').addClass('hidden');
                 $("<tr id='trassessment" + data['assessment_id'] + "'>" +
                 "<td>" +
-                "<i onclick='' class='fa fa-apple fa-2x'></i>" +
+                "<i onclick='goToAssessment(" + data['assessment_id'] + ")' class='fa fa-apple fa-2x'></i>" +
                 "</td>" +
                 "<td>" +
                 "<input id='tdassessmentinputname" + data['assessment_id'] + "' type='text' class='form-control assessmentinput hidden'>" +
@@ -202,8 +202,27 @@ function saveAssessment(assessment_id) {
     }
 }
 
-function goToAssessment() {
-
+function goToAssessment(assessment_id) {
+    $('.contentbar').hide();
+    var assessmentname = $('#tdassessmenttextname' + assessment_id).text();
+    var assessmenttype = $('#tdassessmenttexttype' + assessment_id).text();
+    var total = $('#tdassessmenttexttotal' + assessment_id).text();
+    $('input[name=contentbarassessmentid]').val(assessment_id);
+    $('#recordbar div:nth-child(1) span:nth-child(1)').text(assessmentname);
+    $('#recordbar div:nth-child(1) span:nth-child(2)').text(assessmenttype);
+    $('#recordbar div:nth-child(1) span:nth-child(4)').text(total);
+    $('#recordbar').show();
+    $.ajax({
+        type: 'GET',
+        url: '/get_records/',
+        data: {'assessment_id': assessment_id},
+        success: function(data) {
+            $('#recordcontainer span').html(data).hide();
+            $('#recordbigspinner').fadeOut('fast', function() {
+                $('#recordcontainer span').show();
+            });
+        }
+    });
 }
 
 function goToStudentGrades() {
