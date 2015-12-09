@@ -172,7 +172,7 @@
     </div>
     <!--Students Bar -->
     <div id="studentsbar" class="container contentbar">
-        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">STUDENTS</span>
+        <div class="contentbar-header"><span class="bold">MANAGE</span> <span class="light">STUDENTS</span><input class="form-control hidden" name="contentbarsectionid">
         <span class="hidden studentsbar-error animated infinite tada"> Error! Please fill out forms!</span>
         <span class="hidden studentsbar-error-redundant animated infinite jello"> Error! Such student already exists!</span>
         </div>
@@ -180,13 +180,13 @@
             <div class="col-xs-12">
                 <form class="form-group">
                     <div class="col-xs-12 col-sm-3">
-                        <input type="text" class="form-control" placeholder="First Name">
+                        <input name="firstname" type="text" class="form-control" placeholder="First Name">
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                        <input type="text" class="form-control" placeholder="Middle Name">
+                        <input name="middlename" type="text" class="form-control" placeholder="Middle Initial">
                     </div>
                      <div class="col-xs-12 col-sm-3">
-                        <input type="text" class="form-control" placeholder="Last Name">
+                        <input name="lastname" type="text" class="form-control" placeholder="Last Name">
                     </div>
                     <div class="col-xs-12 col-sm-3">
                         <input name="addStudentButton" type="button" class="form-control btn btn-danger  hvr-float-shadow" value="Add Student">

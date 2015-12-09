@@ -36,6 +36,8 @@ function loadSections(year) {
 }
 
 function validateSectionForm() {
+    $('input[name=createSectionButton]').blur();
+    $('#createSectionForm').blur();
     var sectionName = $('#sections_field > div:nth-child(1) > form > div.col-xs-12.col-sm-9 > input').val();
     if(sectionName.trim(" ") == '') {
         return false;
@@ -45,6 +47,8 @@ function validateSectionForm() {
 }
 
 function createSection() {
+    $('input[name=createSectionButton]').blur();
+    $('#createSectionForm').blur();
     $('#sectionspinner').removeClass('hidden');
      var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     /* Get section name. */
@@ -88,7 +92,6 @@ function createSection() {
             }
         }
     });
-
 }
 
 function removeSection(section_id) {
@@ -169,6 +172,7 @@ function viewSection(section_id) {
     $('#studentbigspinner').show();
     $('.contentbar').hide();
     $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
+    $('input[name=contentbarsectionid]').val(section_id);
     $('#studentsbar').show();
     $('#studentscontainer span').empty().hide();
     $.ajax({

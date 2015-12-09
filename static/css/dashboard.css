@@ -194,7 +194,7 @@ body, #sb-site {
     font-size: 17px;
 }
 
-.contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant {
+.contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant, .studentsbar-error-redundant, .studentsbar-error {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;
@@ -277,6 +277,10 @@ table tbody tr td i.fa-remove:hover {
 
 #tablesectionview table tbody tr td i.fa-edit:hover, #tablesectionview table tbody tr td i.fa-save:hover, #tablesectionview table tbody tr td i.fa-apple:hover  {
     color: #8bc34a;
+}
+
+#tablestudentsview table tbody tr td i.fa-edit:hover, #tablestudentsview table tbody tr td i.fa-save:hover, #tablestudentsview table tbody tr td i.fa-apple:hover {
+    color: #ea003d;
 }
 
 /*
