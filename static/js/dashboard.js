@@ -155,15 +155,7 @@ $(document).ready(function() {
         $('#sectionsbar').show();
         loadSections();
     });
-    $('#viewstudbutt').click(function() {
-        $('.contentbar').hide();
-        $('#sectionsbar').show();
-    });
     $('#viewgrad').click(function() {
-        $('.contentbar').hide();
-        $('#viewgradesbar').show();
-    });
-    $('#viewgradbutt').click(function() {
         $('.contentbar').hide();
         $('#viewgradesbar').show();
     });

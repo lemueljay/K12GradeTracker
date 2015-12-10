@@ -308,14 +308,16 @@ function saveSubject(subject_id) {
 /* View subject function. */
 function viewSubject(subject_id) {
     $('#assessmentscontainer span').empty();
-
     /* Show loading bar. */
     $('#assessmentbigspinner').show();
     var subject_name =  $('#tr' + subject_id + ' td:nth-child(2) span').text();
     var section_name = $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text();
+    var section_id = $('#td' + subject_id + 'sectionid').text();
     $('#recgradbar div:nth-child(1) span:nth-child(1)').text(subject_id);
     $('#recgradbar div:nth-child(1) span:nth-child(2)').text(subject_name);
     $('#recgradbar div:nth-child(1) span:nth-child(3)').text(section_name);
+    $('input[name=assessmentsectionidhidden]').val(56);
+    $().text();
     $('.contentbar').hide();
     $('#recgradbar').show();
     $.ajax({

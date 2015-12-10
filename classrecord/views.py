@@ -453,6 +453,15 @@ class AddStudent(View):
             query = Student(first_name=first_name, middle_name=middle_name, last_name=last_name,
                             section=section_instance)
             query.save()
+
+            # Update Asssessment
+            subjects = Subject.objects.filter(section=section_instance)
+            for subject in subjects:
+                assessments = Assessment.objects.filter(subject=subject)
+                for assessment in assessments:
+                    record = Record(student=query, assessment=assessment)
+                    record.save()
+
             data = dict()
             data['error'] = False
             data['student_id'] = query.id
@@ -514,3 +523,7 @@ class RecordScore(View):
         record_instance.score = score
         record_instance.save()
         return HttpResponse()
+
+
+def get_grades(request):
+    return render(request, 'tables/viewgrades.html')

@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'js/jquery.tablesorter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sort.js' %}"></script>
+
+<span id="tablesviewgradesview">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STUDENT NAME</th>
+                <th>WRITTEN WORKS</th>
+                <th>PERFORMANCE TASKS</th>
+                <th>QUARTERLY ASSESSMENT</th>
+                <th>GRADE</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grade in grades %}
+            <tr>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</span>

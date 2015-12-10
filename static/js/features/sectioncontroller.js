@@ -169,7 +169,7 @@ function saveSection(section_id) {
 }
 
 function viewSection(section_id) {
-    $('#studentbigspinner').show();
+        $('#studentbigspinner').show();
     $('.contentbar').hide();
     $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
     $('input[name=contentbarsectionid]').val(section_id);

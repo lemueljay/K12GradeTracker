@@ -78,4 +78,6 @@ urlpatterns = [
     url(r'^get_records/$', get_records),
 
     url(r'^record_score/$', RecordScore.as_view()),
+
+    url(r'^get_grades/$', get_grades),
 ]
