@@ -761,3 +761,15 @@ body {
 #sortisotopeclasses:hover {
     cursor: pointer;
 }
+
+.tdrecordspanstatus {
+    font-weight: bolder;
+}
+
+.failed {
+    color: red;
+}
+
+.passed {
+    color: green;
+}

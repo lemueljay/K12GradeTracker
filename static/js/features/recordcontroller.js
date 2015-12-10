@@ -38,22 +38,28 @@ function saveAllButton() {
         $('.tdrecordspan').removeClass('hidden');
         $('.tdrecordinput').addClass('hidden');
         /* Save */
+        $('#recordcontainer span').hide();
+        $('#recordbigspinner').show();
+
         $('.tdrecordinput').each(function() {
             var score = parseInt($(this).val());
             var id = ($(this).attr('id')).slice(13);
+            $('#tdrecordspan' + id).text(score);
             $.ajax({
                 type: 'POST',
                 url: '/record_score/',
                 data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'id': id, 'score': score},
                 success: function() {
-                    $('#tdrecordspan' + id).text(score);
+                    initGrade();
+                    $('#recordbigspinner').fadeOut('fast', function() {
+                        $('#recordcontainer span').show();
+                    });
                 }
             });
         });
     } else {
         $('.recordbar-error').removeClass('hidden');
     }
-
 }
 
 function backToAssessment() {
@@ -66,11 +72,11 @@ function initGrade() {
         var score = parseInt($('td:nth-child(2) span', this).text());
         var total = parseInt($('td:nth-child(3)', this).text());
         var grade = parseFloat((score/total)*100);
-        $('td:nth-child(4)', this).text(grade + '%');
+        $('td:nth-child(4)', this).text(grade.toFixed(2) + '%');
         if(grade >= 75) {
-            $('td:nth-child(5)', this).text('PASSED!');
+            $('td:nth-child(5)', this).text('PASSED!').removeClass().addClass('tdrecordspanstatus passed');
         } else {
-            $('td:nth-child(5)', this).text('FAILED!');
+            $('td:nth-child(5)', this).text('FAILED!').removeClass().addClass('tdrecordspanstatus failed');;
         }
 
     });
