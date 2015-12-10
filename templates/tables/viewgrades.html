@@ -7,19 +7,34 @@
         <thead>
             <tr>
                 <th>STUDENT NAME</th>
-                <th>WRITTEN WORKS</th>
-                <th>PERFORMANCE TASKS</th>
-                <th>QUARTERLY ASSESSMENT</th>
-                <th>GRADE</th>
+                <th>WRITTEN WORKS ({{ w }}%)</th>
+                <th>PERFORMANCE TASKS ({{ p }}%)</th>
+                <th>QUARTERLY EXAMS ({{ q }}%)</th>
+                <th>OVERALL GRADE</th>
                 <th>STATUS</th>
             </tr>
         </thead>
         <tbody>
-            {% for grade in grades %}
-            <tr>
-                <td></td>
-            </tr>
-            {% endfor %}
+           {% for x in myStudentList %}
+               <tr>
+               <td>{{ x.last_name }}, {{ x.first_name }} {{ x.middle_name }}</td>
+                   <td>
+                        {{ x.ww_score }}/{{ x.ww_total }} ({{ x.ww_grade_str }}%)
+                   </td>
+                   <td>
+                        {{ x.pt_score }}/{{ x.pt_total }} ({{ x.pt_grade_str }}%)
+                   </td>
+                   <td>
+                        {{ x.qe_score }}/{{ x.qe_total }} ({{ x.qe_grade_str }}%)
+                   </td>
+                   <td>
+                       {{ x.grade_str }}%
+                   </td>
+                   <td>
+                       {{ x.status }}
+                   </td>
+               </tr>
+           {% endfor %}
         </tbody>
     </table>
 </span>

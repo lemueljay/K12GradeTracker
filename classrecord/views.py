@@ -526,4 +526,144 @@ class RecordScore(View):
 
 
 def get_grades(request):
-    return render(request, 'tables/viewgrades.html')
+    subject_id = request.GET['subject_id']
+    grading_period = request.GET['grading_period']
+    if grading_period == 'ALL':
+        # Instances
+        subject_instance = Subject.objects.get(id=subject_id)
+        section_id = subject_instance.section.id
+        section_instance = Section.objects.get(id=section_id)
+        students_instance = Student.objects.filter(section=section_instance)
+        myStudentList = students_instance
+        subject_type = SubjectType.objects.get(id=subject_instance.subject_type.id)
+        w = float(subject_type.written_works)
+        p = float(subject_type.performance_tasks)
+        q = float(subject_type.quarterly_assessments)
+        for x in myStudentList:
+            # Get total written works
+            x.ww_total = 0
+            x.ww_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Written Works':
+                    x.ww_total += int(record.assessment.total)
+                    x.ww_score += int(record.score)
+            if x.ww_total == 0:
+                x.ww_total = 0
+                x.ww_score = 0
+                x.ww_grade = 0
+            else:
+                x.ww_grade = float((float(x.ww_score)/float(x.ww_total))*100)
+            x.ww_grade_str = "%.2f" % x.ww_grade
+
+            # Get total performance tasks
+            x.pt_total = 0
+            x.pt_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Performance Tasks':
+                    x.pt_total += int(record.assessment.total)
+                    x.pt_score += int(record.score)
+            if x.pt_total == 0:
+                x.pt_total = 0
+                x.pt_score = 0
+                x.pt_grade = 0
+            else:
+                x.pt_grade = float((float(x.pt_score)/float(x.pt_total))*100)
+            x.pt_grade_str = "%.2f" % x.pt_grade
+
+            # Get total quarterly assessments
+            x.qe_total = 0
+            x.qe_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Quarterly Exams':
+                    x.qe_total += int(record.assessment.total)
+                    x.qe_score += int(record.score)
+            if x.qe_total == 0:
+                x.qe_total = 0
+                x.qe_score = 0
+                x.qe_grade = 0
+            else:
+                x.qe_grade = float((float(x.qe_score)/float(x.qe_total))*100)
+            x.qe_grade_str = "%.2f" % x.qe_grade
+
+            # Get total grade
+            x.grade = (x.ww_grade*w/100) + (x.pt_grade*p/100) + (x.qe_grade*q/100)
+            x.grade_str = "%.2f" % x.grade
+
+            # Get status
+            if x.grade >= 75:
+                x.status = "PASSED!"
+            else:
+                x.status = "FAILED!"
+    else:
+        # Instances
+        subject_instance = Subject.objects.get(id=subject_id)
+        section_id = subject_instance.section.id
+        section_instance = Section.objects.get(id=section_id)
+        students_instance = Student.objects.filter(section=section_instance)
+        myStudentList = students_instance
+        subject_type = SubjectType.objects.get(id=subject_instance.subject_type.id)
+        w = float(subject_type.written_works)
+        p = float(subject_type.performance_tasks)
+        q = float(subject_type.quarterly_assessments)
+        for x in myStudentList:
+            # Get total written works
+            x.ww_total = 0
+            x.ww_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Written Works' and record.assessment.grading_period == grading_period:
+                    x.ww_total += int(record.assessment.total)
+                    x.ww_score += int(record.score)
+            if x.ww_total == 0:
+                x.ww_total = 0
+                x.ww_score = 0
+                x.ww_grade = 0
+            else:
+                x.ww_grade = float((float(x.ww_score)/float(x.ww_total))*100)
+            x.ww_grade_str = "%.2f" % x.ww_grade
+
+            # Get total performance tasks
+            x.pt_total = 0
+            x.pt_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Performance Tasks' and record.assessment.grading_period == grading_period:
+                    x.pt_total += int(record.assessment.total)
+                    x.pt_score += int(record.score)
+            if x.pt_total == 0:
+                x.pt_total = 0
+                x.pt_score = 0
+                x.pt_grade = 0
+            else:
+                x.pt_grade = float((float(x.pt_score)/float(x.pt_total))*100)
+            x.pt_grade_str = "%.2f" % x.pt_grade
+
+            # Get total quarterly assessments
+            x.qe_total = 0
+            x.qe_score = 0
+            records = Record.objects.filter(student=x)
+            for record in records:
+                if record.assessment.assessmenttype.type == 'Quarterly Exams' and record.assessment.grading_period == grading_period:
+                    x.qe_total += int(record.assessment.total)
+                    x.qe_score += int(record.score)
+            if x.qe_total == 0:
+                x.qe_total = 0
+                x.qe_score = 0
+                x.qe_grade = 0
+            else:
+                x.qe_grade = float((float(x.qe_score)/float(x.qe_total))*100)
+            x.qe_grade_str = "%.2f" % x.qe_grade
+
+            # Get total grade
+            x.grade = (x.ww_grade*w/100) + (x.pt_grade*p/100) + (x.qe_grade*q/100)
+            x.grade_str = "%.2f" % x.grade
+
+            # Get status
+            if x.grade >= 75:
+                x.status = "PASSED!"
+            else:
+                x.status = "FAILED!"
+    return render(request, 'tables/viewgrades.html', {'myStudentList': myStudentList, 'w': w, 'p': p, 'q': q})

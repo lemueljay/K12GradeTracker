@@ -230,7 +230,11 @@
     </div>
     <!--View Grades Bar -->
     <div id="viewgradesbar" class="container contentbar">
-        <div class="contentbar-header"><span class="bold">VIEW</span> <span class="light">GRADES</span></div>
+        <div class="contentbar-header">
+            <span class="bold">VIEW </span>
+            <span class="light">GRADES</span>
+            <input class="form-control hidden" name="viewgradesbarsubjectid">
+        </div>
         <div id="viewgrades_field" class="col-xs-12">
             <div class="col-xs-12">
                 <form class="form-group">
@@ -242,12 +246,12 @@
                   <span class="fa-2x glyphicon glyphicon-th dropdown dropdown-toggle dropper" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   </span>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" id="dropdownsubMenu3">
-                      <li><a>1st Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
-                      <li><a>2nd Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
-                      <li><a>3rd Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
-                      <li><a>4th Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
+                      <li onclick="getGrades('1st Grading');"><a>1st Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
+                      <li onclick="getGrades('2nd Grading');"><a>2nd Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
+                      <li onclick="getGrades('3rd Grading');"><a>3rd Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
+                      <li onclick="getGrades('4th Grading');"><a>4th Grading <i class="hidden fa fa-check fa-fw"></i></a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a>Show Overall <i class="hidden fa fa-check fa-fw"></i></a></li>
+                      <li onclick="getGrades('ALL');"><a>Show Overall <i class="hidden fa fa-check fa-fw"></i></a></li>
                   </ul>
                 </div>
             </div>
