@@ -194,7 +194,7 @@ body, #sb-site {
     font-size: 17px;
 }
 
-.contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant, .studentsbar-error-redundant, .studentsbar-error {
+.contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant, .studentsbar-error-redundant, .studentsbar-error, .recordbar-error {
     padding-left: 13px;
     color: #ea003d;
     font-size: 17px;

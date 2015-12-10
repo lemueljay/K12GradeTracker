@@ -3,4 +3,5 @@ $(document).ready(function() {
     $('#tablesectionview table').tablesorter();
     $('#tableassessmentsview table').tablesorter();
     $('#tablestudentsview table').tablesorter();
+    $('#tablerecordview table').tablesorter();
 });

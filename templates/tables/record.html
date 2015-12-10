@@ -8,12 +8,21 @@
         <thead>
             <th>STUDENT NAME</th>
             <th>SCORE</th>
+            <th>TOTAL</th>
+            <th>GRADE</th>
+            <th>STATUS</th>
         </thead>
         <tbody>
         {% for record in records %}
             <tr>
                 <td>{{ record.student.last_name }}, {{ record.student.first_name }} {{ record.student.middle_name }}</td>
-                <td>{{ record.score }}</td>
+                <td>
+                    <input id="tdrecordinput{{ record.id }}" class="hidden form-control tdrecordinput" type="number" value="{{ record.score }}">
+                    <span id="tdrecordspan{{ record.id }}" class="tdrecordspan">{{ record.score }}</span>
+                </td>
+                <td>{{ total }}</td>
+                <td class="tdrecordspangrade"></td>
+                <td class="tdrecordspanstatus"></td>
             </tr>
         {% endfor %}
         </tbody>

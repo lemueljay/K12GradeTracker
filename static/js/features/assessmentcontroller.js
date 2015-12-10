@@ -203,6 +203,10 @@ function saveAssessment(assessment_id) {
 }
 
 function goToAssessment(assessment_id) {
+    $('.recordbar-error').addClass('hidden');
+    $('input[name=editAllBtn]').removeClass('hidden');
+    $('input[name=saveAllBtn]').addClass('hidden');
+    $('#recordbigspinner').show();
     $('.contentbar').hide();
     var assessmentname = $('#tdassessmenttextname' + assessment_id).text();
     var assessmenttype = $('#tdassessmenttexttype' + assessment_id).text();
@@ -211,6 +215,7 @@ function goToAssessment(assessment_id) {
     $('#recordbar div:nth-child(1) span:nth-child(1)').text(assessmentname);
     $('#recordbar div:nth-child(1) span:nth-child(2)').text(assessmenttype);
     $('#recordbar div:nth-child(1) span:nth-child(4)').text(total);
+    $('#recordcontainer span').empty().hide();
     $('#recordbar').show();
     $.ajax({
         type: 'GET',
@@ -219,6 +224,7 @@ function goToAssessment(assessment_id) {
         success: function(data) {
             $('#recordcontainer span').html(data).hide();
             $('#recordbigspinner').fadeOut('fast', function() {
+                initGrade();
                 $('#recordcontainer span').show();
             });
         }

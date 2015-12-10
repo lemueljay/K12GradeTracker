@@ -503,4 +503,14 @@ def get_records(request):
     assessment_id = request.GET['assessment_id']
     assessment_instance = Assessment.objects.get(id=assessment_id)
     records = Record.objects.filter(assessment=assessment_instance)
-    return render(request, 'tables/record.html', {'records': records})
+    return render(request, 'tables/record.html', {'records': records, 'total': assessment_instance.total})
+
+
+class RecordScore(View):
+    def post(self, request):
+        record_id = request.POST['id']
+        score = request.POST['score']
+        record_instance = Record.objects.get(id=record_id)
+        record_instance.score = score
+        record_instance.save()
+        return HttpResponse()
