@@ -20,8 +20,6 @@
     <!-- Import Alertify -->
     <script type="text/javascript" src="{% static 'js/plugin/alertify.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/plugin/alertify.css' %}">
-     <!-- Import Isotope -->
-    <script type="text/javascript" src="{% static 'js/plugin/isotope.pkgd.min.js' %}"></script>
     <!-- Import my own stylesheets and scripts. -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
@@ -44,9 +42,7 @@
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand sb-toggle-left animated tada">
-                    <span class="bold">K12</span>
-                    <span class="light">Grade</span>
-                    <span class="bold">Tracker</span>
+                    <span class="bold">K12</span><span class="light">Grade</span><span class="bold">Tracker</span>
                 </a>
             </div>
         </div>
@@ -56,17 +52,13 @@
          <div class="pull-right">
             <div class="col-xs-1 text-center clock hvr-hang">
                 <div class="clock-header"></div>
-                <span id="monthnumber" class="datebig"></span><br>
+                <div id="datenumber" class="datebig"></div>
                 <div id="monthword" class="datesmall"></div>
             </div>
             <div class="col-xs-1 text-center clock hvr-hang">
                 <div class="clock-header"></div>
-                <span id="datenumber" class="datebig"></span><br>
-                <div id="dateword" class=""></div>
-            </div>
-            <div class="col-xs-1 text-center clock hvr-hang">
-                <div class="clock-header"></div>
-                <div id="hour" class="timebig"></div><br>
+                <div id="hour" class="timebig"></div>
+                 <div id="dateword" class=""></div>
             </div>
             <div class="col-xs-1 text-center clock hvr-hang">
                 <div class="clock-header"></div>
@@ -78,19 +70,23 @@
         <div class="pull-left" data-toggle="modal" data-target="#changeGradingModal">
             <div class="col-xs-1 text-center grading hvr-buzz">
                 <div class="clock-header"></div>
-                <span id="gradingnumber" class="datebig">{{ grading_period }}</span><br>
+                <div id="gradingnumber" class="datebig">{{ grading_period }}</div><br>
                 <div id="gradingword" class="datesmall">Grading</div>
             </div>
         </div>
     </div>
     <!--Content Bar -->
     <div id="mainbar" class="container contentbar">
-        <div class="contentbar-header">HOME</div>
         <div class="contentbar-body">
-            <span class="contentbar-title">Good day,</span>
-            <span class="contentbar-firstname bold">{{ firstname }}</span>
-            <span class="contentbar-title">!<br></span>
-            <span class="contentbar-subtitle light">Today is a great day to try. Step out! Your life is waiting! Have fun teaching!</span>
+            <div class="contentbarheader">Dashboard |
+                <span class="contentbar-title">Good day ,</span>
+                <span class="contentbar-firstname bold">{{ firstname }}</span>
+                <span class="contentbar-title">!</span>
+                <div class="contentbar-subtitle light">Today is a great day to try. Step out! Your life is waiting! Have fun teaching!</div>
+            </div>
+
+
+
         </div>
         <div class="col-xs-12 contentbarevents"></div>
     </div>
@@ -301,7 +297,7 @@
                         <input onclick="viewGrades($('#recgradbar div:nth-child(1) span:nth-child(1)').text())"  name="viewGradesButton" type="button" class="form-control btn btn-danger" value="View Students's Grades">
                     </div>
                     <div id="viewstudbutt" class="col-xs-4 hvr-float">
-                        <input onclick="viewSection(56)" type="button" class="form-control btn btn-danger" value="View Students">
+                        <input onclick="viewSection($('input[name=assessmentsectionidhidden]').val())" type="button" class="form-control btn btn-danger" value="View Students">
                     </div>
                 </div>
             </div>

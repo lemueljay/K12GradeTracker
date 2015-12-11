@@ -126,10 +126,17 @@ function input_validator() {
 $(document).ready(function() {
 
     $("#confirmbutton").click(function(event) {
+        $('#signupspinner').removeClass('hidden');
+        $('#confirmbutton').hide();
+        $('#backbutton').hide();
         event.preventDefault();
         var validated = input_validator();
         if(validated) {
             $('#signupform2').submit();
+        } else {
+            $('#signupspinner').addClass('hidden');
+            $('#confirmbutton').show();
+            $('#backbutton').show();
         }
     });
 

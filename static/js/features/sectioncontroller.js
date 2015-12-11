@@ -66,7 +66,7 @@ function createSection() {
             } else {
                 $("<tr id='trsection" + data['section_id'] + "'>" +
                 "<td>" +
-                "<i onclick='' class='fa fa-apple fa-2x'></i>" +
+                "<i onclick='viewSection(" + data['section_id'] + ")' class='fa fa-apple fa-2x'></i>" +
                 "</td>" +
                 "<td>" +
                 "<input id='tdsectionnameinput" + data['section_id'] + "' class='hidden tdsectionnameinput form-control'>" +
@@ -169,7 +169,7 @@ function saveSection(section_id) {
 }
 
 function viewSection(section_id) {
-        $('#studentbigspinner').show();
+    $('#studentbigspinner').show();
     $('.contentbar').hide();
     $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
     $('input[name=contentbarsectionid]').val(section_id);
@@ -180,8 +180,9 @@ function viewSection(section_id) {
         url: '/get_students/',
         data: {'section_id': section_id},
         success: function(data) {
+            $('#studentscontainer span').html(data).hide();
             $('#studentbigspinner').fadeOut('fast', function() {
-                $('#studentscontainer span').html(data).show();
+                $('#studentscontainer span').show();
             })
 
         }

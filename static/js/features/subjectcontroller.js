@@ -6,6 +6,7 @@
 
 /* Load subjects in the container. */
 function loadSubjects(year) {
+
     $('#subjectbigspinner').show();
     $('#subjectscontainer span').empty();
     var subject_name =  $('input[name=subjectname]').val();
@@ -39,6 +40,7 @@ function loadSubjects(year) {
                     $('td:nth-child(6) i:nth-child(2)', this).remove();
                 }
             });
+
         }
     });
 }
@@ -316,7 +318,7 @@ function viewSubject(subject_id) {
     $('#recgradbar div:nth-child(1) span:nth-child(1)').text(subject_id);
     $('#recgradbar div:nth-child(1) span:nth-child(2)').text(subject_name);
     $('#recgradbar div:nth-child(1) span:nth-child(3)').text(section_name);
-    $('input[name=assessmentsectionidhidden]').val(56);
+    $('input[name=assessmentsectionidhidden]').val(section_id);
     $().text();
     $('.contentbar').hide();
     $('#recgradbar').show();

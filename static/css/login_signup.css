@@ -1,18 +1,18 @@
 /* Defaults style */
 body {
-    background: url("../img/bg.jpg") no-repeat center center fixed;
+    /*background: url("../img/bg.jpg") no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     font: 15px 'open sans';
-    color: white;
-    background-color: black;
+    color: #24262d;
+    background-color: whitesmoke;
 }
 
 .header {
     margin-bottom: 20px;
-    background-color: rgba(0, 86, 143, 0.75);
+    background-color: #2669D7;
 }
 
 .header-logo {
@@ -24,6 +24,7 @@ body {
 .header-title {
     font-size: 48px;
     padding-bottom: 30px;
+    color: white;
 }
 
 .header-image:hover, .header-title:hover {
@@ -36,27 +37,32 @@ body {
 }
 
 .btn-default {
-    background-color: #00568f;
+    background-color: #4285f4;
 }
 
 .btn-default:hover , .btn-default:active, .btn-default:active:focus, .btn-default:focus {
     border: none;
-    background-color: #00568f;
     color: white;
+    background-color: #4285f4;
+    outline: none;
 }
 
 .alert-danger {
-    background-color: #b20015;
+    background-color: #FE1B36;
     color: white;
 }
 
 .alert-success {
     color: white;
-    background-color: rgba(0, 153, 68, 1);
+    background-color: rgb(27, 180, 67);
+}
+
+a:hover, a:focus {
+    color: #4285F4;
 }
 
 .fa-border {
-    border: solid 0.05em #eeeeee;
+    border: solid 0.05em #24262d;
     border-radius: 5em;
 }
 
@@ -67,13 +73,13 @@ body {
 }
 
 .a-login, .a-login:hover, .a-signup, .a-signup:hover {
-    color: white;
+    color: #4285F4;
     cursor: pointer;
     text-decoration: none;
 }
 
 .a-signup:focus, .a-login:focus {
-    color: white;
+    color: #4285F4;
     text-decoration: none;
 }
 
@@ -103,7 +109,9 @@ body {
 
 #backbutton {
     background-color: rgba(0, 0, 0, 0);
-    border:  1px solid white;
+    border: 2px solid #4285F4;
+    color: #4285F4;
+    font-weight: 600;
 }
 
 .tooltipper {
@@ -127,10 +135,10 @@ body {
 }
 
 .hr {
-    width: 10%;
+    width: 25%;
     margin-top: 10px;
     border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid black;
     height: 0;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
@@ -149,8 +157,15 @@ body {
 }
 
 label {
-    color: rgba(255, 0, 30, 0.78);
+    color: #FE1B36;
 }
 
+#signupspinner i {
+    color: #4285F4;
+}
+
+#signupspinner {
+    margin-right: 30px;
+}
 
 /* Forgot Password Style */
