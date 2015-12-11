@@ -27,8 +27,8 @@ function loadSubjects(year) {
             $('#subjectscontainer span').html(data).hide();
         },
         complete: function() {
-             $('#subjectbigspinner').fadeOut('fast', function() {
-                $('#subjectscontainer span').fadeIn();
+             $('#subjectbigspinner').fadeOut('slow', function() {
+                $('#subjectscontainer span').fadeIn('slow');
             });
             loadSectionDropdown();
             loadSubjectTypeDropdown();
@@ -330,8 +330,8 @@ function viewSubject(subject_id) {
             $('#assessmentscontainer span').html(data).hide();
         },
         complete: function() {
-             $('#assessmentbigspinner').fadeOut('fast', function() {
-                $('#assessmentscontainer span').fadeIn();
+             $('#assessmentbigspinner').fadeOut('slow', function() {
+                $('#assessmentscontainer span').fadeIn('slow');
             });
         }
     });

@@ -76,7 +76,7 @@ body, #sb-site {
 }
 
 .contentbarheader {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: normal;
 }
 
@@ -200,13 +200,13 @@ body, #sb-site {
 /** Form **/
 .contentbar-error, .recgradbar-error, .sectionsbar-error {
     padding-left: 13px;
-    color: #ea003d;
+    color: red;
     font-size: 17px;
 }
 
 .contentbar-error-redundant, .recgradbar-error-redundant, .sectionsbar-error-redundant, .studentsbar-error-redundant, .studentsbar-error, .recordbar-error {
     padding-left: 13px;
-    color: #ea003d;
+    color: red;
     font-size: 17px;
 }
 
@@ -277,21 +277,10 @@ table tbody tr td i.fa-remove:hover {
     color: red;
 }
 
-#tableclassesview table tbody tr td i.fa-edit:hover, #tableclassesview table tbody tr td i.fa-save:hover, #tableclassesview table tbody tr td i.fa-apple:hover  {
-    color: #00bcd4;
+.fa-edit:hover, .fa-save:hover, .fa-apple:hover  {
+    color: #4285f4;
 }
 
-#tableassessmentsview table tbody tr td i.fa-edit:hover, #tableassessmentsview table tbody tr td i.fa-save:hover, #tableassessmentsview table tbody tr td i.fa-apple:hover  {
-    color: #607d8b;
-}
-
-#tablesectionview table tbody tr td i.fa-edit:hover, #tablesectionview table tbody tr td i.fa-save:hover, #tablesectionview table tbody tr td i.fa-apple:hover  {
-    color: #8bc34a;
-}
-
-#tablestudentsview table tbody tr td i.fa-edit:hover, #tablestudentsview table tbody tr td i.fa-save:hover, #tablestudentsview table tbody tr td i.fa-apple:hover {
-    color: #ea003d;
-}
 
 /*
 input[name=viewGradesButton], input[name=viewGradesButton]:active, input[name=viewGradesButton]:focus, input[name=viewGradesButton]:active:focus, input[name=viewGradesButton]:hover {
@@ -335,7 +324,7 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     margin-left: 0px;
     height: 140px;
     width: 120px;
-    background-color: #009688;
+    background-color: #F6D948;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -346,6 +335,16 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     height: 140px;
     width: 120px;
     background-color: #ea003d;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.yearly {
+    padding: 0px;
+    margin: 10px;
+    margin-left: 0px;
+    height: 143px;
+    width: 150px;
+    background-color: #3B73D1;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -401,14 +400,19 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     -webkit-transform: translateY(-40px);
 }
 
+body > div.container.clockbar.animated.bounceInUp > div:nth-child(3) > div > div {
+    margin-bottom: 15px;
+}
+
 #schoolyear {
     color: white;
     font-size: 17px;
-    font-weight: bold;
+    font-weight: lighter;
 }
 
 #syyear {
     font-size: 22px;
+    font-weight: bold;
 }
 
 /** Sidebar **/
@@ -426,11 +430,10 @@ input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[nam
     font-size: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 30px;
 }
 
 .sidebarbutts div i {
-    padding-right: 15px;
+    color: #292f43;
 }
 
 .sidebarbutts div:hover {
@@ -461,8 +464,7 @@ img {
 }
 
 .options i {
-    padding-left: 30px;
-    padding-right: 13px;
+   color: #292f43;
 }
 
 .options > a > div {
@@ -554,8 +556,8 @@ img {
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus {
-    background-color: #00bcd4;
-    border: 1px solid #00bcd4;
+    background-color: #4285f4;
+    border: 1px solid #4285f4;
 }
 
 .btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus, .btn-success:active:focus {
@@ -781,4 +783,66 @@ img {
 
 .passed {
     color: green;
+}
+
+.navbar-nav>li>a {
+    padding-top: 5px;
+}
+
+.navuser {
+    padding-top: 20px;
+    color: white;
+    padding-right: 12px;
+}
+
+.navfullname {
+    font-size: 18px;
+    color: #292a30;
+    font-weight: 500;
+}
+
+.navcaret {
+    padding-right: 25px;
+}
+
+.navsystem {
+    font-size: 15px;
+    color: #292a30;
+    font-weight: lighter;
+}
+
+.dropdown-menu {
+    color: #292a30;
+}
+
+.dropout, .dropout:hover {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+    color: #292a30;
+}
+
+.dropout i {
+    padding-right: 10px;
+}
+
+.dropprofile {
+    padding: 10px;
+}
+
+
+.sidebar.left {
+    width: 85px;
+}
+
+.filterer {
+    padding: 10px;
+}
+
+.fa-circle-o-notch {
+    color: #4285f4;
+}
+
+#sections_field, #sectionscontainer {
+    padding: 0px;
 }

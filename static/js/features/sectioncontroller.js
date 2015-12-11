@@ -19,8 +19,8 @@ function loadSections(year) {
             $('#sectionscontainer span').html(data).hide();
         },
         complete: function() {
-            $('#sectionbigspinner').fadeOut('fast', function() {
-                $('#sectionscontainer span').fadeIn();
+            $('#sectionbigspinner').fadeOut('slow', function() {
+                $('#sectionscontainer span').fadeIn('slow');
             });
             /* Make langkat sa buttons. */
             $('#tablesectionview tbody tr').each(function() {
@@ -181,7 +181,7 @@ function viewSection(section_id) {
         data: {'section_id': section_id},
         success: function(data) {
             $('#studentscontainer span').html(data).hide();
-            $('#studentbigspinner').fadeOut('fast', function() {
+            $('#studentbigspinner').fadeOut('slow', function() {
                 $('#studentscontainer span').show();
             })
 
