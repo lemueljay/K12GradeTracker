@@ -17,7 +17,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
-                ('total', models.IntegerField(default=100, max_length=200)),
+                ('total', models.IntegerField(default=0)),
+                ('grading_period', models.CharField(default=b'1st Grading', max_length=200)),
+                ('date', models.DateTimeField()),
             ],
         ),
         migrations.CreateModel(
@@ -28,15 +30,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Class',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=200)),
-                ('section', models.CharField(max_length=200)),
-                ('hidden', models.CharField(default=0, max_length=2)),
-            ],
-        ),
-        migrations.CreateModel(
             name='GradingSystem',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -44,22 +37,39 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Record',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('score', models.CharField(default=b'0', max_length=200)),
+                ('assessment', models.ForeignKey(to='classrecord.Assessment')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Section',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('school_year', models.CharField(default=b'2014-2015', max_length=100)),
+                ('user', models.ForeignKey(default=0, to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Student',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('first_name', models.CharField(max_length=200)),
+                ('middle_name', models.CharField(default=b'N/A', max_length=200)),
                 ('last_name', models.CharField(max_length=200)),
-                ('classname', models.ForeignKey(to='classrecord.Class')),
+                ('section', models.ForeignKey(to='classrecord.Section')),
             ],
         ),
         migrations.CreateModel(
-            name='StudentGrades',
+            name='Subject',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('score', models.IntegerField(default=None, max_length=200)),
-                ('assessment', models.ForeignKey(to='classrecord.Assessment')),
-                ('assessmenttype', models.ForeignKey(default=0, to='classrecord.AssessmentType')),
-                ('student', models.ForeignKey(to='classrecord.Student')),
+                ('name', models.CharField(max_length=200)),
+                ('school_year', models.CharField(default=b'2014-2015', max_length=100)),
+                ('section', models.ForeignKey(default=1, to='classrecord.Section')),
             ],
         ),
         migrations.CreateModel(
@@ -74,22 +84,28 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='UserSystem',
+            name='UserProfile',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('grading_period', models.CharField(default=b'1st', max_length=5)),
                 ('grading_system', models.ForeignKey(to='classrecord.GradingSystem')),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.AddField(
-            model_name='class',
+            model_name='subject',
             name='subject_type',
-            field=models.ForeignKey(default=1, to='classrecord.SubjectType'),
+            field=models.ForeignKey(default=0, to='classrecord.SubjectType'),
         ),
         migrations.AddField(
-            model_name='class',
+            model_name='subject',
             name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(default=0, to=settings.AUTH_USER_MODEL),
+        ),
+        migrations.AddField(
+            model_name='record',
+            name='student',
+            field=models.ForeignKey(to='classrecord.Student'),
         ),
         migrations.AddField(
             model_name='assessment',
@@ -98,7 +114,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='assessment',
-            name='classname',
-            field=models.ForeignKey(to='classrecord.Class'),
+            name='subject',
+            field=models.ForeignKey(default=0, to='classrecord.Subject'),
         ),
     ]

@@ -34,7 +34,7 @@ function createAssessment() {
     var assessmentTypeName = $('#recgradassessmenttype option[value=' + assessmentType + ']').text();
     var assessmentTotal = $('input[name=recgradtotal]').val();
     var gradingPeriod = $('#gradingnumber').text();
-    var subject_id = $('#recgradbar div:nth-child(1) span:nth-child(1)').text();
+    var subject_id = $('input[name=recgradbarsubjectid]').val();
     /* Send data. */
     $.ajax({
         type: 'POST',
@@ -84,6 +84,7 @@ function createAssessment() {
                 $('input[name=recgradassessmentname]').val('');
                 $('#recgradassessmenttype').val(0);
                 $('input[name=recgradtotal]').val('');
+                $('#tableassessmentsview table').trigger('update');
                 alertify.success(assessmentName + ' successfully updated!');
                 }
             $('#assessmentspinnerspinner').addClass('hidden');
@@ -104,7 +105,7 @@ function deleteAssessment(assessment_id) {
             $('#trassessment' + assessment_id).fadeOut('fast', function() {
                 $('#trassessment' + assessment_id).remove();
                 $('#assessmentspinnerspinner').addClass('hidden');
-                console.log($('#tdassessmenttextname' + assessment_id).text());
+                $('#tableassessmentsview table').trigger('update');
                 alertify.error(assessment_name + ' successfully removed!');
             });
         }
@@ -156,47 +157,93 @@ function saveAssessment(assessment_id) {
     } else {
         validated = true;
     }
-    /* Save when validated. */
+    var justthis = 'false';
     if(validated) {
-        var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
-        $.ajax({
-            type: 'POST',
-            url: '/save_assessment/',
-            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'assessment_id': assessment_id, 'assessment_name': assessment_name,'total': total, 'assessment_type': assessment_type},
-            success: function(data) {
-                /* Check for  redundancy*/
-                if(data['error']) {
-                    $('.recgradbar-error').addClass('hidden');
-                    $('.recgradbar-error-redundant').removeClass('hidden');
-                } else {
-                    /* Set input. */
-                    $('#tdassessmenttextname' + assessment_id).text(assessment_name);
-                    $('#tdassessmenttexttotal' + assessment_id).text(total);
-                    switch(assessment_type) {
-                        case '1':
-                            $('#tdassessmenttexttype' + assessment_id).text("Written Works");
-                            break;
-                        case '2':
-                            $('#tdassessmenttexttype' + assessment_id).text("Performance Tasks");
-                            break;
-                        case '3':
-                            $('#tdassessmenttexttype' + assessment_id).text("Quarterly Exams");
-                            break;
+        if(assessment_name.trim(" ").toUpperCase() == $('#tdassessmenttextname' + assessment_id).text().trim(" ").toUpperCase()) {
+            console.log('SAME!');
+            var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+            var subject_id =$('input[name=recgradbarsubjectid]').val();
+            justthis = 'true';
+            $.ajax({
+                type: 'POST',
+                url: '/save_assessment/',
+                data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'assessment_id': assessment_id, 'assessment_name': assessment_name,'total': total, 'assessment_type': assessment_type, 'subject_id': subject_id, 'justthis': justthis},
+                success: function(data) {
+                          /* Check for  redundancy*/
+                    if(data['error']) {
+                        $('.recgradbar-error').addClass('hidden');
+                        $('.recgradbar-error-redundant').removeClass('hidden');
+                    } else {
+                          /* Set input. */
+                        $('#tdassessmenttextname' + assessment_id).text(assessment_name);
+                        $('#tdassessmenttexttotal' + assessment_id).text(total);
+                        switch(assessment_type) {
+                            case '1':
+                                $('#tdassessmenttexttype' + assessment_id).text("Written Works");
+                                break;
+                            case '2':
+                                $('#tdassessmenttexttype' + assessment_id).text("Performance Tasks");
+                                break;
+                            case '3':
+                                $('#tdassessmenttexttype' + assessment_id).text("Quarterly Exams");
+                                break;
+                        }
+                              /* Toggle views */
+                        $('.assessmentinput').addClass('hidden');
+                        $('.tdassessmenttext').removeClass('hidden');
+                        $('#assessmenteditbutton' + assessment_id).removeClass('hidden');
+                        $('#assessmentsavebutton' + assessment_id).addClass('hidden');
+                              /* Hide errors. */
+                        $('.recgradbar-error').addClass('hidden');
+                        $('.recgradbar-error-redundant').addClass('hidden');
+                        $('#tableassessmentsview table').trigger('update');
+                        alertify.success(assessment_name + ' successfully updated!');
                     }
-                    /* Toggle views */
-                    $('.assessmentinput').addClass('hidden');
-                    $('.tdassessmenttext').removeClass('hidden');
-                    $('#assessmenteditbutton' + assessment_id).removeClass('hidden');
-                    $('#assessmentsavebutton' + assessment_id).addClass('hidden');
-                    /* Hide errors. */
-                    $('.recgradbar-error').addClass('hidden');
-                    $('.recgradbar-error-redundant').addClass('hidden');
-                    alertify.success(assessment_name + ' successfully updated!');
                 }
-            }
-        });
+            });
+        } else {
+            var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+            var subject_id =$('input[name=recgradbarsubjectid]').val();
+            $.ajax({
+                type: 'POST',
+                url: '/save_assessment/',
+                data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'assessment_id': assessment_id, 'assessment_name': assessment_name,'total': total, 'assessment_type': assessment_type, 'subject_id': subject_id, 'justthis': justthis},
+                success: function(data) {
+                          /* Check for  redundancy*/
+                    if(data['error']) {
+                        $('.recgradbar-error').addClass('hidden');
+                        $('.recgradbar-error-redundant').removeClass('hidden');
+                    } else {
+                          /* Set input. */
+                        $('#tdassessmenttextname' + assessment_id).text(assessment_name);
+                        $('#tdassessmenttexttotal' + assessment_id).text(total);
+                        switch(assessment_type) {
+                            case '1':
+                                $('#tdassessmenttexttype' + assessment_id).text("Written Works");
+                                break;
+                            case '2':
+                                $('#tdassessmenttexttype' + assessment_id).text("Performance Tasks");
+                                break;
+                            case '3':
+                                $('#tdassessmenttexttype' + assessment_id).text("Quarterly Exams");
+                                break;
+                        }
+                              /* Toggle views */
+                        $('.assessmentinput').addClass('hidden');
+                        $('.tdassessmenttext').removeClass('hidden');
+                        $('#assessmenteditbutton' + assessment_id).removeClass('hidden');
+                        $('#assessmentsavebutton' + assessment_id).addClass('hidden');
+                              /* Hide errors. */
+                        $('.recgradbar-error').addClass('hidden');
+                        $('.recgradbar-error-redundant').addClass('hidden');
+                        $('#tableassessmentsview table').trigger('update');
+                        alertify.success(assessment_name + ' successfully updated!');
+                    }
+                }
+            });
+        }
     } else {
-        /* Show invalid form error. */
+              /* Show invalid form error. */
         $('.recgradbar-error').removeClass('hidden');
         $('.recgradbar-error-redundant').addClass('hidden');
     }
@@ -216,6 +263,7 @@ function goToAssessment(assessment_id) {
     $('#recordbar div:nth-child(1) span:nth-child(2)').text(assessmenttype);
     $('#recordbar div:nth-child(1) span:nth-child(4)').text(total);
     $('#recordcontainer span').empty().hide();
+    $('#recgradtopbar').show();
     $('#recordbar').show();
     $.ajax({
         type: 'GET',

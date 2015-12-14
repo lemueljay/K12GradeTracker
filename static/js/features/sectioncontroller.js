@@ -109,6 +109,7 @@ function removeSection(section_id) {
                 $('#trsection' + section_id).fadeOut('slow', function () {
                     $('#trsection' + section_id).remove();
                     $('#sectionspinner').addClass('hidden');
+                    $('#tablesectionview table').trigger('update');
                     alertify.error('Section ' + section_name + ' successfully removed!');
                 });
             }
@@ -139,54 +140,91 @@ function saveSection(section_id) {
     } else {
         valid = true;
     }
-    /* If valid. */
-    if(valid) {
-        $.ajax({
-            type: 'POST',
-            url: '/save_section/',
-            data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'newName': newName, 'section_id': section_id},
-            success: function(data) {
-                /* Redundancy */
-                if(data['error']) {
-                    $('.sectionsbar-error').addClass('hidden');
-                    $('.sectionsbar-error-redundant').removeClass('hidden');
-                } else {
-                    $('#savesectionbutton' + section_id).addClass('hidden');
-                    $('#editsectionbutton' + section_id).removeClass('hidden');
-                    $('#tdsectionname' + section_id).text(newName);
-                    $('.tdsectionnameinput').addClass('hidden');
-                    $('.tdsectionname').removeClass('hidden');
-                    $('.sectionsbar-error').addClass('hidden');
-                    $('.sectionsbar-error-redundant').addClass('hidden');
-                    alertify.success('Section ' + newName + ' successfully updated!');
+    if(newName == $('#trsection' + section_id + ' td:nth-child(2)').text().trim(" ")) {
+        $('#savesectionbutton' + section_id).addClass('hidden');
+        $('#editsectionbutton' + section_id).removeClass('hidden');
+        $('#tdsectionname' + section_id).text(newName);
+        $('.tdsectionnameinput').addClass('hidden');
+        $('.tdsectionname').removeClass('hidden');
+        $('.sectionsbar-error').addClass('hidden');
+        $('.sectionsbar-error-redundant').addClass('hidden');
+        $('#tablesectionview table').trigger('update');
+        alertify.success('Section ' + newName + ' successfully updated!');
+    } else {
+        /* If valid. */
+        if(valid) {
+            $.ajax({
+                type: 'POST',
+                url: '/save_section/',
+                data: {'csrfmiddlewaretoken': csrfmiddlewaretoken, 'newName': newName, 'section_id': section_id},
+                success: function(data) {
+                    /* Redundancy */
+                    if(data['error']) {
+                        $('.sectionsbar-error').addClass('hidden');
+                        $('.sectionsbar-error-redundant').removeClass('hidden');
+                    } else {
+                        $('#savesectionbutton' + section_id).addClass('hidden');
+                        $('#editsectionbutton' + section_id).removeClass('hidden');
+                        $('#tdsectionname' + section_id).text(newName);
+                        $('.tdsectionnameinput').addClass('hidden');
+                        $('.tdsectionname').removeClass('hidden');
+                        $('.sectionsbar-error').addClass('hidden');
+                        $('.sectionsbar-error-redundant').addClass('hidden');
+                        $('#tablesectionview table').trigger('update');
+                        alertify.success('Section ' + newName + ' successfully updated!');
+                    }
                 }
+            });
+        } else {
+            $('.sectionsbar-error').removeClass('hidden');
+            $('.sectionsbar-error-redundant').addClass('hidden');
+        }
+    }
+
+}
+
+function viewSection(section_id, what) {
+    if(what == 'justno') {
+        $('#studentbigspinner').show();
+        $('.contentbar').hide();
+        $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
+        $('input[name=contentbarsectionid]').val(section_id);
+        $('#studentstopbar').show();
+        $('#studentsbar').show();
+        $('#studentscontainer span').empty().hide();
+        $.ajax({
+            type: 'GET',
+            url: '/get_students/',
+            data: {'section_id': section_id},
+            success: function(data) {
+                $('#studentscontainer span').html(data).hide();
+                $('#studentbigspinner').fadeOut('slow', function() {
+                    $('#studentscontainer span').show();
+                })
+
             }
         });
     } else {
-        $('.sectionsbar-error').removeClass('hidden');
-        $('.sectionsbar-error-redundant').addClass('hidden');
+        $('#studentbigspinner').show();
+        $('.contentbar').hide();
+        $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
+        $('input[name=contentbarsectionid]').val(section_id);
+        $('#studentsbar').show();
+        $('#studentscontainer span').empty().hide();
+        $.ajax({
+            type: 'GET',
+            url: '/get_students/',
+            data: {'section_id': section_id},
+            success: function(data) {
+                $('#studentscontainer span').html(data).hide();
+                $('#studentbigspinner').fadeOut('slow', function() {
+                    $('#studentscontainer span').show();
+                })
+
+            }
+        });
     }
-}
 
-function viewSection(section_id) {
-    $('#studentbigspinner').show();
-    $('.contentbar').hide();
-    $('#studentsbar div:nth-child(1) span:nth-child(1)').text($('#tdsectionname' + section_id).text());
-    $('input[name=contentbarsectionid]').val(section_id);
-    $('#studentsbar').show();
-    $('#studentscontainer span').empty().hide();
-    $.ajax({
-        type: 'GET',
-        url: '/get_students/',
-        data: {'section_id': section_id},
-        success: function(data) {
-            $('#studentscontainer span').html(data).hide();
-            $('#studentbigspinner').fadeOut('slow', function() {
-                $('#studentscontainer span').show();
-            })
-
-        }
-    });
 }
 
 $(document).ready(function() {

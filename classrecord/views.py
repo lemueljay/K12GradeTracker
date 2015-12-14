@@ -200,6 +200,7 @@ class CreateSubject(View):
             data = dict()
             data['error'] = False
             data['subject_id'] = query.id
+            data['section_id'] = query.section.id
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = dict()
@@ -219,9 +220,6 @@ class DeleteSubject(View):
 
 
 class SaveSubject(View):
-    def get(self, request):
-        return HttpResponse()
-
     def post(self, request):
         # Get the data.
         updateOnly = request.POST['updateOnly']
@@ -237,7 +235,6 @@ class SaveSubject(View):
             # Query the data.
             query = Subject.objects.get(id=subject_id)
             query.name = new_subject_name
-            query.section = section_instance
             query.subject_type = subject_type_instance
             query.save()
             data = dict()
@@ -250,7 +247,6 @@ class SaveSubject(View):
                 # Query the data.
                 query = Subject.objects.get(id=subject_id)
                 query.name = new_subject_name
-                query.section = section_instance
                 query.subject_type = subject_type_instance
                 query.save()
                 data = dict()
@@ -270,9 +266,6 @@ def get_assessments(request):
 
 
 class CreateAssessment(View):
-    def get(self, request):
-        return HttpResponse()
-
     def post(self, request):
         # Get assessment data
         name = request.POST['assessmentName']
@@ -331,6 +324,7 @@ class CreateAssessment(View):
                 day = myDate[9:10]
 
             hourList = {
+                '00': 12,
                 '01': 1,
                 '02': 2,
                 '03': 3,
@@ -358,7 +352,7 @@ class CreateAssessment(View):
             }
 
             t = 'a.m.'
-            if myDate[11:13] > 12:
+            if int(myDate[11:13]) > 12:
                 t = 'p.m.'
 
 
@@ -374,12 +368,47 @@ class CreateAssessment(View):
 
 class RemoveAssessment(View):
     def post(self, request):
+        assessment_id = request.POST['assessment_id']
+        query = Assessment.objects.get(id=assessment_id)
+        query.delete()
         return HttpResponse()
 
 
 class SaveAssessment(View):
     def post(self, request):
-        return HttpResponse()
+        justthis = request.POST['justthis']
+        assessment_id = request.POST['assessment_id']
+        assessment_name = request.POST['assessment_name']
+        total = request.POST['total']
+        assessment_type = request.POST['assessment_type']
+        subject_id = request.POST['subject_id']
+        # Instance
+        subject_instance = Subject.objects.get(id=subject_id)
+        assessment_type_instance = AssessmentType.objects.get(id=assessment_type)
+        # Redundant
+        if justthis == 'true':
+            query = Assessment.objects.get(id=assessment_id)
+            query.total = total
+            query.assessmenttype = assessment_type_instance
+            query.save()
+            data = dict()
+            data['error'] = False
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            redundant = Assessment.objects.filter(name__iexact=assessment_name, subject=subject_instance)
+            if len(redundant) == 0:
+                query = Assessment.objects.get(id=assessment_id)
+                query.name = assessment_name
+                query.total = total
+                query.assessmenttype = assessment_type_instance
+                query.save()
+                data = dict()
+                data['error'] = False
+                return HttpResponse(json.dumps(data), content_type="application/json")
+            else:
+                data = dict()
+                data['error'] = True
+                return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 def get_sections(request):
@@ -422,12 +451,30 @@ class CreateSection(View):
 
 class DeleteSection(View):
     def post(self, request):
+        section_id = request.POST['section_id']
+        query = Section.objects.get(id=section_id)
+        query.delete()
         return HttpResponse()
 
 
 class SaveSection(View):
     def post(self, request):
-        return HttpResponse()
+        newName = request.POST['newName']
+        section_id = request.POST['section_id']
+
+        # Check redundancy
+        redundant = Section.objects.filter(name__iexact=newName, user=request.user)
+        if len(redundant) == 0:
+            query = Section.objects.get(id=section_id, user=request.user)
+            query.name = newName
+            query.save()
+            data = dict()
+            data['error'] = False
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            data = dict()
+            data['error'] = True
+            return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 def get_students(request):
@@ -595,8 +642,10 @@ def get_grades(request):
             # Get status
             if x.grade >= 75:
                 x.status = "PASSED!"
+                x.color = 'passed'
             else:
                 x.status = "FAILED!"
+                x.color = 'failed'
     else:
         # Instances
         subject_instance = Subject.objects.get(id=subject_id)
@@ -664,6 +713,8 @@ def get_grades(request):
             # Get status
             if x.grade >= 75:
                 x.status = "PASSED!"
+                x.color = 'passed'
             else:
                 x.status = "FAILED!"
+                x.color = 'failed'
     return render(request, 'tables/viewgrades.html', {'myStudentList': myStudentList, 'w': w, 'p': p, 'q': q})

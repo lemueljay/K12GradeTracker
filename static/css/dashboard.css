@@ -64,9 +64,20 @@ body, #sb-site {
     color: black;
     padding: 0px 0px 0px 0px;
     background-color: white;
-    min-height: 500px;
+    min-height: 100px;
     margin-top: 50px;
     margin-bottom: 100px;
+    padding-bottom: 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.anothercontentbar {
+    color: black;
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+    min-height: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding-bottom: 30px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
@@ -282,17 +293,6 @@ table tbody tr td i.fa-remove:hover {
 }
 
 
-/*
-input[name=viewGradesButton], input[name=viewGradesButton]:active, input[name=viewGradesButton]:focus, input[name=viewGradesButton]:active:focus, input[name=viewGradesButton]:hover {
-    background-color: #8bc34a;
-    border: 1px solid #8bc34a;
-}
-
-input[name=viewStudentsButton], input[name=viewStudentsButton]:active, input[name=viewStudentsButton]:focus, input[name=viewStudentsButton]:active:focus, input[name=viewStudentsButton]:hover {
-    background-color: #CC0505;
-    border: 1px solid #CC0505;
-}
-*/
 #subjectscontainer {
     padding: 0px;
 }
@@ -843,6 +843,32 @@ img {
     color: #4285f4;
 }
 
-#sections_field, #sectionscontainer {
+#sections_field, #sectionscontainer, #students_field, #studentscontainer, #record_grades_field, #assessmentscontainer, #viewgrades_field, #viewgrradescontainer {
     padding: 0px;
+}
+
+.assessmentoption div i {
+    color: #292f43;
+}
+
+.assessmentoption div:nth-child(2) {
+    margin-top: 10px;
+}
+
+.assessmentoption div i {
+    border: 2px solid #292f43;
+    border-radius: 1000px;
+    padding: 30px;
+}
+
+#assessmenttopbar, #viewgradestopbar, #studentstopbar, #recgradtopbar {
+    padding-top: 30px;
+    color: #292f43;
+    margin-bottom: 0px; !important;
+}
+
+.assessmentoption div:nth-child(1) i:hover {
+    background-color: #292f43;
+    color: white;
+    cursor: pointer;
 }

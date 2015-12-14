@@ -95,22 +95,3 @@ class Record(models.Model):
     def __unicode__(self):
         return u'%s %s %s %s' % (self.id, self.assessment.name, self.student.last_name, self.score)
 
-
-# !!!!!!!!!!!!!!!!! Obsolete !!!!!!!!!!!!!!!!!
-class Class(models.Model):
-    name = models.CharField(max_length=200)
-    section = models.CharField(max_length=200)
-    subject_type = models.ForeignKey(SubjectType, default=1)
-    user = models.ForeignKey(User)
-    hidden = models.CharField(max_length=2, default=0)
-
-    def __unicode__(self):
-        return u'%s %s %s %s %s %s' % (self.id, self.name, self.section, self.subject_type, self.user,
-                                       self.hidden)
-
-
-class StudentGrades(models.Model):
-    student = models.ForeignKey(Student)
-    assessment = models.ForeignKey(Assessment)
-    assessmenttype = models.ForeignKey(AssessmentType, default=0)
-    score = models.IntegerField(default=None)

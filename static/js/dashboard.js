@@ -148,7 +148,21 @@ $(document).ready(function() {
     $('#mansubbutt').click(function() {
          $('.contentbar').hide();
          $('#subjectsbar').show();
-
+    });
+    $('#studentmansubbar').click(function() {
+        $('.contentbar').hide();
+        $('#assessmenttopbar').show();
+        $('#recgradbar').show();
+    });
+    $('#recgradmanass').click(function() {
+        $('.contentbar').hide();
+        $('#assessmenttopbar').show();
+        $('#recgradbar').show();
+    });
+    $('#manassbutt').click(function() {
+        $('.contentbar').hide();
+        $('#assessmenttopbar').show();
+        $('#recgradbar').show();
     });
     $('#mansec').click(function() {
         $('.contentbar').hide();

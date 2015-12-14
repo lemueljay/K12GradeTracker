@@ -126,7 +126,10 @@ function createSubject() {
                     $("<tr id='tr" + data['subject_id'] + "'>" +
                         "<td class=''><i onclick='viewSubject(" + data['subject_id'] + ")' class='fa fa-apple fa-2x'></i></td>" +
                     "<td><input class='hidden form-control tdinput' value='" + subject_name + "'><span class='tdtext'>" + subject_name + "</span></td>" +
-                    "<td><select class='hidden form-control section-drop-down tdselect'></select><span id='td" + data['subject_id'] + "sectionid' class='hidden sectionid'>" + section_value + "</span><span class='tdtext sectionname'>" + section_name + "</span></td>" +
+                    "<td>" +
+                        " <span id='td" + data['subject_id'] + "sectionid' class='hidden sectionid'>" + data['section_id'] + "</span>" +
+                        "<span class='sectionname'>" + section_name + "</span>" +
+                    "</td>" +
                     "<td><select class='hidden form-control subject-type-drop-down tdselect'></select><span id='td" + data['subject_id'] + "subjecttypeid' class='hidden subjecttypeid'>" + subject_type_value + "</span><span class='tdtext subjecttypename'>" + subject_type +"</span></td>" +
                     "<td>" +
                     "<span class='tdschoolyear'>" + school_year + "</span>" +
@@ -187,7 +190,7 @@ function editSubject(subject_id) {
     var subject_name = $('#tr' + subject_id + ' td:nth-child(1) span').text();
     $('#tr' + subject_id + ' td:nth-child(1) input').val(subject_name);
     var section_value = $('#td' + subject_id + 'sectionid').text();
-    $("select.section-drop-down option[value=" + section_value + "]").attr("selected","selected");
+    console.log(section_value);
     var subjecttype = $('#td' + subject_id + 'subjecttypeid').text();
     $("select.subject-type-drop-down option[value=" + subjecttype + "]").attr("selected","selected");
     /* Show form. */
@@ -195,6 +198,7 @@ function editSubject(subject_id) {
     $('#tr' + subject_id + ' td select').removeClass('hidden');
     $('#tr' + subject_id + ' td span').addClass('hidden');
     $('.tdschoolyear').removeClass('hidden');
+    $('.sectionname').removeClass('hidden');
 }
 
 function saveSubject(subject_id) {
@@ -202,25 +206,22 @@ function saveSubject(subject_id) {
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
     /* Get data */
     var new_subject_name = $('#tr' + subject_id + ' td:nth-child(2) input.tdinput').val().toUpperCase();
-    var new_section_value = $('#tr' + subject_id + ' td:nth-child(3) select').val();
-    var new_section_name = $('#tr' + subject_id + ' td:nth-child(3) select option[value=' + new_section_value+ ']').text();
+    var new_section_value = $('#td' + subject_id + 'sectionid').text();
     var new_subject_type_id = $('#tr' + subject_id + ' td:nth-child(4) select').val();
     var new_subject_type = $('#tr' + subject_id + ' td:nth-child(4) select option[value=' + new_subject_type_id+ ']').text();
     /* Check for changes */
     var temp1 = $('#tr' + subject_id + ' td:nth-child(2) span').text();
     var temp2 = $('#tr' + subject_id + ' td:nth-child(2) input.tdinput').val().toUpperCase();
-    var temp3 = $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text();
-    var temp4 = $('#tr' + subject_id + ' td:nth-child(3) select').val();
     var temp5 = $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text();
     var temp6 = $('#tr' + subject_id + ' td:nth-child(4) select').val();
-    if(temp1 == temp2 && temp3 == temp4 && temp5 == temp6) {
+    if(temp1 == temp2 && temp5 == temp6) {
+        console.log('Oks');
         $('#tr' + subject_id + ' td').removeClass('trfocus');
         $('.contentbar-error').addClass('hidden');
         $('.contentbar-error-redundant').addClass('hidden');
         /* Request successful. */
         $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
         $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
-        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
         alertify.success('No changes made with ' + new_subject_name);
@@ -236,7 +237,7 @@ function saveSubject(subject_id) {
         $('.contentbar-error-redundant').addClass('hidden');
         $('.contentbar-error').removeClass('hidden');
     } else {
-            if(temp1 == temp2 && temp3 == temp4) {
+            if(temp1 == temp2) {
             /* Send data. */
             var updateOnly = true;
             $.ajax({
@@ -254,7 +255,6 @@ function saveSubject(subject_id) {
                         $('#tr' + subject_id + ' td').removeClass('trfocus');
                         $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
                         $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
-                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
                         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
                         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
                         alertify.success(new_subject_name + ' successfully updated!');
@@ -287,7 +287,6 @@ function saveSubject(subject_id) {
                         /* Request successful. */
                         $('#tr' + subject_id + ' td:nth-child(2) span').text(new_subject_name);
                         $('#tr' + subject_id + ' td:nth-child(3) span.sectionid').text(new_section_value);
-                        $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text(new_section_name);
                         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypeid').text(new_subject_type_id);
                         $('#tr' + subject_id + ' td:nth-child(4) span.subjecttypename').text(new_subject_type);
                         alertify.success(new_subject_name + ' successfully updated!');
@@ -315,12 +314,13 @@ function viewSubject(subject_id) {
     var subject_name =  $('#tr' + subject_id + ' td:nth-child(2) span').text();
     var section_name = $('#tr' + subject_id + ' td:nth-child(3) span.sectionname').text();
     var section_id = $('#td' + subject_id + 'sectionid').text();
-    $('#recgradbar div:nth-child(1) span:nth-child(1)').text(subject_id);
+    $('input[name=recgradbarsubjectid]').val(subject_id);
     $('#recgradbar div:nth-child(1) span:nth-child(2)').text(subject_name);
     $('#recgradbar div:nth-child(1) span:nth-child(3)').text(section_name);
     $('input[name=assessmentsectionidhidden]').val(section_id);
     $().text();
     $('.contentbar').hide();
+    $('#assessmenttopbar').show();
     $('#recgradbar').show();
     $.ajax({
         type: 'GET',
