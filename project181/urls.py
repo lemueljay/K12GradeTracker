@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     # Landing page/ Index
-    url(r'^$', index),
+    url(r'^$', Login.as_view()),
 
     # Login
     url(r'^login/$', Login.as_view()),
